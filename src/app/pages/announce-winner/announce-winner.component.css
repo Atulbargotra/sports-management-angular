@@ -1,0 +1,27 @@
+.width{
+    width: 95%;
+    margin: 0 auto;
+}
+
+.marginleft{
+    width: 95%;
+    margin: 0 auto;     
+}
+
+.borderCard{
+    border: 1px solid rgb(187, 187, 187);
+    border-radius: 8px;
+}
+.borderImg{
+    border-bottom: 1px solid rgb(204, 203, 203);
+}
+
+.eventAvailable{
+    min-height: 70vh;
+    font-size: 2.1rem;
+    font-weight: 300;
+}
+
+h4{
+    font-weight: 400;
+}

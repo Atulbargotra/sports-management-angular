@@ -1,0 +1,366 @@
+<div class="row mt-5 width">
+  <div class="col-2 d-flex justify-content-center align-items-center divwidth">
+    <!-- Button trigger modal (Add an Event)-->
+    <button
+      type="button"
+      class="btn btn-success btnwidth"
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      <span class="spantxt">          
+        Add An Event <fa-icon class="icon px-1" [icon]="faPlusCircle"></fa-icon>
+      </span>
+    </button>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog moddim">
+        <div class="modal-content">
+          <!-- card - Add Event -->
+          <div class="card cardDimension">
+            <div class="imgDim">
+              <img
+                src="../../../assets/no-image.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">Add Event Details</h5>
+
+              <!-- Add event details form -->
+              <form class="mt-3">
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="eventName" class="labeltxt form-label"
+                      >Event Name</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="eventName"
+                      id="eventName"
+                      class="form-control txtdim"
+                      [(ngModel)]="eventName"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="description" class="labeltxt form-label"
+                      >Description</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <textarea
+                      type="textarea"
+                      name="description"
+                      id="description"
+                      rows="1"
+                      class="form-control txtdim"
+                      [(ngModel)]="description"
+                      required
+                    >
+                    </textarea>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="location" class="labeltxt form-label"
+                      >Location</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="location"
+                      id="location"
+                      class="form-control txtdim"
+                      [(ngModel)]="location"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="category" class="labeltxt form-label"
+                      >Category</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="category"
+                      id="category"
+                      class="form-control txtdim"
+                      [(ngModel)]="category"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="type" class="labeltxt form-label">Type</label>
+                  </div>
+                  <div class="col-8">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="type"
+                        id="individual"
+                        value="individual"
+                        checked
+                        [(ngModel)]="type"
+                      />
+                      <label class="form-check-label" for="individual">
+                        Individual
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="type"
+                        id="team"
+                        value="team"
+                        [(ngModel)]="type"
+                      />
+                      <label class="form-check-label" for="team"> Team </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="startDate" class="labeltxt form-label"
+                      >Start Date</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      name="startDate"
+                      id="startDate"
+                      placeholder="YYYY/MM/DD"
+                      class="form-control txtdim"
+                      [(ngModel)]="startDate"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="lastDate" class="labeltxt form-label"
+                      >Last Date</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      name="lastDate"
+                      id="lastDate"
+                      placeholder="YYYY/MM/DD"
+                      class="form-control txtdim"
+                      [(ngModel)]="lastDate"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="maxParticipant" class="labeltxt form-label"
+                      >Participants</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="maxParticipant"
+                      id="maxParticipant"
+                      class="form-control txtdim"
+                      [(ngModel)]="maxParticipant"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                data-bs-dismiss="modal"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{eventName}}
+  {{description}}
+  {{location}}
+  {{category}}
+  {{type}}
+  {{startDate}}
+  {{lastDate}}
+  {{maxParticipant}}
+  <!-- List Of Events -->
+
+  <div class="d-flex flex-wrap justify-content-between align-items-center mt-3">
+
+    <div class="border border-secondary mx-4 my-3 w-25">
+      <div class="card">
+        <img
+          src="../../../assets/no-image.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title mb-3">The Cricket Tournament</h5>
+                <p>T20 Cricket Tournament at TIAA</p>
+                <p>Type : Team</p>
+                <p>Last Date : 21 June 2021</p>
+              </div>
+              <div class="d-flex justify-content-between mb-3 px-3">
+                <a href="#" class="btn btn-success px-4">Publish &nbsp;<fa-icon class="icon try" [icon]="faUpload"></fa-icon></a>
+                <a href="#" class="btn btn-secondary px-4">Delete &nbsp;<fa-icon class="icon try" [icon]="faTrashAlt"></fa-icon></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+      </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="border border-secondary mx-4 my-3 w-25">
+      <div class="card">
+        <img
+          src="../../../assets/no-image.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title mb-3">The Cricket Tournament</h5>
+                <p>T20 Cricket Tournament at TIAA</p>
+                <p>Type : Team</p>
+                <p>Last Date : 21 June 2021</p>
+              </div>
+              <div class="d-flex justify-content-between mb-3 px-3">
+                <a href="#" class="btn btn-success px-4">Publish &nbsp;<fa-icon class="icon try" [icon]="faUpload"></fa-icon></a>
+                <a href="#" class="btn btn-secondary px-4">Delete &nbsp;<fa-icon class="icon try" [icon]="faTrashAlt"></fa-icon></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+      </div>
+    </div>
+
+    <div class="border border-secondary mx-4 my-3 w-25">
+      <div class="card">
+        <img
+          src="../../../assets/no-image.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title mb-3">The Cricket Tournament</h5>
+                <p>T20 Cricket Tournament at TIAA</p>
+                <p>Type : Team</p>
+                <p>Last Date : 21 June 2021</p>
+              </div>
+              <div class="d-flex justify-content-between mb-3 px-3">
+                <a href="#" class="btn btn-success px-4">Publish</a>
+                <a href="#" class="btn btn-secondary px-4">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+      </div>
+    </div>
+
+    <div class="border border-secondary mx-4 my-3 w-25">
+      <div class="card">
+        <img
+          src="../../../assets/no-image.jpg"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title mb-3">The Cricket Tournament</h5>
+                <p>T20 Cricket Tournament at TIAA</p>
+                <p>Type : Team</p>
+                <p>Last Date : 21 June 2021</p>
+              </div>
+              <div class="d-flex justify-content-between mb-3 px-3">
+                <a href="#" class="btn btn-success px-4">Publish &nbsp;<fa-icon class="icon try" [icon]="faUpload"></fa-icon></a>
+                <a href="#" class="btn btn-secondary px-4">Delete &nbsp;<fa-icon class="icon try" [icon]="faTrashAlt"></fa-icon></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+   
+      </div>
+    </div> -->
+
+    
+
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+     <!-- <div class="border border-success mx-4 my-3 p-2 w-25">Walk in park</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Frugal</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Ficitious</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Ineviatable</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Credability</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Vouch</div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Articulate </div>
+    <div class="border border-success mx-4 my-3 p-2 w-25">Nothing Ground Breaking</div> -->

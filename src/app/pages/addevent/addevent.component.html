@@ -1,0 +1,250 @@
+<div class="row mt-5 width">
+  <div class="col-2 d-flex justify-content-center align-items-center divwidth offset-10">
+
+    <!-- Button trigger modal (Add an Event)-->
+    <button
+      type="button"
+      class="btn btn-success "
+      data-bs-toggle="modal"
+      data-bs-target="#exampleModal"
+    >
+      <span class="spantxt">          
+        <fa-icon class="icon px-1" [icon]="faPlusCircle"></fa-icon>
+      </span>
+    </button>
+
+    <!-- Modal (On button click this modal will show up) -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog moddim">
+        <div class="modal-content">
+          <!-- card - Add Event -->
+          <div class="card cardDimension">
+            <div class="imgDim">
+              <img
+                src="../../../assets/no-image.jpg"
+                class="card-img-top"
+                alt="..."
+              />
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-center">Add Event Details</h5>
+
+              <!-- Add event details form -->
+              <form [formGroup]="eventForm" (ngSubmit)="handleSaveDraft()"class="mt-3">
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="eventName" class="labeltxt form-label"
+                      >Event Name</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="eventName"
+                      id="eventName"
+                      class="form-control txtdim"
+                      [formControlName]="'eventName'"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="description" class="labeltxt form-label"
+                      >Description</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <textarea
+                      type="textarea"
+                      name="description"
+                      id="description"
+                      rows="1"
+                      class="form-control txtdim"
+                      [formControlName]="'description'"
+                      required
+                    >
+                    </textarea>
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="location" class="labeltxt form-label"
+                      >Location</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="location"
+                      id="location"
+                      class="form-control txtdim"
+                      [formControlName]="'location'"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="category" class="labeltxt form-label"
+                      >Category</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="category"
+                      id="category"
+                      class="form-control txtdim"
+                      [formControlName]="'category'"
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="type" class="labeltxt form-label">Type</label>
+                  </div>
+                  <div class="col-8">
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="type"
+                        id="individual"
+                        value="individual"
+                        checked
+                        [formControlName]="'type'"
+                      />
+                      <label class="form-check-label" for="individual">
+                        Individual
+                      </label>
+                    </div>
+                    <div class="form-check">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="type"
+                        id="team"
+                        value="team"
+                        [formControlName]="'type'"
+                      />
+                      <label class="form-check-label" for="team"> Team </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="startDate" class="labeltxt form-label"
+                      >Start Date & Time</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="datetime-local"
+                      name="startDate"
+                      id="startDate"
+                      placeholder="YYYY/MM/DD"
+                      class="form-control txtdim"
+                      [formControlName]="'eventDate'"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="lastDate" class="labeltxt form-label"
+                      >Last Date</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="date"
+                      name="lastDate"
+                      id="lastDate"
+                      placeholder="YYYY/MM/DD"
+                      class="form-control txtdim"
+                      [formControlName]="'lastDate'"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="row mb-2">
+                  <div class="col-4">
+                    <label for="maxParticipant" class="labeltxt form-label"
+                      >Participants</label
+                    >
+                  </div>
+                  <div class="col-8">
+                    <input
+                      type="text"
+                      name="maxParticipant"
+                      id="maxParticipant"
+                      class="form-control txtdim"
+                      [formControlName]="'maxParticipant'"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="card-footer text-center">
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                data-bs-dismiss="modal"
+                (click)="handleSaveDraft()"
+              >
+                Save
+              </button>
+              <button
+                type="button"
+                class="btn btn-success btn-sm"
+                data-bs-dismiss="modal"
+                (click)="handleAddEvent()"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+  <!-- List Of Events -->
+
+<div class="row row-cols-1 row-cols-md-1 g-4 marginleft">
+    
+  <!-- Looping through Events fetching array of eventlist -->
+
+  <div class="mx-4 my-5 w-25" *ngFor="let event of eventList">
+    <div class="card">
+    <img src="{{'../../../assets/event_category/'+event.category+'.jpg'}}" alt="" class="eventimg" />
+      <h2 class="card__title">{{ event.eventName }}</h2>
+      <span class="card__description">{{ event.description }}</span>
+      <div class="card__shop">
+        <span class="card__shop__price">{{ event.eventDate | date }}</span>
+        <button class="card__shop__action" (click)="publish(event.id)">
+          <img class="publish_icon" src="../../../assets/publish.gif">
+        </button>
+        <button (click)="delete(event.id)"></button>
+      </div>
+    </div>
+</div>
+  
+</div>
+
+
+
+
+
+

@@ -1,0 +1,40 @@
+<div class="width px-2 mx-5">
+
+<div class="marginBottom"></div>
+
+<div *ngIf="!eventAvailable" class="text-center d-flex justify-content-center align-items-center eventAvailable">
+  <p>Events Not Published Yet!!!</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-1 g-4 marginleft">
+  <!-- Looping through Events fetching array of eventlist -->
+
+  <div class="mx-4 my-5 w-25" *ngFor="let event of eventList">
+    <div class="card">
+    <img class="eventimg" src="{{'../../../assets/event_category/'+event.category+'.jpg'}}" alt="" />
+      <h2 class="card__title">{{ event.eventName }}</h2>
+      <span class="card__description">{{ event.description }}</span>
+      <div class="card__shop">
+        <span class="card__shop__price">{{ event.eventDate | date }}</span>
+        <button class="card__shop__action">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="15"
+            viewBox="5 5 15 20"
+          >
+            <g id="Bag" transform="translate(0.001)">
+              <path
+                id="Path_34167"
+                d="M 24 2 v 22 h -24 v -22 h 3 v 1 c 0 1.103 0.897 2 2 2 s 2 -0.897 2 -2 v -1 h 10 v 1 c 0 1.103 0.897 2 2 2 s 2 -0.897 2 -2 v -1 h 3 Z m -2 6 h -20 v 14 h 20 v -14 Z m -2 -7 c 0 -0.552 -0.447 -1 -1 -1 s -1 0.448 -1 1 v 2 c 0 0.552 0.447 1 1 1 s 1 -0.448 1 -1 v -2 Z m -14 2 c 0 0.552 -0.447 1 -1 1 s -1 -0.448 -1 -1 v -2 c 0 -0.552 0.447 -1 1 -1 s 1 0.448 1 1 v 2 Z m 6.687 13.482 c 0 -0.802 -0.418 -1.429 -1.109 -1.695 c 0.528 -0.264 0.836 -0.807 0.836 -1.503 c 0 -1.346 -1.312 -2.149 -2.581 -2.149 c -1.477 0 -2.591 0.925 -2.659 2.763 h 1.645 c -0.014 -0.761 0.271 -1.315 1.025 -1.315 c 0.449 0 0.933 0.272 0.933 0.869 c 0 0.754 -0.816 0.862 -1.567 0.797 v 1.28 c 1.067 0 1.704 0.067 1.704 0.985 c 0 0.724 -0.548 1.048 -1.091 1.048 c -0.822 0 -1.159 -0.614 -1.188 -1.452 h -1.634 c -0.032 1.892 1.114 2.89 2.842 2.89 c 1.543 0 2.844 -0.943 2.844 -2.518 Z m 4.313 2.518 v -7.718 h -1.392 c -0.173 1.154 -0.995 1.491 -2.171 1.459 v 1.346 h 1.852 v 4.913 h 1.711 Z"
+                fill="#fff"
+                opacity="1"
+              />
+            </g>
+          </svg>
+        </button>
+      </div>
+    </div>
+</div>
+
+</div>

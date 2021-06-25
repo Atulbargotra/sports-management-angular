@@ -1,0 +1,55 @@
+.width {
+  width: 95%;
+  margin: 0 auto;
+}
+.btnwidth {
+  width: 180px;
+  border-radius: 8px;
+}
+.imgDim {
+  width: 100%;
+  height: 210px;
+}
+.moddim {
+  width: 400px;
+}
+
+.txtdim {
+  height: 30px;
+}
+.labeltxt {
+  font-size: 16px;
+}
+
+.imgDim img {
+  width: 100%;
+  height: 100%;
+}
+/* p{
+    line-height: 8px;
+} */
+
+.icon {
+  font-size: 20px;
+}
+
+.spantxt {
+  font-size: 18px;
+}
+
+.try {
+  font-size: 14px;
+}
+
+.marginleft {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.cardmarginright {
+  margin-right: 120px;
+}
+.btn-success {
+  background-color: rgb(95, 121, 179);
+  border-color: rgb(95, 121, 179);
+}
