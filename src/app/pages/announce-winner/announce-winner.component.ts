@@ -4,9 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { EventService } from 'src/app/services/event.service';
 import { winnersDetailsPayload } from '../../Model/winnersDetailsPayload';
 
-//Date Formating
-import * as Moment from 'moment';
-
 import { EventResponsePayload } from '../../Model/eventResponsePayload';
 import { Router } from '@angular/router';
 
@@ -29,7 +26,7 @@ export class AnnounceWinnerComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.handleAnnouncedEventDetails()
+    this.handleAnnouncedEventDetails();
   }
 
   handlePostWinnerDetails(eventId: number, f: NgForm) {
@@ -40,8 +37,8 @@ export class AnnounceWinnerComponent implements OnInit {
     };
     this.eventService.postWinnnerDetails(eventId, winnersDetails).subscribe(
       (data) => {
-        this.router.navigateByUrl("/adminhome")
-        this.toastr.success("Winners Announced")
+        this.eventList = this.eventList.filter((event) => event.id !== eventId);
+        this.toastr.success('Winners Announced');
       },
       (error) => {
         this.toastr.error('Error occured while anouncing winners');
@@ -57,13 +54,13 @@ export class AnnounceWinnerComponent implements OnInit {
   handleAnnouncedEventDetails() {
     this.eventService.getExpiredEvents().subscribe(
       (data) => {
-       this.eventList = data;
+        this.eventAvailable = true;
+        this.eventList = data;
       },
 
       (error) => {
-        this.toastr.error('Problem Occured while fetching events')
+        this.toastr.error('Problem Occured while fetching events');
       }
     );
   }
-
 }

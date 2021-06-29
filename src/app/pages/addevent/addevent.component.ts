@@ -30,8 +30,7 @@ export class AddeventComponent implements OnInit {
   faUpload = faUpload;
   eventForm: FormGroup;
   eventRequestPayload: EventRequestPayload;
-
-  
+  eventAvailable: boolean = false;
 
   eventList: EventResponsePayload[];
 
@@ -40,12 +39,16 @@ export class AddeventComponent implements OnInit {
     private toastr: ToastrService,
     private router: Router
   ) {
-    this.eventService.getEventDrafts().subscribe((events) => {
-      this.eventList = events;
-    },(error) => {
-      throwError(error);
-      this.toastr.error("Unable to fetch drafts")
-    });
+    this.eventService.getEventDrafts().subscribe(
+      (events) => {
+        this.eventAvailable = true;
+        this.eventList = events;
+      },
+      (error) => {
+        throwError(error);
+        this.toastr.error('Unable to fetch drafts');
+      }
+    );
     this.eventRequestPayload = {
       eventName: '',
       description: '',
@@ -54,7 +57,7 @@ export class AddeventComponent implements OnInit {
       eventDate: '',
       lastDate: '',
       type: '',
-      category: ''
+      category: '',
     };
   }
   ngOnInit(): void {
@@ -67,67 +70,83 @@ export class AddeventComponent implements OnInit {
       eventDate: new FormControl('', Validators.required),
       lastDate: new FormControl('', Validators.required),
       maxParticipant: new FormControl('', Validators.required),
-    })
+    });
   }
 
   handleAddEvent() {
-    console.log("iinininin")
-    console.log(this.eventForm.get('eventName').value)
-
     this.eventRequestPayload.eventName = this.eventForm.get('eventName').value;
-    this.eventRequestPayload.description = this.eventForm.get('description').value;
+    this.eventRequestPayload.description =
+      this.eventForm.get('description').value;
     this.eventRequestPayload.location = this.eventForm.get('location').value;
-    this.eventRequestPayload.category = this.eventForm.get('category').value;
-    this.eventRequestPayload.type=this.eventForm.get('type').value;
-    this.eventRequestPayload.eventDate=this.eventForm.get('eventDate').value;
-    this.eventRequestPayload.lastDate=this.eventForm.get('lastDate').value;
-    this.eventRequestPayload.maxParticipant=this.eventForm.get('maxParticipant').value;
-    console.log(this.eventRequestPayload)
+    this.eventRequestPayload.category = this.eventForm
+      .get('category')
+      .value.toUpperCase();
+    this.eventRequestPayload.type = this.eventForm.get('type').value;
+    this.eventRequestPayload.eventDate = this.eventForm.get('eventDate').value;
+    this.eventRequestPayload.lastDate = this.eventForm.get('lastDate').value;
+    this.eventRequestPayload.maxParticipant =
+      this.eventForm.get('maxParticipant').value;
+    console.log(this.eventRequestPayload);
 
-    this.eventService.addEvent(this.eventRequestPayload).subscribe((data) => {
-
-    },(error) => {
-      throwError(error);
-    })
+    this.eventService.addEvent(this.eventRequestPayload).subscribe(
+      (data) => {
+        // this.eventList = this.eventList.push(data);
+      },
+      (error) => {
+        this.eventAvailable = false;
+        throwError(error);
+      }
+    );
   }
-  handleSaveDraft(){
+  handleSaveDraft() {
     this.eventRequestPayload.eventName = this.eventForm.get('eventName').value;
-    this.eventRequestPayload.description = this.eventForm.get('description').value;
+    this.eventRequestPayload.description =
+      this.eventForm.get('description').value;
     this.eventRequestPayload.location = this.eventForm.get('location').value;
-     this.eventRequestPayload.category = this.eventForm.get('category').value;
-    this.eventRequestPayload.type=this.eventForm.get('type').value;
-    this.eventRequestPayload.eventDate=this.eventForm.get('eventDate').value;
-    this.eventRequestPayload.lastDate=this.eventForm.get('lastDate').value;
-    this.eventRequestPayload.maxParticipant=this.eventForm.get('maxParticipant').value;
-    console.log(this.eventRequestPayload)
-    this.eventService.saveDraft(this.eventRequestPayload).subscribe((data) => {
-      this.eventList.push(data)
-      this.toastr.success("Draft Saved")
-      this.router.navigateByUrl("/adminhome")
-    },(error) => {
-      throwError(error);
-      this.toastr.error("Could not save draft")
-    });
-
+    this.eventRequestPayload.category = this.eventForm
+      .get('category')
+      .value.toUpperCase();
+    this.eventRequestPayload.type = this.eventForm.get('type').value;
+    this.eventRequestPayload.eventDate = this.eventForm.get('eventDate').value;
+    this.eventRequestPayload.lastDate = this.eventForm.get('lastDate').value;
+    this.eventRequestPayload.maxParticipant =
+      this.eventForm.get('maxParticipant').value;
+    console.log(this.eventRequestPayload);
+    this.eventService.saveDraft(this.eventRequestPayload).subscribe(
+      (data) => {
+        this.eventAvailable = true;
+        this.eventList.push(data);
+        this.toastr.success('Draft Saved');
+        this.router.navigateByUrl('/adminhome');
+      },
+      (error) => {
+        throwError(error);
+        this.toastr.error('Could not save draft');
+      }
+    );
   }
-  publish(id: number){
-    this.eventService.publishDraftEvent(id).subscribe((data) => {
-      this.eventList.filter((draft) => draft.id !== id);
-      this.toastr.success("Published Event")
-    },(error) => {
-      throwError(error);
-      this.toastr.error("Failed")
-    })
+  publish(id: number) {
+    this.eventService.publishDraftEvent(id).subscribe(
+      (data) => {
+        this.eventList = this.eventList.filter((draft) => draft.id !== id);
+        this.toastr.success('Published Event');
+      },
+      (error) => {
+        throwError(error);
+        this.toastr.error('Failed');
+      }
+    );
   }
-  delete(id: number){
-    this.eventService.deleteDraft(id).subscribe((data) => {
-      this.eventList.filter((draft) => draft.id !== id);
-      this.toastr.success("Published Deleted")
-    },(error) => {
-      throwError(error);
-      this.toastr.error("Failed")
-    })
+  delete(id: number) {
+    this.eventService.deleteDraft(id).subscribe(
+      (data) => {
+        this.eventList = this.eventList.filter((draft) => draft.id !== id);
+        this.toastr.success('Published Deleted');
+      },
+      (error) => {
+        throwError(error);
+        this.toastr.error('Failed');
+      }
+    );
   }
-
- 
 }

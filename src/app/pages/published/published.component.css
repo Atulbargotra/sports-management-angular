@@ -1,0 +1,44 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.icon {
+  font-size: 20px;
+}
+
+.icon:hover {
+  color: #c40d0d;
+}
+
+.width {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.eventAvailable {
+  min-height: 50vh;
+  font-size: 2.1rem;
+  font-weight: 300;
+}
+
+.marginBottom {
+  margin-bottom: 8%;
+}
+
+.dd img {
+  width: 100%;
+  height: 100%;
+  padding: 7px;
+  border-radius: 18px;
+}
+
+.border {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 18px;
+}
+
+.pEdit {
+  font-size: 95%;
+  color: rgb(78, 78, 78);
+}

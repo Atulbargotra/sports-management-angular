@@ -1,7 +1,16 @@
 <div class="width px-2 mx-5">
   <h4 class="mt-5">Closed Events</h4>
 
-  <div *ngIf="!eventAvailable" class="text-center d-flex justify-content-center align-items-center eventAvailable">
+  <div
+    *ngIf="!eventAvailable"
+    class="
+      text-center
+      d-flex
+      justify-content-center
+      align-items-center
+      eventAvailable
+    "
+  >
     <p>Wait For Events To Get Closed First!!!</p>
   </div>
 
@@ -11,7 +20,9 @@
     <div class="mx-5 my-5 w-25 text-center" *ngFor="let event of eventList">
       <div class="card borderCard">
         <img
-          src="../../../assets/no-image.jpg"
+          src="{{
+            '../../../../../assets/event_category/' + event.category + '.jpg'
+          }}"
           class="card-img-top borderImg"
           alt="..."
         />
@@ -22,9 +33,9 @@
                 <h5 class="card-title mb-3">{{ event.eventName }}</h5>
                 <span>{{ event.description }}</span
                 ><br />
-                <span>{{ event.type | titlecase}}</span
+                <span>{{ event.type | titlecase }}</span
                 ><br />
-                <span>End Date: {{ event.lastDate}}</span
+                <span>End Date: {{ event.lastDate }}</span
                 ><br />
               </div>
               <!-- Link trigger modal -->
@@ -33,7 +44,8 @@
                   data-bs-toggle="modal"
                   data-bs-target="#announce"
                   class="btn btn-success px-4"
-                  >Announce&nbsp;</a>
+                  >Announce&nbsp;</a
+                >
               </div>
               <!-- Modal -->
               <div
@@ -56,9 +68,7 @@
                         aria-label="Close"
                       ></button>
                     </div>
-                    <form
-                      #f="ngForm"
-                    >
+                    <form #f="ngForm">
                       <div class="modal-body">
                         <input
                           type="text"
@@ -98,22 +108,20 @@
                           type="button"
                           class="btn btn-success"
                           data-bs-dismiss="modal"
-                          (click)="handlePostWinnerDetails(event.maxParticipant,f)"
+                          (click)="handlePostWinnerDetails(event.id, f)"
                           [disabled]="!f.form.valid"
                         >
-                        Submit
+                          Submit
                         </button>
                       </div>
                     </form>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>

@@ -12,7 +12,15 @@ import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
 import { AdminheaderComponent } from './layouts/adminheader/adminheader.component';
-
+import { UserheaderComponent } from './layouts/userheader/userheader.component';
+import { EventsComponent } from './pages/events/events.component';
+import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
+import { WinnersComponent } from './pages/winners/winners.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { EventlistComponent } from './components/eventlist/eventlist.component';
+import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
+import { PublishedComponent } from './pages/published/published.component';
 //For HttpRequest
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 //for working with forms
@@ -23,8 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
 
 //fontAwesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
-import { PublishedComponent } from './pages/published/published.component';
+
 //ngx-webstorage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { TokenInterceptor } from './token-interceptor';
@@ -40,7 +47,14 @@ import { TokenInterceptor } from './token-interceptor';
     AddeventComponent,
     AdminheaderComponent,
     AnnounceWinnerComponent,
-    PublishedComponent
+    PublishedComponent,
+    FilterComponent,
+    EventlistComponent,
+    UserheaderComponent,
+    EventsComponent,
+    ParticipatedEventsComponent,
+    WinnersComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

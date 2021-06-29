@@ -1,0 +1,21 @@
+.dateBtn {
+  padding: 2px 5px;
+  font-size: 0.9rem;
+}
+
+.categoryBtn,
+.typeBtn {
+  font-size: 0.9rem;
+  padding: 2px 9px;
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.filterbox {
+  border-left: 1px solid rgb(207, 207, 207);
+  border-right: 1px solid rgb(207, 207, 207);
+  border-top: 1px solid rgb(207, 207, 207);
+  border-radius: 5%;
+}

@@ -5,10 +5,63 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
+import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 import { PublishedComponent } from './pages/published/published.component';
+import { UserhomeComponent } from './pages/userhome/userhome.component';
+import { WinnersComponent } from './pages/winners/winners.component';
 
 const routes: Routes = [
+  {
+    path: 'adminhome',
+    component: AdminhomeComponent,
+    children: [
+      {
+        path: 'announceWinner',
+        component: AnnounceWinnerComponent,
+      },
+      {
+        path: 'published',
+        component: PublishedComponent,
+      },
+      {
+        path: 'addevent',
+        component: AddeventComponent,
+      },
+      {
+        path: '',
+        component: AddeventComponent,
+      },
+    ],
+  },
+  {
+    path: 'userhome',
+    component: UserhomeComponent,
+    children: [
+      {
+        path:'participatedEvents',
+        component: ParticipatedEventsComponent,
+      },
+      {
+        path:'winners',
+        component:WinnersComponent
+      },
+      {
+        path:'profile',
+        component:ProfileComponent
+      },
+      {
+        path:'events',
+        component:EventsComponent
+      },
+      {
+        path: '',
+        component: EventsComponent,
+      }
+    ],
+  },
   {
     path: '',
     component: HomeComponent,
@@ -21,29 +74,6 @@ const routes: Routes = [
         path: 'register',
         component: SignupComponent,
       },
-    ],
-  },
-  {
-    path: 'adminhome',
-    component: AdminhomeComponent,
-    children: [
-      {
-        path:'announceWinner',
-        component: AnnounceWinnerComponent
-      },
-      {
-        path:'published',
-        component:PublishedComponent
-      },
-      {
-        path:'addevent',
-        component: AddeventComponent
-      },
-      {
-        path: '',
-        component: AddeventComponent,
-      },
-
     ],
   },
 ];
