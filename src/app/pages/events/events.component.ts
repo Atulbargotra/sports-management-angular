@@ -43,6 +43,9 @@ export class EventsComponent implements OnInit {
   register(event) {
     this.eventService.register(event.id).subscribe(
       () => {
+        this.eventList = this.eventList.filter(
+          (eventL) => eventL.id !== event.id
+        );
         this.toast.success('Registered');
       },
       (errorObj) => {
