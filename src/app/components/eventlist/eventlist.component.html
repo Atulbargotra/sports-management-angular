@@ -29,13 +29,13 @@
               class="btn btn-success px-3 py-1"
               (click)="onRegister(event)"
             >
-              Register
+              {{ text }}
             </button>
           </ng-container>
           <ng-container *ngIf="event.type === 'TEAM'">
             <button
               class="btn btn-success px-3 py-1"
-              (click)="onRegisterTeam(event)"
+              [routerLink]="['/userhome/register/', event.id]"
             >
               Register as Team
             </button>

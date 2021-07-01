@@ -41,12 +41,18 @@ export class SignupComponent implements OnInit {
     this.userSignupForm = new FormGroup({
       username: new FormControl('', Validators.required),
       useremail: new FormControl('', [Validators.required, Validators.email]),
-      userpassword: new FormControl('', Validators.required),
+      userpassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
     });
     this.adminSignupForm = new FormGroup({
       adminname: new FormControl('', Validators.required),
-      adminemail: new FormControl('', Validators.required),
-      adminpassword: new FormControl('', Validators.required),
+      adminemail: new FormControl('', [Validators.required, Validators.email]),
+      adminpassword: new FormControl('', [
+        Validators.required,
+        Validators.minLength(4),
+      ]),
       adminAccessPassword: new FormControl('', Validators.required),
     });
   }
@@ -74,7 +80,9 @@ export class SignupComponent implements OnInit {
         this.router.navigate(['/'], {
           queryParams: { registered: 'true' },
         });
-        this.toastr.success('Registration Success! Please Check Your Mail for Activation');
+        this.toastr.success(
+          'Registration Success! Please Check Your Mail for Activation'
+        );
       },
       (error) => {
         console.log(error);
@@ -97,7 +105,9 @@ export class SignupComponent implements OnInit {
         this.router.navigate([''], {
           queryParams: { registered: 'true' },
         });
-        this.toastr.success('Registration Success! Please Check Your Mail for Activation');
+        this.toastr.success(
+          'Registration Success! Please Check Your Mail for Activation'
+        );
       },
       (error) => {
         console.log(error);

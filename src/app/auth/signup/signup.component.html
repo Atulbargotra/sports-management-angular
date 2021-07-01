@@ -31,17 +31,16 @@
           id="email_address"
           class="form-control"
           name="email"
+          placeholder="Email"
           required
           autofocus
         />
-        <span
-          *ngIf="
-            !userSignupForm.get('useremail').valid &&
-            userSignupForm.get('useremail').touched
-          "
+        <div
+          *ngIf="!userSignupForm.get('useremail').valid"
+          class="invalid-feedback"
         >
           Please provide a valid email
-        </span>
+        </div>
         <label for="username" class="sr-only py-1 bold">Username</label>
         <input
           type="text"
@@ -49,17 +48,16 @@
           id="username"
           class="form-control"
           name="username"
+          placeholder="Username"
           required
           autofocus
         />
-        <span
-          *ngIf="
-            !userSignupForm.get('username').valid &&
-            userSignupForm.get('username').touched
-          "
+        <div
+          *ngIf="!userSignupForm.get('username').valid"
+          class="invalid-feedback"
         >
           Please provide a valid username
-        </span>
+        </div>
       </div>
       <div class="form-group mb-2">
         <label for="password" class="sr-only py-1 bold">Password</label>
@@ -68,17 +66,16 @@
           [formControlName]="'userpassword'"
           id="password"
           class="form-control"
+          placeholder="********"
           name="password"
           required
         />
-        <span
-          *ngIf="
-            !userSignupForm.get('userpassword').valid &&
-            userSignupForm.get('userpassword').touched
-          "
+        <div
+          *ngIf="!userSignupForm.get('userpassword').errors?.required"
+          class="invalid-feedback"
         >
           Please provide a valid Password
-        </span>
+        </div>
       </div>
       <button
         type="submit"
@@ -97,39 +94,37 @@
           type="email"
           name="email"
           id="email"
+          placeholder="Email"
           class="form-control"
           placeholder="Email"
           [formControlName]="'adminemail'"
           required
           autofocus
         />
-        <span
-          *ngIf="
-            !adminSignupForm.get('adminemail').valid &&
-            adminSignupForm.get('adminemail').touched
-          "
+        <div
+          *ngIf="!adminSignupForm.get('adminemail').errors?.required"
+          class="invalid-feedback"
         >
           Please provide a valid email
-        </span>
+        </div>
         <label for="username" class="sr-only py-1 bold">Username</label>
         <input
           type="text"
           name="username"
           id="username"
+          placeholder="Username"
           class="form-control"
           placeholder="Username"
           [formControlName]="'adminname'"
           required
           autofocus
         />
-        <span
-          *ngIf="
-            !adminSignupForm.get('adminemail').valid &&
-            adminSignupForm.get('adminemail').touched
-          "
+        <div
+          *ngIf="!adminSignupForm.get('adminemail').errors?.required"
+          class="invalid-feedback"
         >
           Please provide a valid email
-        </span>
+        </div>
       </div>
       <div class="form-group mb-2">
         <label for="password" class="sr-only py-1 bold">Password</label>
@@ -142,14 +137,12 @@
           [formControlName]="'adminpassword'"
           required
         />
-        <span
-          *ngIf="
-            !adminSignupForm.get('adminpassword').valid &&
-            adminSignupForm.get('adminpassword').touched
-          "
+        <div
+          *ngIf="!adminSignupForm.get('adminpassword').errors?.required"
+          class="invalid-feedback"
         >
           Please provide a valid Password
-        </span>
+        </div>
       </div>
       <div class="form-group mb-2">
         <label for="adminAccessPassword" class="sr-only py-1 bold"
@@ -164,14 +157,12 @@
           [formControlName]="'adminAccessPassword'"
           required
         />
-        <span
-          *ngIf="
-            !adminSignupForm.get('adminAccessPassword').valid &&
-            adminSignupForm.get('adminAccessPassword').touched
-          "
+        <div
+          *ngIf="!adminSignupForm.get('adminAccessPassword').errors?.required"
+          class="invalid-feedback"
         >
           Please provide a valid Access Password
-        </span>
+        </div>
       </div>
       <button
         type="submit"

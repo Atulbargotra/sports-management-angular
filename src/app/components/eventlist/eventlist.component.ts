@@ -11,9 +11,8 @@ import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
 })
 export class EventlistComponent implements OnInit {
   @Input() event: EventResponsePayload;
+  @Input() text: string;
   @Output() onRegisterEvent: EventEmitter<EventResponsePayload> =
-    new EventEmitter();
-  @Output() onRegisterTeamEvent: EventEmitter<EventResponsePayload> =
     new EventEmitter();
   constructor(
     private route: Router,
@@ -24,8 +23,5 @@ export class EventlistComponent implements OnInit {
   ngOnInit(): void {}
   onRegister(event) {
     this.onRegisterEvent.emit(event);
-  }
-  onRegisterTeam(event) {
-    this.onRegisterTeamEvent.emit(event);
   }
 }

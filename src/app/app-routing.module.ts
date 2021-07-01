@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PublishedComponent } from './pages/published/published.component';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { WinnersComponent } from './pages/winners/winners.component';
 
@@ -55,6 +56,10 @@ const routes: Routes = [
       {
         path:'events',
         component:EventsComponent
+      },
+      {
+        path:'register/:id',
+        component: RegisterPageComponent
       },
       {
         path: '',

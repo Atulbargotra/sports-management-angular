@@ -1,0 +1,113 @@
+<div class="row mt-5">
+  <div class="col-md-6 border-middle col-sm-12">
+    <div class="col-md col-sm-12 px-5">
+      <h5 class="text-center p-3">Team Details</h5>
+      <form
+        [formGroup]="teamForm"
+        (ngSubmit)="createTeam()"
+        class="row gx-4 gy-3"
+      >
+        <div class="col-md-6">
+          <label for="name" class="form-label">Team Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            formControlName="name"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="teamDescription" class="form-label"
+            >Team Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            id="teamDescription"
+            formControlName="description"
+          />
+        </div>
+        <div class="col-6">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+        </div>
+        <div class="col-6">
+          <label for="maxMembers" class="form-label">Maximum Members</label>
+          <input
+            type="number"
+            class="form-control"
+            id="maxMembers"
+            formControlName="maxMembers"
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="inputCity" class="form-label">City</label>
+          <input
+            type="text"
+            class="form-control"
+            id="inputCity"
+            formControlName="city"
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="contact" class="form-label">Contact</label>
+          <input
+            type="text"
+            class="form-control"
+            id="contact"
+            formControlName="contact"
+          />
+        </div>
+        <div
+          class="container"
+          *ngFor="let member of getMembersFormControls(); let i = index"
+        >
+          <label>Member {{ i + 1 }} </label>
+          <div class="row">
+            <div class="col-sm-12">
+              <input
+                class="form-control"
+                [formControl]="member"
+                type="text"
+                placeholder="Email"
+              />
+              <div class="col-sm-2"></div>
+              <button
+                class="col-sm-2 btn-close"
+                (click)="removeMember(i)"
+              ></button>
+            </div>
+          </div>
+        </div>
+        <br />
+        <button
+          (click)="addMember($event)"
+          class="btn btn-secondary col-12 my-4"
+        >
+          Add new Member
+        </button>
+        <br />
+        <br />
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <button type="submit" class="btn btn-success">Register</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+    <div class="col-md text-center col-sm-12 px-5">
+      <h5 class="p-3">Registered Team for {{ event.eventName }}</h5>
+      <div class="row mb-2" *ngFor="let team of registeredTeams">
+        <app-registered-teams [team]="team"></app-registered-teams>
+      </div>
+    </div>
+  </div>
+</div>

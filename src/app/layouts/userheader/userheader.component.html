@@ -29,19 +29,11 @@
             aria-expanded="false"
           >
           </fa-icon>
-          <ul
-            class="dropdown-menu"
-            aria-labelledby="dropdownMenuButton1"
-            *ngFor="let notification of notifications"
-          >
-            <li>
-              <a class="dropdown-item" href="#" *ngIf="!notificationsAvailable"
-                >No notification</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">{{ notification.message }}</a>
-            </li>
+          <span class="badge bg-danger" >{{ count }}</span>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <a class="dropdown-item" *ngFor="let notification of notifications"
+              >{{ notification.message }}
+            </a>
           </ul>
         </div>
         <a
@@ -68,6 +60,10 @@
           routerLinkActive="active"
           >PROFILE</a
         >
+        <a class="nav-link text-white p-1 m-1 atxt" (click)="logout()"
+          >LOGOUT</a
+        >
+        <fa-icon class="icon text-white" [icon]="faSignOutAlt"></fa-icon>
       </div>
     </div>
   </div>

@@ -31,6 +31,7 @@ export class AddeventComponent implements OnInit {
   eventForm: FormGroup;
   eventRequestPayload: EventRequestPayload;
   eventAvailable: boolean = false;
+  myVar: string = 'TEAM';
 
   eventList: EventResponsePayload[];
 
@@ -66,7 +67,7 @@ export class AddeventComponent implements OnInit {
       description: new FormControl('', Validators.required),
       location: new FormControl('', Validators.required),
       category: new FormControl('', Validators.required),
-      type: new FormControl('', Validators.required),
+      type: new FormControl('TEAM', Validators.required),
       eventDate: new FormControl('', Validators.required),
       lastDate: new FormControl('', Validators.required),
       maxParticipant: new FormControl('', Validators.required),

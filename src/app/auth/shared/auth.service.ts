@@ -58,7 +58,7 @@ export class AuthService {
           this.localStorage.store('username', data.username);
           this.localStorage.store('refreshToken', data.refreshToken);
           this.localStorage.store('expiresAt', data.expiresAt);
-
+          this.localStorage.store('type', data.type);
           this.loggedIn.emit(true);
           this.username.emit(data.username);
           return true;
@@ -86,6 +86,7 @@ export class AuthService {
             response.authenticationToken
           );
           this.localStorage.store('expiresAt', response.expiresAt);
+          this.localStorage.store('type', response.type);
         })
       );
   }
@@ -107,6 +108,7 @@ export class AuthService {
     this.localStorage.clear('username');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+    this.localStorage.clear('type');
   }
 
   getUserName() {
@@ -114,6 +116,9 @@ export class AuthService {
   }
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');
+  }
+  getUserType() {
+    return this.localStorage.retrieve('type');
   }
 
   isLoggedIn(): boolean {

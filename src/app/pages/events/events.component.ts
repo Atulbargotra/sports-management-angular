@@ -54,5 +54,4 @@ export class EventsComponent implements OnInit {
       }
     );
   }
-  registerAsTeam(id: number) {}
 }

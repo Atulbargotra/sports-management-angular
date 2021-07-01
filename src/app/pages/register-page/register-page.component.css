@@ -1,0 +1,6 @@
+.border-middle {
+  border-right: 1px solid rgb(212, 212, 212);
+}
+.container > .row > div {
+  display: flex;
+}

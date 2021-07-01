@@ -3,4 +3,5 @@ export interface SigninResponse {
   refreshToken: string;
   expiresAt: Date;
   username: string;
+  type: string;
 }

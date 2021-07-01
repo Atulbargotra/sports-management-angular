@@ -142,7 +142,7 @@
                           type="radio"
                           name="type"
                           id="individual"
-                          value="individual"
+                          value="INDIVIDUAL"
                           checked
                           [formControlName]="'type'"
                           required
@@ -157,7 +157,7 @@
                           type="radio"
                           name="type"
                           id="team"
-                          value="team"
+                          value="TEAM"
                           [formControlName]="'type'"
                           required
                         />
@@ -165,6 +165,24 @@
                           Team
                         </label>
                       </div>
+                    </div>
+                  </div>
+
+                  <div class="row mb-2">
+                    <div class="col-4">
+                      <label for="maxMembers" class="labeltxt form-label"
+                        >Max members in Team</label
+                      >
+                    </div>
+                    <div class="col-8">
+                      <input
+                        type="number"
+                        name="maxMembers"
+                        id="maxMembers"
+                        class="form-control txtdim"
+                        [formControlName]="'maxMembers'"
+                        required
+                      />
                     </div>
                   </div>
 

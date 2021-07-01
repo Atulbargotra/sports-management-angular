@@ -35,6 +35,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 //ngx-webstorage
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { TokenInterceptor } from './token-interceptor';
+import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { RegisteredTeamsComponent } from './components/registered-teams/registered-teams.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,8 @@ import { TokenInterceptor } from './token-interceptor';
     ParticipatedEventsComponent,
     WinnersComponent,
     ProfileComponent,
+    RegisterPageComponent,
+    RegisteredTeamsComponent,
   ],
   imports: [
     BrowserModule,

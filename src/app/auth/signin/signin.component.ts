@@ -41,10 +41,14 @@ export class SigninComponent implements OnInit {
     this.signinRequestPayload.password = this.loginForm.get('password').value;
     this.authService.login(this.signinRequestPayload).subscribe(
       (data) => {
-        console.log('success');
         this.isError = false;
-        this.router.navigateByUrl('/adminhome');
-        this.toastr.success('Login Successful');
+        if (this.authService.getUserType() === '[ROLE_ADMIN]') {
+          this.router.navigateByUrl('/adminhome');
+          this.toastr.success('Login Successful');
+        } else {
+          this.router.navigateByUrl('/userhome');
+          this.toastr.success('Login Successful');
+        }
       },
       (error) => {
         this.isError = true;
