@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventRequestPayload } from '../Model/eventRequestPayload';
 import { EventResponsePayload } from '../Model/eventResponsePayload';
+import { TeamRequestPayload } from '../Model/teamRequestPayload';
 import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
 
 @Injectable({
@@ -56,8 +57,8 @@ export class EventService {
   register(id: number): Observable<any> {
     return this.http.put(this.url + `/${id}/register`, {});
   }
-  registerAsTeam(id: number): Observable<any> {
-    return this.http.put(this.url + `/${id}/register/team`, {});
+  registerAsTeam(id: number, team: TeamRequestPayload): Observable<any> {
+    return this.http.put(this.url + `/${id}/register/team`, team);
   }
   getEventById(id: number): Observable<EventResponsePayload> {
     return this.http.get<EventResponsePayload>(this.url + `/${id}`);

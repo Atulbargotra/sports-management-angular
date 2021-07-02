@@ -26,3 +26,6 @@ h1 {
 .login-failed-text {
   color: crimson;
 }
+span {
+  color: crimson;
+}

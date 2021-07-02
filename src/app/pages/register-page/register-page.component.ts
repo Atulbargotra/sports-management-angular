@@ -7,7 +7,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
 import { TeamDetailsPayload } from 'src/app/Model/teamDetailsPayload';
@@ -23,6 +23,7 @@ import { TeamService } from 'src/app/services/team.service';
 export class RegisterPageComponent implements OnInit {
   event: EventResponsePayload;
   teamForm: FormGroup;
+  pid: number;
 
   teamRequestPayload: TeamRequestPayload;
 
@@ -31,7 +32,8 @@ export class RegisterPageComponent implements OnInit {
     private eventService: EventService,
     private toast: ToastrService,
     private teamService: TeamService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) {
     this.teamRequestPayload = {
       name: '',
@@ -49,10 +51,9 @@ export class RegisterPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((res) => {
-      let pid = +res.get('id'); // + is added to convert pid from string type to number
-      console.log(pid);
-      this.handleGetEventById(pid);
-      this.handleGetRegisteredTeams(pid);
+      this.pid = +res.get('id'); // + is added to convert pid from string type to number
+      this.handleGetEventById(this.pid);
+      this.handleGetRegisteredTeams(this.pid);
     });
     this.teamForm = this.fb.group({
       name: new FormControl('', Validators.required),
@@ -88,6 +89,7 @@ export class RegisterPageComponent implements OnInit {
   }
   addMember(e): void {
     e.preventDefault();
+    // if((this.teamForm.get('members') as FormArray).length > this.event.)
     (this.teamForm.get('members') as FormArray).push(this.fb.control(null));
   }
 
@@ -109,6 +111,16 @@ export class RegisterPageComponent implements OnInit {
     this.teamRequestPayload.maxMembers = Number(
       this.teamForm.get('maxMembers').value
     );
-    console.log(this.teamRequestPayload);
+    this.eventService
+      .registerAsTeam(this.pid, this.teamRequestPayload)
+      .subscribe(
+        () => {
+          this.toast.success('Joined to Event');
+          this.router.navigateByUrl('/userhome');
+        },
+        (error) => {
+          this.toast.error('Failed');
+        }
+      );
   }
 }
