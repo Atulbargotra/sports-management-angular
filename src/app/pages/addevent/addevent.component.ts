@@ -92,6 +92,7 @@ export class AddeventComponent implements OnInit {
     this.eventService.addEvent(this.eventRequestPayload).subscribe(
       (data) => {
         // this.eventList = this.eventList.push(data);
+        this.eventForm.reset();
       },
       (error) => {
         this.eventAvailable = false;
@@ -117,6 +118,7 @@ export class AddeventComponent implements OnInit {
       (data) => {
         this.eventAvailable = true;
         this.eventList.push(data);
+        this.eventForm.reset();
         this.toastr.success('Draft Saved');
         this.router.navigateByUrl('/adminhome');
       },

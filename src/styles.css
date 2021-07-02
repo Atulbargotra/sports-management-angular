@@ -10,6 +10,6 @@ body {
   background-color: #eee;
 }
 html {
-  overflow-y: hidden;
+  overflow-x: hidden  ;
   font-family: Roboto, Microsoft JhengHei, sans-serif;
 }
