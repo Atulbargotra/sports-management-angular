@@ -11,5 +11,5 @@ export interface EventResponsePayload {
   location: string;
   picture: string;
   maxMembersInTeam: number;
-  venue:string
+  venue: string;
 }

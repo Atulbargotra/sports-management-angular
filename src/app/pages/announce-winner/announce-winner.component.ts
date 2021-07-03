@@ -54,8 +54,12 @@ export class AnnounceWinnerComponent implements OnInit {
   handleAnnouncedEventDetails() {
     this.eventService.getExpiredEvents().subscribe(
       (data) => {
-        this.eventAvailable = true;
-        this.eventList = data;
+        if (data.length === 0) {
+          this.eventAvailable = false;
+        } else {
+          this.eventAvailable = true;
+          this.eventList = data;
+        }
       },
 
       (error) => {
