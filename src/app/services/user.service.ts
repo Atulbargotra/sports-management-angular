@@ -7,9 +7,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  url: string = 'http://localhost:3000/api/user';
+  url: string = 'http://localhost:8080/api/auth/user';
   constructor(private http: HttpClient) {}
   updateUserProfile(userData: UserProfile): Observable<any> {
-    return this.http.put(this.url + `/profile`, userData);
+    return this.http.patch(this.url, userData);
+  }
+  getUserProfile(): Observable<UserProfile> {
+    return this.http.get<UserProfile>(this.url);
   }
 }

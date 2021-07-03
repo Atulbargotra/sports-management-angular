@@ -35,8 +35,7 @@ export class ProfileComponent implements OnInit {
   address: string;
   email: string;
   contact: number;
-  picture: string =
-    'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/userImg.PNG?alt=media&token=78465c4d-4389-40c5-827d-afbb7ecdd78b';
+  picture: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -55,6 +54,23 @@ export class ProfileComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       contact: ['', Validators.required],
     });
+    this.userService.getUserProfile().subscribe(
+      (data) => {
+        this.profileForm.patchValue({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          gender: data.gender,
+          city: data.city,
+          address: data.address,
+          email: data.email,
+          contact: data.contact,
+        });
+        this.picture =
+          data.picture ||
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/userImg.PNG?alt=media&token=78465c4d-4389-40c5-827d-afbb7ecdd78b';
+      },
+      (error) => {}
+    );
   }
 
   get f() {
