@@ -14,7 +14,8 @@ import { AdminSignupRequestPayload } from '../signup/admin-signup-request-payloa
 export class AuthService {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
-
+  // url: string = 'http://localhost:8080/api/auth';
+  url: string = 'https://tiaasports.herokuapp.com/api/auth'
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
     username: this.getUserName(),
@@ -25,18 +26,14 @@ export class AuthService {
     private localStorage: LocalStorageService
   ) {}
   userSignup(signupRequestPayload: SignupRequestPayload) {
-    return this.httpClient.post(
-      'http://localhost:8080/api/auth/signup',
-      signupRequestPayload,
-      {
-        responseType: 'text',
-      }
-    );
+    return this.httpClient.post(this.url + '/signup', signupRequestPayload, {
+      responseType: 'text',
+    });
   }
 
   adminSignup(adminSignupRequestPayload: AdminSignupRequestPayload) {
     return this.httpClient.post(
-      'http://localhost:8080/api/auth/signup/admin',
+      this.url + '/signup/admin',
       adminSignupRequestPayload,
       {
         responseType: 'text',
@@ -45,10 +42,7 @@ export class AuthService {
   }
   login(loginRequestPayload: SigninRequestPayload): Observable<boolean> {
     return this.httpClient
-      .post<SigninResponse>(
-        'http://localhost:8080/api/auth/login',
-        loginRequestPayload
-      )
+      .post<SigninResponse>(this.url + '/login', loginRequestPayload)
       .pipe(
         map((data) => {
           this.localStorage.store(
@@ -73,7 +67,7 @@ export class AuthService {
   refreshToken() {
     return this.httpClient
       .post<SigninResponse>(
-        'http://localhost:8080/api/auth/refresh/token',
+        this.url + '/refresh/token',
         this.refreshTokenPayload
       )
       .pipe(
@@ -93,7 +87,7 @@ export class AuthService {
 
   logout() {
     this.httpClient
-      .post('http://localhost:8080/api/auth/logout', this.refreshTokenPayload, {
+      .post(this.url + '/logout', this.refreshTokenPayload, {
         responseType: 'text',
       })
       .subscribe(

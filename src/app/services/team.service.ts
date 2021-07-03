@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TeamService {
-  url: string = 'http://localhost:8080/api/teams';
+  // url: string = 'http://localhost:8080/api/teams';
+  url: string = 'https://tiaasports.herokuapp.com/api/teams';
 
   constructor(private http: HttpClient) {}
 
