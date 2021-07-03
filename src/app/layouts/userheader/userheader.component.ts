@@ -23,10 +23,15 @@ export class UserheaderComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  logout() {
+    this.authService.logout();
+    this.isLoggedIn = false;
+    this.router.navigateByUrl('');
+  }
+  loadNotifications() {
     this.notificationService.getUserNotifications().subscribe(
       (data) => {
-        console.log(data);
         this.notificationsAvailable = true;
         this.notifications = data;
         this.count = this.notifications.length;
@@ -35,10 +40,5 @@ export class UserheaderComponent implements OnInit {
         this.notificationsAvailable = false;
       }
     );
-  }
-  logout() {
-    this.authService.logout();
-    this.isLoggedIn = false;
-    this.router.navigateByUrl('');
   }
 }

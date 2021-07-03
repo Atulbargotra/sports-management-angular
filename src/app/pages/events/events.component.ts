@@ -3,6 +3,7 @@ import { ToastrService } from 'ngx-toastr';
 import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
 import { EventService } from '../../services/event.service';
 import { throwError } from 'rxjs';
+import { nextMonth, thisMonth, thisWeek } from 'src/app/utilities/dateUtils';
 
 @Component({
   selector: 'app-events',
@@ -21,11 +22,54 @@ export class EventsComponent implements OnInit {
 
   eventAvailable: boolean = false;
   eventList: EventResponsePayload[];
-  filterValue: string;
+  filterEventList: EventResponsePayload[];
 
   getFilterValue(value: string) {
-    this.filterValue = value;
-    console.log('In Parent component : ' + this.filterValue);
+    console.log(this.eventList);
+    switch (value) {
+      case 'nextMonth': {
+        this.eventList = this.filterEventList.filter((event) =>
+          nextMonth(new Date(event.eventDate))
+        );
+        break;
+      }
+      case 'thisMonth': {
+        this.eventList = this.filterEventList.filter((event) =>
+          thisMonth(new Date(event.eventDate))
+        );
+        break;
+      }
+      case 'thisWeek': {
+        this.eventList = this.filterEventList.filter((event) =>
+          thisWeek(new Date(event.eventDate))
+        );
+        break;
+      }
+      case 'individual': {
+        this.eventList = this.filterEventList.filter(
+          (event) => event.type === 'INDIVIDUAL'
+        );
+        break;
+      }
+      case 'team': {
+        this.eventList = this.filterEventList.filter(
+          (event) => event.type === 'TEAM'
+        );
+        break;
+      }
+      case 'outdoor': {
+        this.eventList = this.filterEventList.filter(
+          (event) => event.venue === 'outdoor'
+        );
+        break;
+      }
+      case 'indoor': {
+        this.eventList = this.filterEventList.filter(
+          (event) => event.venue === 'indoor'
+        );
+        break;
+      }
+    }
   }
 
   //Get all Published Events here
@@ -34,6 +78,7 @@ export class EventsComponent implements OnInit {
       (data) => {
         this.eventAvailable = true;
         this.eventList = data;
+        this.filterEventList = data;
       },
       (error) => {
         this.toast.error('Unable to fetch events');
