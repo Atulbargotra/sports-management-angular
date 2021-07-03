@@ -1,1 +1,140 @@
-<p>profile works!</p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="border profileBox mt-4 p-3">
+      <h5 class="text-center mb-3">Enter Profile Details</h5>
+      <div class="text-center">
+        <label for="imagePicker">
+          <img
+            [src]="picture"
+            class="rounded-circle img-thumbnail"
+            height="130"
+            width="130"
+            alt="Cannot load"
+          />
+        </label>
+        <input
+          type="file"
+          name="image"
+          id="imagePicker"
+          accept="image/*"
+          multiple="{false}"
+          hidden
+          (change)="ImageUpload($event)"
+        />
+      </div>
+      <form
+        class="row g-3 mt-3"
+        [formGroup]="profileForm"
+        (ngSubmit)="onSaveChanges()"
+      >
+        <div class="col-md-6">
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            placeholder="First Name"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"
+          />
+          <div *ngIf="submitted && f.firstName.errors" class="text-danger">
+            <div class="small" *ngIf="f.firstName.errors.required">
+              First Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            placeholder="Last Name"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }"
+          />
+          <div *ngIf="submitted && f.lastName.errors" class="text-danger">
+            <div class="small" *ngIf="f.lastName.errors.required">
+              Last Name is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <select
+            class="form-select"
+            formControlName="gender"
+            [ngClass]="{ 'is-invalid': submitted && f.gender.errors }"
+          >
+            <option selected disabled value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <div *ngIf="submitted && f.gender.errors" class="text-danger">
+            <div class="small" *ngIf="f.gender.errors.required">
+              Gender is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            type="text"
+            formControlName="city"
+            class="form-control"
+            placeholder="City"
+            [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
+          />
+          <div *ngIf="submitted && f.city.errors" class="text-danger">
+            <div class="small" *ngIf="f.city.errors.required">
+              City is required
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <input
+            type="text"
+            formControlName="address"
+            class="form-control"
+            placeholder="Address"
+            [ngClass]="{ 'is-invalid': submitted && f.address.errors }"
+          />
+          <div *ngIf="submitted && f.address.errors" class="text-danger">
+            <div class="small" *ngIf="f.address.errors.required">
+              Address is required
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            placeholder="Email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+          />
+          <div *ngIf="submitted && f.email.errors" class="text-danger">
+            <div class="small" *ngIf="f.email.errors.required">
+              Email is required
+            </div>
+            <div class="small" *ngIf="f.email.errors.email">
+              Email is invalid
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <input
+            type="number"
+            formControlName="contact"
+            class="form-control"
+            placeholder="Contact"
+            [ngClass]="{ 'is-invalid': submitted && f.contact.errors }"
+          />
+          <div *ngIf="submitted && f.contact.errors" class="text-danger">
+            <div class="small" *ngIf="f.contact.errors.required">
+              Contact is required
+            </div>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-center mt-4">
+          <button class="btn btn-success">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

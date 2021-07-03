@@ -24,6 +24,7 @@ export class RegisterPageComponent implements OnInit {
   event: EventResponsePayload;
   teamForm: FormGroup;
   pid: number;
+  maxMembers: number;
 
   teamRequestPayload: TeamRequestPayload;
 
@@ -70,6 +71,7 @@ export class RegisterPageComponent implements OnInit {
     this.eventService.getEventById(id).subscribe(
       (getRes) => {
         this.event = getRes;
+        this.maxMembers = this.event.maxMembersInTeam;
       },
       (error) => {
         this.toast.error('Problem Occured');

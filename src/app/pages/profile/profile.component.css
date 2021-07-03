@@ -1,0 +1,7 @@
+.profileBox {
+  width: 50%;
+  margin: 0 auto;
+  box-shadow: 5px 5px 21px -6px rgba(3, 3, 3, 0.26);
+  -webkit-box-shadow: 5px 5px 21px -6px rgba(3, 3, 3, 0.26);
+  -moz-box-shadow: 5px 5px 21px -6px rgba(3, 3, 3, 0.26);
+}

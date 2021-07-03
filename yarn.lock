@@ -195,6 +195,13 @@
   dependencies:
     tslib "^2.1.0"
 
+"@angular/fire@^6.1.5":
+  version "6.1.5"
+  resolved "https://registry.yarnpkg.com/@angular/fire/-/fire-6.1.5.tgz#099600ceb5285fcd8d6469f7671ad09609ba84e3"
+  integrity sha512-jrstSStogpfJvhlrX8ajtsnbVzIzcrh/InYUGbMVzXyQoT6wHA0LODjR6eIzGhb9/YQ+myMuVelJ39PfU3e8Sg==
+  dependencies:
+    tslib "^2.0.0"
+
 "@angular/forms@~12.0.0":
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-12.0.5.tgz#17e888667d644b03f4d67928f47bbf227fc6b4ee"
@@ -2029,6 +2036,13 @@ braces@^3.0.1, braces@^3.0.2, braces@~3.0.2:
   dependencies:
     fill-range "^7.0.1"
 
+browser-image-resizer@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/browser-image-resizer/-/browser-image-resizer-2.2.0.tgz#58db4d6646c544ad54bd4a357521d59cf7d7fe83"
+  integrity sha512-VGxOYDTticLZAtiYnZpAQJ0kLGziZtczBdvYRN6krJagQvgUfDTpv008dYMtTIZmPTUoIuJb5Hn6ljf1oXr56w==
+  dependencies:
+    exifreader "^3.1.0"
+
 browserslist@^4.0.0, browserslist@^4.12.0, browserslist@^4.14.5, browserslist@^4.16.0, browserslist@^4.16.6, browserslist@^4.6.4, browserslist@^4.9.1:
   version "4.16.6"
   resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.16.6.tgz#d7901277a5a88e554ed305b183ec9b0c08f66fa2"
@@ -3191,6 +3205,13 @@ execa@^1.0.0:
     p-finally "^1.0.0"
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
+
+exifreader@^3.1.0:
+  version "3.16.0"
+  resolved "https://registry.yarnpkg.com/exifreader/-/exifreader-3.16.0.tgz#3c106eccd134e8f4786f9e8e600f8269c5296b80"
+  integrity sha512-RfdE1LrU3KJm8NFnU3jJG4/1quEancwTz1VgwzItP11fBoVnb3Vp7JL8bQKU8rSgZm+Roa3+BJ7zg4OtoFhTFA==
+  optionalDependencies:
+    xmldom "^0.1.31"
 
 expand-brackets@^2.1.4:
   version "2.1.4"
@@ -7785,6 +7806,11 @@ ws@~7.4.2:
   version "7.4.6"
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.4.6.tgz#5654ca8ecdeee47c33a9a4bf6d28e2be2980377c"
   integrity sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==
+
+xmldom@^0.1.31:
+  version "0.1.31"
+  resolved "https://registry.yarnpkg.com/xmldom/-/xmldom-0.1.31.tgz#b76c9a1bd9f0a9737e5a72dc37231cf38375e2ff"
+  integrity sha512-yS2uJflVQs6n+CyjHoaBmVSqIDevTAWrzMmjG1Gc7h1qQ7uVozNhEPJAwZXWyGQ/Gafo3fCwrcaokezLPupVyQ==
 
 y18n@^4.0.0:
   version "4.0.3"

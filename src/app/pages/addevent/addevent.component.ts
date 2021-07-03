@@ -52,14 +52,15 @@ export class AddeventComponent implements OnInit {
       venue: this.venue,
     };
     f.reset(); //reset form data after submiting
-    this.eventService.addEvent(event).subscribe((postResponse) => {
-      const resPost = JSON.parse(JSON.stringify(postResponse));
-      if (resPost.status == 200) {
+    this.eventService.addEvent(event).subscribe(
+      (postResponse) => {
         this.toast.success('Event added successfully');
-      } else {
-        this.toast.error('Problem occured while adding event');
+        this.router.navigateByUrl('/adminhome');
+      },
+      (error) => {
+        this.toast.error('Unable to add event');
       }
-    });
+    );
   }
   handleSaveDraft(f: NgForm) {
     // this.eventRequestPayload.eventName = this.eventForm.get('eventName').value;
