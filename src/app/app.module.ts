@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { environment } from '../environments/environment';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -39,6 +40,9 @@ import { RegisterPageComponent } from './pages/register-page/register-page.compo
 import { RegisteredTeamsComponent } from './components/registered-teams/registered-teams.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,6 +76,8 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgxWebstorageModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule,
   ],
   providers: [
     {

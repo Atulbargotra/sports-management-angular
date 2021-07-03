@@ -108,7 +108,7 @@ export class AddeventComponent implements OnInit {
   }
 
   setPicture() {
-    switch (this.selectedEvent) {
+    switch (this.category) {
       case 'cricket': {
         this.picture =
           'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/cricket.jpeg?alt=media&token=142af2aa-52c5-49ef-93e0-964bb3651e8d';

@@ -89,23 +89,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-
-// {
-//   path: '',
-//   component: SigninComponent,
-//   children: [
-//     {
-//       path: '',
-//       component: UserSigninComponent,
-//     },
-//     {
-//       path: 'userlogin',
-//       component: UserSigninComponent,
-//     },
-
-//     {
-//       path: 'register',
-//       component: SignupComponent,
-//     },
-//   ],
-// },

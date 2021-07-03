@@ -20,9 +20,7 @@
     <div class="mx-5 my-5 w-25 text-center" *ngFor="let event of eventList">
       <div class="card borderCard">
         <img
-          src="{{
-            '../../../../../assets/event_category/' + event.category + '.jpg'
-          }}"
+          src="{{ event.picture }}"
           class="card-img-top borderImg"
           alt="..."
         />
@@ -35,7 +33,7 @@
                 ><br />
                 <span>{{ event.type | titlecase }}</span
                 ><br />
-                <span>End Date: {{ event.lastDate }}</span
+                <span>End Date: {{ event.lastDate | date }}</span
                 ><br />
               </div>
               <!-- Link trigger modal -->
