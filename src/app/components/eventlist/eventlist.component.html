@@ -9,7 +9,15 @@
       <div class="card">
         <div class="card-body">
           <div class="row">
+            <div class="row">
             <h5 class="card-title col-10 p-2">{{ event.eventName }}</h5>
+            <fa-icon
+            class="icon col-2 p-1"
+            size="lg"
+            [icon]="faEdit"
+            [routerLink]="['/adminhome/editevent/',event.id]"
+            ></fa-icon>
+            </div>
             <span class="spanEdit px-2">{{ event.description }}</span>
             <span class="spanEdit px-2">{{ event.location }}</span>
             <span class="spanEdit px-2"

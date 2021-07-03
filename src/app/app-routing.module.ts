@@ -6,6 +6,7 @@ import { AddeventComponent } from './pages/addevent/addevent.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
+import { EditeventComponent } from './pages/editevent/editevent.component';
 import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
@@ -19,11 +20,7 @@ const routes: Routes = [
   {
     path: 'adminhome',
     component: AdminhomeComponent,
-    children: [
-      {
-        path: '',
-        component: DraftsComponent,
-      },
+    children: [      
       {
         path: 'announceWinner',
         component: AnnounceWinnerComponent,
@@ -36,6 +33,14 @@ const routes: Routes = [
         path: 'addevent',
         component: AddeventComponent,
       },
+      {
+        path:'editevent/:id',
+        component:EditeventComponent
+      },
+      {
+        path: '',
+        component: DraftsComponent,
+      }
     ],
   },
   {
