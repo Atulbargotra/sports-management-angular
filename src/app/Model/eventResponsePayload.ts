@@ -9,4 +9,6 @@ export interface EventResponsePayload {
   lastDate: string;
   eventDate: string;
   location: string;
+  picture: string;
+  maxMembersInTeam: number;
 }

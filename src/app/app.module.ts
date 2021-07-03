@@ -37,6 +37,7 @@ import { NgxWebstorageModule } from 'ngx-webstorage';
 import { TokenInterceptor } from './token-interceptor';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
 import { RegisteredTeamsComponent } from './components/registered-teams/registered-teams.component';
+import { DraftsComponent } from './pages/drafts/drafts.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { RegisteredTeamsComponent } from './components/registered-teams/register
     ProfileComponent,
     RegisterPageComponent,
     RegisteredTeamsComponent,
+    DraftsComponent,
   ],
   imports: [
     BrowserModule,

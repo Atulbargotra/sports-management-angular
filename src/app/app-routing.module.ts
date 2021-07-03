@@ -5,6 +5,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
+import { DraftsComponent } from './pages/drafts/drafts.component';
 import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
@@ -20,6 +21,10 @@ const routes: Routes = [
     component: AdminhomeComponent,
     children: [
       {
+        path: '',
+        component: DraftsComponent,
+      },
+      {
         path: 'announceWinner',
         component: AnnounceWinnerComponent,
       },
@@ -31,10 +36,6 @@ const routes: Routes = [
         path: 'addevent',
         component: AddeventComponent,
       },
-      {
-        path: '',
-        component: AddeventComponent,
-      },
     ],
   },
   {
@@ -42,29 +43,29 @@ const routes: Routes = [
     component: UserhomeComponent,
     children: [
       {
-        path:'participatedEvents',
+        path: 'participatedEvents',
         component: ParticipatedEventsComponent,
       },
       {
-        path:'winners',
-        component:WinnersComponent
+        path: 'winners',
+        component: WinnersComponent,
       },
       {
-        path:'profile',
-        component:ProfileComponent
+        path: 'profile',
+        component: ProfileComponent,
       },
       {
-        path:'events',
-        component:EventsComponent
+        path: 'events',
+        component: EventsComponent,
       },
       {
-        path:'register/:id',
-        component: RegisterPageComponent
+        path: 'register/:id',
+        component: RegisterPageComponent,
       },
       {
         path: '',
         component: EventsComponent,
-      }
+      },
     ],
   },
   {

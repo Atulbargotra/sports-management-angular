@@ -12,7 +12,14 @@ import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
 export class EventlistComponent implements OnInit {
   @Input() event: EventResponsePayload;
   @Input() text: string;
+  @Input() showRegister: boolean;
+  @Input() showPublish: boolean;
+  @Input() showDelete: boolean;
   @Output() onRegisterEvent: EventEmitter<EventResponsePayload> =
+    new EventEmitter();
+  @Output() onDeleteDraft: EventEmitter<EventResponsePayload> =
+    new EventEmitter();
+  @Output() onPublishDraft: EventEmitter<EventResponsePayload> =
     new EventEmitter();
   constructor(
     private route: Router,
@@ -23,5 +30,11 @@ export class EventlistComponent implements OnInit {
   ngOnInit(): void {}
   onRegister(event) {
     this.onRegisterEvent.emit(event);
+  }
+  onDelete(event) {
+    this.onDeleteDraft.emit(event);
+  }
+  onPublish(event) {
+    this.onPublishDraft.emit(event);
   }
 }

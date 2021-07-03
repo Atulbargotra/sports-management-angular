@@ -15,6 +15,9 @@
             <app-eventlist
               (onRegisterEvent)="register(event)"
               [event]="event"
+              [showRegister]="true"
+              [showPublish]="false"
+              [showDelete]="false"
               [text]="'Register'"
             ></app-eventlist>
           </div>

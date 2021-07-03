@@ -42,9 +42,6 @@ export class EventService {
   getWinners(id: number): Observable<winnersDetailsPayload> {
     return this.http.get<winnersDetailsPayload>(this.url + `/${id}/winners`);
   }
-  deleteDraft(id: number): Observable<any> {
-    return this.http.delete(this.url + `/draft/${id}`);
-  }
   publishDraftEvent(id: number): Observable<any> {
     return this.http.get(this.url + `/draft/publish/${id}`);
   }

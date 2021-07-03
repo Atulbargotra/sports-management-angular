@@ -7,4 +7,7 @@ export interface EventRequestPayload {
   eventDate: string;
   lastDate: string;
   maxParticipant: number;
+  picture: string;
+  maxMembersInTeam: number;
+  venue: string;
 }

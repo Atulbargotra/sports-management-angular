@@ -1,0 +1,30 @@
+<div class="container-fluid eventContainer">
+  <div class="EventListHeading row">
+    <h5 class="mt-4 text-center col-10">Saved Drafts</h5>
+    <button
+      type="button"
+      class="btn btn-success col-sm-1 mt-2"
+      routerLink="/adminhome/addevent"
+    >
+      <span class="spantxt col-4">
+        <fa-icon class="icon px-1" [icon]="faPlusCircle"></fa-icon>
+      </span>
+    </button>
+  </div>
+
+  <div class="row border mt-1">
+    <div class="row d-flex">
+      <!-- Looping through Events fetching array of eventlist -->
+      <div class="mx-4 my-3 w-25" *ngFor="let draft of drafts">
+        <app-eventlist
+          [event]="draft"
+          [showRegister]="false"
+          [showPublish]="true"
+          [showDelete]="true"
+          (onDeleteDraft)="onDelete(draft)"
+          (onPublishDraft)="onPublish(draft)"
+        ></app-eventlist>
+      </div>
+    </div>
+  </div>
+</div>
