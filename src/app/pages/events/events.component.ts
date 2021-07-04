@@ -25,56 +25,59 @@ export class EventsComponent implements OnInit {
   filterEventList: EventResponsePayload[];
 
   getFilterValue(value: string) {
-    console.log(this.eventList);
-    switch (value) {
-      case 'nextMonth': {
-        this.eventList = this.filterEventList.filter((event) =>
-          nextMonth(new Date(event.eventDate))
-        );
-        break;
-      }
-      case 'thisMonth': {
-        this.eventList = this.filterEventList.filter((event) =>
-          thisMonth(new Date(event.eventDate))
-        );
-        break;
-      }
-      case 'thisWeek': {
-        this.eventList = this.filterEventList.filter((event) =>
-          thisWeek(new Date(event.eventDate))
-        );
-        break;
-      }
-      case 'individual': {
-        this.eventList = this.filterEventList.filter(
-          (event) => event.type === 'INDIVIDUAL'
-        );
-        break;
-      }
-      case 'team': {
-        this.eventList = this.filterEventList.filter(
-          (event) => event.type === 'TEAM'
-        );
-        break;
-      }
-      case 'outdoor': {
-        this.eventList = this.filterEventList.filter(
-          (event) => event.venue === 'outdoor'
-        );
-        break;
-      }
-      case 'indoor': {
-        this.eventList = this.filterEventList.filter(
-          (event) => event.venue === 'indoor'
-        );
-        break;
-      }
-    }
+    this.eventService.getAllEvents(value).subscribe((data) => {
+      this.eventList = data;
+    });
+    // console.log(this.eventList);
+    // switch (value) {
+    //   case 'nextMonth': {
+    //     this.eventList = this.filterEventList.filter((event) =>
+    //       nextMonth(new Date(event.eventDate))
+    //     );
+    //     break;
+    //   }
+    //   case 'thisMonth': {
+    //     this.eventList = this.filterEventList.filter((event) =>
+    //       thisMonth(new Date(event.eventDate))
+    //     );
+    //     break;
+    //   }
+    //   case 'thisWeek': {
+    //     this.eventList = this.filterEventList.filter((event) =>
+    //       thisWeek(new Date(event.eventDate))
+    //     );
+    //     break;
+    //   }
+    //   case 'individual': {
+    //     this.eventList = this.filterEventList.filter(
+    //       (event) => event.type === 'INDIVIDUAL'
+    //     );
+    //     break;
+    //   }
+    //   case 'team': {
+    //     this.eventList = this.filterEventList.filter(
+    //       (event) => event.type === 'TEAM'
+    //     );
+    //     break;
+    //   }
+    //   case 'outdoor': {
+    //     this.eventList = this.filterEventList.filter(
+    //       (event) => event.venue === 'outdoor'
+    //     );
+    //     break;
+    //   }
+    //   case 'indoor': {
+    //     this.eventList = this.filterEventList.filter(
+    //       (event) => event.venue === 'indoor'
+    //     );
+    //     break;
+    //   }
+    // }
   }
 
   //Get all Published Events here
   getEventList() {
-    this.eventService.getAllEvents().subscribe(
+    this.eventService.getAllEvents('all').subscribe(
       (data) => {
         this.eventAvailable = true;
         this.eventList = data;

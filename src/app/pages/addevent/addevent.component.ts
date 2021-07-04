@@ -49,7 +49,7 @@ export class AddeventComponent implements OnInit {
       maxParticipant: this.maxParticipant,
       picture: this.picture,
       maxMembersInTeam: this.totalMembers,
-      venue: this.venue,
+      venue: this.venue.toUpperCase(),
     };
     f.reset(); //reset form data after submiting
     this.eventService.addEvent(event).subscribe(
@@ -82,7 +82,7 @@ export class AddeventComponent implements OnInit {
       location: this.location,
       category: this.category.toUpperCase(),
       type: this.type.toUpperCase(),
-      venue: this.venue,
+      venue: this.venue.toUpperCase(),
       eventDate: this.startDate,
       lastDate: this.endDate,
       maxParticipant: this.maxParticipant,

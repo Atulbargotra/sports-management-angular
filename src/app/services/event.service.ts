@@ -10,8 +10,8 @@ import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
   providedIn: 'root',
 })
 export class EventService {
-  // url: string = 'http://localhost:8080/api/events';
-  url: string = 'https://tiaasports.herokuapp.com/api/events';
+  url: string = 'http://localhost:8080/api/events';
+  // url: string = 'https://tiaasports.herokuapp.com/api/events';
 
   constructor(private http: HttpClient) {}
 
@@ -27,8 +27,10 @@ export class EventService {
   getEventDrafts(): Observable<Array<EventResponsePayload>> {
     return this.http.get<EventResponsePayload[]>(this.url + `/draft`);
   }
-  getAllEvents(): Observable<Array<EventResponsePayload>> {
-    return this.http.get<EventResponsePayload[]>(this.url);
+  getAllEvents(filter: string): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(
+      this.url + `?filter=${filter}`
+    );
   }
 
   deleteEvent(id: number): Observable<any> {
