@@ -1,41 +1,24 @@
 <div class="Container-fluid filterbox p-3">
   <h5 class="mb-3 text-center">Filter Events</h5>
-
+  
   <div class="d-flex flex-column justify-content-around">
-    <hr />
+    <hr>
     <h6 class="mb-3">DATE</h6>
     <div class="d-flex flex-row justify-content-between">
-      <button
-        (click)="sendFilterValue(week.value)"
-        class="btn border border-success dateBtn"
-        value="thisWeek"
-        #week
-      >
-        This Week
-      </button>
-      <button
-        (click)="sendFilterValue(month.value)"
-        class="btn border border-success dateBtn"
-        value="thisMonth"
-        #month
-      >
-        This Month
-      </button>
-      <button
-        (click)="sendFilterValue(nextMonth.value)"
-        class="btn border border-success dateBtn"
-        value="nextMonth"
-        #nextMonth
-      >
-        Next Month
-      </button>
+      <button (click)="sendFilterValue(week.value)" class="btn border border-success dateBtn" value="thisWeek" #week>This Week</button>
+      <button (click)="sendFilterValue(month.value)" class="btn border border-success dateBtn" value="thisMonth" #month>This Month</button>
+      <button (click)="sendFilterValue(nextMonth.value)" class="btn border border-success dateBtn" value="nextMonth" #nextMonth>Next Month</button>
     </div>
-    <hr />
+    <hr>
   </div>
 
   <div class="d-flex flex-column justify-content-around">
-    <h6 class="mb-3">CATEGORY</h6>
+    <h6 class="mb-3">VENUE</h6>
     <div class="d-flex flex-row justify-content-between">
+
+      <button (click)="sendFilterValue(outdoor.value)" class="btn border border-success venueBtn mx-1" value="outdoor" #outdoor>Outdoor</button>
+      <button (click)="sendFilterValue(indoor.value)" class="btn border border-success venueBtn mx-1" value="indoor" #indoor>Indoor</button>
+      <button class="btn border border-success venueBtn hide">**************</button>
       <button
         (click)="sendFilterValue(outdoor.value)"
         class="btn border border-success categoryBtn"
@@ -55,13 +38,19 @@
       <button class="btn border border-success categoryBtn hide">
         **************
       </button>
+
     </div>
-    <hr />
+    <hr>
   </div>
 
   <div class="d-flex flex-column justify-content-around">
     <h6 class="mb-3">TYPE</h6>
     <div class="d-flex flex-row justify-content-between">
+
+      <button (click)="sendFilterValue(individual.value)" class="btn border border-success typeBtn mx-1" value="individual" #individual>Individual</button>
+      <button (click)="sendFilterValue(team.value)" class="btn border border-success typeBtn mx-1" value="team" #team>Team</button>
+      <button class="btn border border-success typeBtn hide">****************</button>
+
       <button
         (click)="sendFilterValue(individual.value)"
         class="btn border border-success typeBtn"
@@ -81,22 +70,22 @@
       <button class="btn border border-success typeBtn hide">
         ****************
       </button>
+
     </div>
-    <hr />
+    <hr>
   </div>
 
   <div class="d-flex flex-column justify-content-around">
     <h6 class="mb-3">LOCATION</h6>
     <div class="d-flex flex-row justify-content-between">
-      <select
-        class="form-select form-select-sm border border-success"
-        aria-label=".form-select-sm example"
-      >
-        <option selected>Select State</option>
-        <option value="1" #state>One</option>
-        <option value="2" #state>Two</option>
-        <option value="3" #state>Three</option>
+      <select [(ngModel)]="selectedLocation" (ngModelChange)="sendFilterValue(selectedLocation)" class="form-select form-select-sm border border-success" aria-label=".form-select-sm example">
+        <option disabled selected value="">Select State</option>
+        <option value="Pune" >Pune</option>
+        <option value="Bhopal" >Bhopal</option>
+        <option value="Delhi">Delhi</option>
       </select>
     </div>
   </div>
+  
+ 
 </div>

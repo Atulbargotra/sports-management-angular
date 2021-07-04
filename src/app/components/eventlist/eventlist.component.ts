@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../../services/event.service';
 import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
+import {faEdit} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-eventlist',
@@ -21,6 +22,9 @@ export class EventlistComponent implements OnInit {
     new EventEmitter();
   @Output() onPublishDraft: EventEmitter<EventResponsePayload> =
     new EventEmitter();
+
+  faEdit = faEdit;
+  
   constructor(
     private route: Router,
     private toast: ToastrService,

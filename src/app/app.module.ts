@@ -42,7 +42,12 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { EditeventComponent } from './pages/editevent/editevent.component';
+
+
 import { CachingInterceptor } from './cachingInterceptor';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +70,7 @@ import { CachingInterceptor } from './cachingInterceptor';
     RegisterPageComponent,
     RegisteredTeamsComponent,
     DraftsComponent,
+    EditeventComponent,
   ],
   imports: [
     BrowserModule,

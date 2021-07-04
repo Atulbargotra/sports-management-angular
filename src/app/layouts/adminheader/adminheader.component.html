@@ -1,52 +1,16 @@
-<header class="bg-success">
-  <nav class="navbar navbar-expand-lg navbar-light bg-success width">
-    <a class="navbar-brand px-3 mx-2 text-white" routerLink="/adminhome"
-      >SPORTS EVENT MANAGEMENT</a
-    >
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
+<nav class="navbar navbar-expand-lg navbar-light bg-success">
+  <div class="container-fluid">
+    <a class="navbar-brand mx-3 text-white" routerLink="/adminhome">SPORTS EVENT MANAGEMENT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item px-3">
-          <a
-            class="nav-link text-white p-1 m-1 atxt"
-            routerLink="/adminhome"
-            routerLinkActive="active"
-            >EVENTS</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a
-            class="nav-link text-white p-1 m-1 atxt"
-            routerLink="/adminhome/published"
-            routerLinkActive="active"
-            >PUBLISHED</a
-          >
-        </li>
-        <li class="nav-item px-3">
-          <a
-            class="nav-link text-white p-1 m-1 atxt"
-            routerLink="/adminhome/announceWinner"
-            routerLinkActive="active"
-            >ANNOUNCE WINNER</a
-          >
-        </li>
-        <li class="nav-item px-3 d-flex">
-          <a class="nav-link text-white p-1 m-1 atxt" (click)="logout()"
-            >LOGOUT</a
-          >
-          <fa-icon class="icon text-white" [icon]="faSignOutAlt"></fa-icon>
-        </li>
-      </ul>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link mx-4 p-1 text-white link" routerLink="/adminhome/events" routerLinkActive="active">EVENTS</a>
+        <a class="nav-link mx-4 p-1 text-white link" routerLink="/adminhome/published" routerLinkActive="active">PUBLISHED</a>
+        <a class="nav-link mx-4 p-1 text-white link" routerLink="/adminhome/announceWinner" routerLinkActive="active">ANNOUNCE WINNER</a>
+        <a class="nav-link mx-4 p-1 text-white link" routerLink="/">LOGOUT<fa-icon class="icon text-white px-1" size="lg" [icon]="faSignOutAlt"></fa-icon></a>
+      </div>
     </div>
-  </nav>
-</header>
+  </div>
+</nav>

@@ -1,6 +1,6 @@
 <div class="width">
-  <div class="marginBottom"></div>
-
+  
+  <h4 class="mt-4 mb-5 text-center">Published Events</h4>
   <div
     *ngIf="!eventAvailable"
     class="
@@ -13,7 +13,7 @@
   >
     <p>Events Not Published Yet!!!</p>
   </div>
-
+  
   <div class="row">
     <div class="col-7">
       <div class="d-flex flex-column" *ngFor="let event of eventList">

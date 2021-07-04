@@ -1,4 +1,4 @@
-<div class="width px-2 mx-5">
+<!-- <div class="width px-2 mx-5">
   <h4 class="mt-5">Closed Events</h4>
 
   <div
@@ -15,7 +15,9 @@
   </div>
 
   <div class="row row-cols-1 row-cols-md-1 g-4 marginleft">
-    <!-- Looping through Events fetching array of eventlist -->
+   
+    
+
 
     <div class="mx-5 my-5 w-25 text-center" *ngFor="let event of eventList">
       <div class="card borderCard">
@@ -36,7 +38,9 @@
                 <span>End Date: {{ event.lastDate | date }}</span
                 ><br />
               </div>
-              <!-- Link trigger modal -->
+              
+
+
               <div class="d-flex justify-content-center mb-3 px-3">
                 <a
                   data-bs-toggle="modal"
@@ -45,7 +49,9 @@
                   >Announce&nbsp;</a
                 >
               </div>
-              <!-- Modal -->
+             
+
+
               <div
                 class="modal fade"
                 id="announce"
@@ -122,4 +128,130 @@
       </div>
     </div>
   </div>
+</div> -->
+
+<h4 class="text-center my-4">Announce Winners</h4>
+<div class="width">
+  <div
+    *ngIf="!eventAvailable"
+    class="
+      text-center
+      d-flex
+      justify-content-center
+      align-items-center
+      eventAvailable
+    "
+  >
+    <p>Wait For Events To Get Closed First!!!</p>
+  </div>
+
+
+<!-- List of Events -->
+
+<div class="row">   
+
+  <div class="col-md-6 px-4 mb-5" *ngFor="let event of eventList">
+      <div class="col-12 announcediv d-flex">
+        <div class="col-5 divImg p-1">
+          <img [src]="event.picture" alt="No image" />
+        </div>
+        <div class="col-7">
+          <h5 class="text-center mt-1 mb-3">Event Details</h5 >
+          <div>
+            <p class="mb-1 px-3">{{event.eventName}}, {{event.location}}</p>
+            <p class="mb-1 px-3">{{event.description}}</p>
+            <p class="mb-1 px-3">Start Date : {{event.eventDate | date}}</p>
+            <p class="mb-1 px-3">End Date : {{event.lastDate | date}}</p>
+          </div>
+  
+          <!-- Button trigger modal -->
+          <div class="d-flex justify-content-end pb-1 mx-2">
+            <button
+              type="button"
+              class="btn btn-success p-1"
+              data-bs-toggle="modal"
+              data-bs-target="#announce"
+            >
+              Announce
+            </button>
+          </div>
+  
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="announce"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Enter Winners Name
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <form #f="ngForm">
+                  <div class="modal-body">
+                    <input
+                      type="text"
+                      name="w1"
+                      class="form-control mb-3"
+                      placeholder="Enter 1st RunnerUp"
+                      [(ngModel)]="w1"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="w2"
+                      class="form-control mb-3"
+                      placeholder="Enter 2nd RunnerUp"
+                      [(ngModel)]="w2"
+                      required
+                    />
+                    <input
+                      type="text"
+                      name="w3"
+                      class="form-control mb-3"
+                      placeholder="Enter 3rd RunnerUp"
+                      [(ngModel)]="w3"
+                      required
+                    />
+                  </div>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal"
+                      (click)="clearDataOnDiscard(f)"
+                    >
+                      Discard
+                    </button>
+                    <button
+                      type="button"
+                      class="btn btn-success"
+                      data-bs-dismiss="modal"
+                      [disabled]="!f.form.valid"
+                      (click)="handlePostWinnerDetails(event.id,f)"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+  
+  </div>
+  
 </div>

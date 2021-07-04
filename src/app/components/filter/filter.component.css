@@ -1,20 +1,25 @@
-.dateBtn {
+.dateBtn{
   padding: 2px 5px;
   font-size: 0.9rem;
 }
 
-.categoryBtn,
-.typeBtn {
+.venueBtn,.typeBtn{
   font-size: 0.9rem;
   padding: 2px 9px;
 }
-.hide {
+
+.hide{
   visibility: hidden;
 }
 
-.filterbox {
+.filterbox{
   border-left: 1px solid rgb(207, 207, 207);
   border-right: 1px solid rgb(207, 207, 207);
   border-top: 1px solid rgb(207, 207, 207);
   border-radius: 5%;
+}
+
+.btn:hover{
+  background-color: rgb(25,135,84);
+  color: white;
 }

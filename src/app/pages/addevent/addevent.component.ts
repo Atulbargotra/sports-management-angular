@@ -51,11 +51,12 @@ export class AddeventComponent implements OnInit {
       maxMembersInTeam: this.totalMembers,
       venue: this.venue.toUpperCase(),
     };
-    f.reset(); //reset form data after submiting
+    
     this.eventService.addEvent(event).subscribe(
       (postResponse) => {
         this.toast.success('Event added successfully');
         this.router.navigateByUrl('/adminhome');
+        f.reset(); //reset form data after submiting
       },
       (error) => {
         this.toast.error('Unable to add event');
@@ -89,11 +90,12 @@ export class AddeventComponent implements OnInit {
       picture: this.picture,
       maxMembersInTeam: this.totalMembers,
     };
-    f.reset();
+    
     this.eventService.saveDraft(event).subscribe(
       (data) => {
         this.toast.success('Draft Saved');
         this.router.navigateByUrl('/adminhome');
+        f.reset();
       },
       (error) => {
         throwError(error);

@@ -21,7 +21,9 @@ export class UserheaderComponent implements OnInit {
     private notificationService: NotificationService,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) {
+    this.loadNotifications();
+  }
 
   ngOnInit(): void {}
   logout() {
@@ -35,6 +37,7 @@ export class UserheaderComponent implements OnInit {
         this.notificationsAvailable = true;
         this.notifications = data;
         this.count = this.notifications.length;
+        console.log(this.count)
       },
       () => {
         this.notificationsAvailable = false;
