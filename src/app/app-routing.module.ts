@@ -38,6 +38,10 @@ const routes: Routes = [
         component:EditeventComponent
       },
       {
+        path:'events',
+        component:DraftsComponent
+      },
+      {
         path: '',
         component: DraftsComponent,
       }

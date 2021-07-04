@@ -1,4 +1,5 @@
-.width{
+/* .width{
+
     width: 95%;
     margin: 0 auto;
 }
@@ -24,4 +25,47 @@
 
 h4{
     font-weight: 400;
+} */
+
+
+.width{
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 6%;
+}
+
+
+
+.eventAvailable{
+    min-height: 44vh;
+    font-size: 2.1rem;
+    font-weight: 300;
+}
+
+
+
+
+.divImg img{
+    width: 100%;
+    height: 100%;
+    border-radius: 5%;
+}
+
+
+.announcediv{
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 5%;
+    box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.29);
+-webkit-box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.29);
+-moz-box-shadow: 2px 2px 7px -1px rgba(0,0,0,0.29);
+}
+
+.border2ndBox{
+    border-left: 1px solid rgb(184, 184, 184);
+    border-right: 1px solid rgb(184, 184, 184);
+}
+
+
+p{
+    font-size: 92%;
 }
