@@ -12,7 +12,6 @@
         <div class="row d-flex">
           <!-- Looping through Events fetching array of eventlist -->
           <div class="mx-4 my-3 w-25" *ngFor="let event of eventList">
-            {{event.venue}}
             <app-eventlist
               (onRegisterEvent)="register(event)"
               [event]="event"
