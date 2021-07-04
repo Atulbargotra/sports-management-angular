@@ -8,6 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class FilterComponent implements OnInit {
   constructor() {}
 
+  selectedLocation:string;
   @Output() filterValue = new EventEmitter<string>();
 
   ngOnInit(): void {}
