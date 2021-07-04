@@ -5,10 +5,11 @@ import {
   HttpHandler,
   HttpEvent,
   HttpErrorResponse,
+  HttpResponse,
 } from '@angular/common/http';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { Observable, BehaviorSubject, throwError, of } from 'rxjs';
 import { AuthService } from '../app/auth/shared/auth.service';
-import { catchError, switchMap, take, filter } from 'rxjs/operators';
+import { catchError, switchMap, take, filter, share } from 'rxjs/operators';
 import { SigninResponse } from './auth/signin/signin-response.payload';
 
 @Injectable({
@@ -80,3 +81,5 @@ export class TokenInterceptor implements HttpInterceptor {
     });
   }
 }
+
+

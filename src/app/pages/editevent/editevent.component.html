@@ -1,153 +1,191 @@
 <div class="container addeventform">
-    <!-- card - Add Event -->
+  <!-- card - Add Event -->
+  <div>
+    <div class="imgDim text-center">
+      <img [src]="event.picture" alt="Unable to load Image" />
+    </div>
     <div>
-      <div class="imgDim text-center">
-        <img [src]="event.picture" alt="Unable to load Image" />
-      </div>
-      <div>
-        <h5 class="text-center mt-2 mb-4">Edit Event Details</h5>
-    
-        <!-- Add event details form -->
-       
-    
-          <form class="row g-3" #f="ngForm">
-            <div class="col-md-6">
-              <label for="eventName" class="form-label">Event Name</label>
-              <input type="text" name="eventName" id="eventName" class="form-control" [(ngModel)]="event.eventName"
-              required>
-            </div>
-            <div class="col-md-6">
-              <label for="location" class="form-label">Location</label>
-              <input type="text" name="location" id="location" class="form-control" [(ngModel)]="event.location"
+      <h5 class="text-center mt-2 mb-4">Edit Event Details</h5>
+
+      <!-- Add event details form -->
+
+      <form class="row g-3" #f="ngForm">
+        <div class="col-md-6">
+          <label for="eventName" class="form-label">Event Name</label>
+          <input
+            type="text"
+            name="eventName"
+            id="eventName"
+            class="form-control"
+            [(ngModel)]="event.eventName"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="location" class="form-label">Location</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            class="form-control"
+            [(ngModel)]="event.location"
+            required
+          />
+        </div>
+        <div class="col-md-8">
+          <label for="description" class="form-label">Description</label>
+          <input
+            type="text"
+            name="description"
+            class="form-control"
+            id="description"
+            [(ngModel)]="event.description"
+            required
+          />
+        </div>
+
+        <div class="col-md-4">
+          <label for="selectedEvent" class="form-label">Select Event</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="selectedEvent"
+            [(ngModel)]="event.category"
+            (ngModelChange)="setPicture()"
+            required
+          >
+            <optgroup label="Outdoor">
+              <option value="CRICKET">Cricket</option>
+              <option value="FOOTBALL">Football</option>
+              <option value="BASKETBALL">Basketball</option>
+              <option value="BADMINTION">Badmintion</option>
+              <option value="VOLLEYBALL">Volleyball</option>
+            </optgroup>
+            <optgroup label="Indoor">
+              <option value="CHESS">Chess</option>
+              <option value="TABLETENNIS">TableTennis</option>
+              <option value="CARROM">Carrom</option>
+              <option value="8BALLPOOL">8 Ball Pool</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="col-md-6">
+          <label for="venue" class="form-label">Venue</label>
+          <select
+            class="form-select"
+            aria-label="Default select example"
+            name="venue"
+            [(ngModel)]="event.venue"
+            required
+          >
+            <option value="indoor">Outdoor</option>
+            <option value="outdoor">Indoor</option>
+          </select>
+        </div>
+        <div class="col-md-6">
+          <label for="maxParticipant" class="form-label"
+            >Total Participants</label
+          >
+          <input
+            type="number"
+            name="maxParticipant"
+            id="maxParticipant"
+            class="form-control"
+            [(ngModel)]="event.maxParticipant"
+            required
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="eventDate" class="form-label">Event Date</label>
+          <input
+            type="datetime-local"
+            name="eventDate"
+            id="eventDate"
+            class="form-control"
+            [(ngModel)]="event.eventDate"
+            required
+          />
+        </div>
+        <div class="col-md-6">
+          <label for="lastDate" class="form-label">End Date</label>
+          <input
+            type="datetime-local"
+            name="lastDate"
+            id="lastDate"
+            class="form-control"
+            [(ngModel)]="event.lastDate"
+            required
+          />
+        </div>
+
+        <div class="col-md-6">
+          <label for="type" class="form-label">Type</label>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="type"
+              id="individual"
+              value="INDIVIDUAL"
+              checked
+              [(ngModel)]="event.type"
+              (ngModelChange)="isTeam()"
               required
-        />
-            </div>
-            <div class="col-md-8">
-              <label for="description" class="form-label">Description</label>
-              <input type="text" name="description" class="form-control" id="description" [(ngModel)]="event.description"
-              required>
-            </div>
-    
-            <div class="col-md-4">
-              <label for="selectedEvent" class="form-label">Select Event</label>
-              <select
-              class="form-select"
-              aria-label="Default select example"
-              name="selectedEvent"
-              [(ngModel)]="event.category"
-              (ngModelChange)="setPicture()"
-              required
-              >
-              <optgroup label="Outdoor">
-                <option value="CRICKET">Cricket</option>
-                <option value="FOOTBALL">Football</option>
-                <option value="BASKETBALL">Basketball</option>
-                <option value="BADMINTION">Badmintion</option>
-                <option value="VOLLEYBALL">Volleyball</option>
-              </optgroup>
-              <optgroup label="Indoor">
-                <option value="CHESS">Chess</option>
-                <option value="TABLETENNIS">TableTennis</option>
-                <option value="CARROM">Carrom</option>
-                <option value="8BALLPOOL">8 Ball Pool</option>
-              </optgroup>
-            </select>
-            </div>
-    
-            <div class="col-md-6">
-              <label for="venue" class="form-label">Venue</label>
-              <select
-              class="form-select"
-              aria-label="Default select example"
-              name="venue"
-              [(ngModel)]="event.venue"
-              required
-              >
-              <option value="indoor">Outdoor</option>
-              <option value="outdoor">Indoor</option>          
-            </select>
-            </div>
-            <div class="col-md-6">
-              <label for="maxParticipant" class="form-label">Total Participants</label>
-              <input type="number" name="maxParticipant" id="maxParticipant" class="form-control"
-                [(ngModel)]="event.maxParticipant"
-                required
-              />
-            </div>
-    
-            
-            <div class="col-md-6">
-              <label for="eventDate" class="form-label">Event Date</label>
-              <input type="datetime-local" name="eventDate" id="eventDate" class="form-control"
-                [(ngModel)]="event.eventDate"
-                required
-              />
-            </div>
-            <div class="col-md-6">
-              <label for="lastDate" class="form-label">End Date</label>
-              <input type="datetime-local" name="lastDate" id="lastDate" class="form-control"
-                [(ngModel)]="event.lastDate"
-                required
             />
-            </div>
-    
-            <div class="col-md-6">
-              <label for="type" class="form-label">Type</label>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="type" id="individual" value="INDIVIDUAL"
-                  checked
-                  [(ngModel)]="event.type"
-                  (ngModelChange)="isTeam()"
-                  required
-                />
-                <label class="form-check-label" for="individual">
-                  Individual
-                </label>
-              </div>
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="type" id="team" value="TEAM" 
-                  [(ngModel)]="event.type"
-                  (ngModelChange)="isTeam()"
-                  required
-                />
-                <label class="form-check-label" for="team">
-                   Team 
-                </label>
-              </div>
-            </div>
-    
-    
-            <div class="col-md-6" *ngIf="isTeam()">
-              <label for="totalMembers" class="form-label">Total Members In Each Team</label>
-              <input type="number" name="totalMembers" id="totalMembers" class="form-control"
-                [(ngModel)]="event.maxMembersInTeam"
-                required
-              />
-            </div>
-    
-            <div class="col-12 mt-4 d-flex justify-content-around">
-              <button
-              type="button"
-              class="btn btn-secondary px-4"        
-              routerLink="/adminhome/events"
-              >
-              Discard
-              </button>
-    
-              <button
-              type="button"
-              [disabled]="!f.form.valid"
-              class="btn btn-success px-4"
-              routerLink="/adminhome/events"
-              
-              >
-              Update Event
-              </button>
-            </div>
-          </form>
-      </div>
-      
+            <label class="form-check-label" for="individual">
+              Individual
+            </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="type"
+              id="team"
+              value="TEAM"
+              [(ngModel)]="event.type"
+              (ngModelChange)="isTeam()"
+              required
+            />
+            <label class="form-check-label" for="team"> Team </label>
+          </div>
+        </div>
+
+        <div class="col-md-6" *ngIf="isTeam()">
+          <label for="totalMembers" class="form-label"
+            >Total Members In Each Team</label
+          >
+          <input
+            type="number"
+            name="totalMembers"
+            id="totalMembers"
+            class="form-control"
+            [(ngModel)]="event.maxMembersInTeam"
+            required
+          />
+        </div>
+
+        <div class="col-12 mt-4 d-flex justify-content-around">
+          <button
+            type="button"
+            class="btn btn-secondary px-4"
+            routerLink="/adminhome/events"
+          >
+            Discard
+          </button>
+
+          <button
+            type="button"
+            [disabled]="!f.form.valid"
+            class="btn btn-success px-4"
+            routerLink="/adminhome/events"
+          >
+            Update Event
+          </button>
+        </div>
+      </form>
     </div>
-    </div>
-    
-    
+  </div>
+</div>
