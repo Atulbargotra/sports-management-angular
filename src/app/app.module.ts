@@ -43,6 +43,7 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { EditeventComponent } from './pages/editevent/editevent.component';
+import { ParticipantsComponent } from './pages/participants/participants.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EditeventComponent } from './pages/editevent/editevent.component';
     RegisteredTeamsComponent,
     DraftsComponent,
     EditeventComponent,
+    ParticipantsComponent,
   ],
   imports: [
     BrowserModule,
