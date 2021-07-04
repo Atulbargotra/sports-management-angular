@@ -15,9 +15,30 @@
   <div class="d-flex flex-column justify-content-around">
     <h6 class="mb-3">VENUE</h6>
     <div class="d-flex flex-row justify-content-between">
+
       <button (click)="sendFilterValue(outdoor.value)" class="btn border border-success venueBtn mx-1" value="outdoor" #outdoor>Outdoor</button>
       <button (click)="sendFilterValue(indoor.value)" class="btn border border-success venueBtn mx-1" value="indoor" #indoor>Indoor</button>
       <button class="btn border border-success venueBtn hide">**************</button>
+      <button
+        (click)="sendFilterValue(outdoor.value)"
+        class="btn border border-success categoryBtn"
+        value="OUTDOOR"
+        #outdoor
+      >
+        Outdoor
+      </button>
+      <button
+        (click)="sendFilterValue(indoor.value)"
+        class="btn border border-success categoryBtn"
+        value="INDOOR"
+        #indoor
+      >
+        Indoor
+      </button>
+      <button class="btn border border-success categoryBtn hide">
+        **************
+      </button>
+
     </div>
     <hr>
   </div>
@@ -25,9 +46,31 @@
   <div class="d-flex flex-column justify-content-around">
     <h6 class="mb-3">TYPE</h6>
     <div class="d-flex flex-row justify-content-between">
+
       <button (click)="sendFilterValue(individual.value)" class="btn border border-success typeBtn mx-1" value="individual" #individual>Individual</button>
       <button (click)="sendFilterValue(team.value)" class="btn border border-success typeBtn mx-1" value="team" #team>Team</button>
       <button class="btn border border-success typeBtn hide">****************</button>
+
+      <button
+        (click)="sendFilterValue(individual.value)"
+        class="btn border border-success typeBtn"
+        value="INDIVIDUAL"
+        #individual
+      >
+        Individual
+      </button>
+      <button
+        (click)="sendFilterValue(team.value)"
+        class="btn border border-success typeBtn"
+        value="TEAM"
+        #team
+      >
+        Team
+      </button>
+      <button class="btn border border-success typeBtn hide">
+        ****************
+      </button>
+
     </div>
     <hr>
   </div>

@@ -29,7 +29,7 @@ export class PublishedComponent implements OnInit {
   faTrashAlt = faTrashAlt;
 
   ngOnInit(): void {
-    this.eventService.getAllEvents().subscribe(
+    this.eventService.getAllEvents("all").subscribe(
       (data) => {
         if (data.length === 0) {
           this.eventAvailable = false;

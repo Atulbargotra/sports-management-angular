@@ -42,7 +42,11 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
+
 import { EditeventComponent } from './pages/editevent/editevent.component';
+
+
+import { CachingInterceptor } from './cachingInterceptor';
 
 @NgModule({
   declarations: [
@@ -87,6 +91,11 @@ import { EditeventComponent } from './pages/editevent/editevent.component';
       useClass: TokenInterceptor,
       multi: true,
     },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: CachingInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

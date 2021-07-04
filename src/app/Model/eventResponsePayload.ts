@@ -12,4 +12,7 @@ export interface EventResponsePayload {
   picture: string;
   maxMembersInTeam: number;
   venue: string;
+  w1: string;
+  w2: string;
+  w3: string;
 }
