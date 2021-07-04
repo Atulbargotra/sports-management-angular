@@ -1,4 +1,70 @@
 <div class="border">
+  <ng-container *ngFor="let event of eventList">
+    <div class="d-flex border mainbox">
+      <div class="box1 d-flex">
+        <div class="imgbox">
+          <img src="{{ event.picture }}" height="400px" width="900px" />
+        </div>
+        <div
+          class="
+            detailsbox
+            d-flex
+            flex-column
+            justify-content-around
+            align-items-center
+          "
+        >
+          <p>{{ event.name }}</p>
+          <p>{{ event.description }}</p>
+          <p>{{ event.location }}</p>
+          <p>Start Date : {{ event.eventDate | date }}</p>
+          <p>End Date : {{ event.lastDate | date }}</p>
+        </div>
+      </div>
+
+      <div class="box2 border d-flex justify-content-around align-items-center">
+        <div class="win1 text-center">
+          <!-- <img
+            src="../../../assets/userImg.png"
+            class="rounded-circle"
+            width="120px"
+            height="120px"
+          /> -->
+          <img src="../../../assets/winner.gif" class="wbadge" />
+          <p>{{ event.w1 }}</p>
+        </div>
+        <div class="win2 text-center">
+          <!-- <img
+            src="../../../assets/userImg2.png"
+            class="rounded-circle"
+            width="120px"
+            height="120px"
+          /> -->
+          <img
+            src="https://img.icons8.com/office/160/000000/medal-second-place.png"
+            class="wbadge"
+          />
+          <p>{{ event.w2 }}</p>
+        </div>
+        <div class="win3 text-center">
+          <!-- <img
+            src="../../../assets/userImg3.png"
+            class="rounded-circle"
+            width="120px"
+            height="120px"
+          /> -->
+          <img
+            src="https://img.icons8.com/office/160/000000/medal2-third-place.png"
+            class="wbadge"
+          />
+          <p>{{ event.w3 }}</p>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!-- <div class="border">
   <div class="d-flex border mainbox">
     <div class="box1 d-flex">
       <div class="imgbox">
@@ -55,4 +121,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->

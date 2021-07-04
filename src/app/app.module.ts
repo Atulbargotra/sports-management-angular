@@ -42,7 +42,7 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
-
+import { CachingInterceptor } from './cachingInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +85,11 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
       useClass: TokenInterceptor,
       multi: true,
     },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: CachingInterceptor,
+    //   multi: true,
+    // },
   ],
   bootstrap: [AppComponent],
 })

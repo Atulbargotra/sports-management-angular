@@ -3,7 +3,6 @@ import { ToastrService } from 'ngx-toastr';
 import { EventResponsePayload } from 'src/app/Model/eventResponsePayload';
 import { EventService } from '../../services/event.service';
 import { throwError } from 'rxjs';
-import { nextMonth, thisMonth, thisWeek } from 'src/app/utilities/dateUtils';
 
 @Component({
   selector: 'app-events',

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventRequestPayload } from '../Model/eventRequestPayload';
@@ -24,12 +24,26 @@ export class EventService {
   editDraft(id: number, event: EventRequestPayload): Observable<any> {
     return this.http.put(this.url + `/draft/edit/${id}`, event);
   }
-  getEventDrafts(): Observable<Array<EventResponsePayload>> {
-    return this.http.get<EventResponsePayload[]>(this.url + `/draft`);
+  getEventDrafts(cache = false): Observable<Array<EventResponsePayload>> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<EventResponsePayload[]>(this.url + `/draft`, {
+      headers,
+    });
   }
-  getAllEvents(filter: string): Observable<Array<EventResponsePayload>> {
+  getAllEvents(
+    filter: string,
+    cache = false
+  ): Observable<Array<EventResponsePayload>> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
     return this.http.get<EventResponsePayload[]>(
-      this.url + `?filter=${filter}`
+      this.url + `?filter=${filter}`,
+      { headers }
     );
   }
 
@@ -43,17 +57,33 @@ export class EventService {
   ): Observable<any> {
     return this.http.post(this.url + `/${id}/winners`, winnersDetails);
   }
-  getWinners(id: number): Observable<winnersDetailsPayload> {
-    return this.http.get<winnersDetailsPayload>(this.url + `/${id}/winners`);
+  getWinners(id: number, cache = false): Observable<winnersDetailsPayload> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<winnersDetailsPayload>(this.url + `/${id}/winners`, {
+      headers,
+    });
   }
   publishDraftEvent(id: number): Observable<any> {
     return this.http.get(this.url + `/draft/publish/${id}`);
   }
-  getExpiredEvents(): Observable<Array<EventResponsePayload>> {
-    return this.http.get<EventResponsePayload[]>(this.url + `/expired`);
+  getExpiredEvents(cache = false): Observable<Array<EventResponsePayload>> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<EventResponsePayload[]>(this.url + `/expired`, {
+      headers,
+    });
   }
-  getRegisteredEvents(): Observable<Array<EventResponsePayload>> {
-    return this.http.get<EventResponsePayload[]>(this.url + `/me`);
+  getRegisteredEvents(cache = false): Observable<Array<EventResponsePayload>> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<EventResponsePayload[]>(this.url + `/me`, { headers });
   }
   register(id: number): Observable<any> {
     return this.http.put(this.url + `/${id}/register`, {});
@@ -61,7 +91,22 @@ export class EventService {
   registerAsTeam(id: number, team: TeamRequestPayload): Observable<any> {
     return this.http.put(this.url + `/${id}/register/team`, team);
   }
-  getEventById(id: number): Observable<EventResponsePayload> {
-    return this.http.get<EventResponsePayload>(this.url + `/${id}`);
+  getEventById(id: number, cache = false): Observable<EventResponsePayload> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<EventResponsePayload>(this.url + `/${id}`, {
+      headers,
+    });
+  }
+  getEventsAndWinners(cache = false): Observable<Array<EventResponsePayload>> {
+    let headers: HttpHeaders;
+    if (cache) {
+      headers = new HttpHeaders({ 'cache-response': 'true' });
+    }
+    return this.http.get<EventResponsePayload[]>(this.url + `/winners`, {
+      headers,
+    });
   }
 }
