@@ -44,6 +44,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
 import { EditeventComponent } from './pages/editevent/editevent.component';
+import { ParticipantsComponent } from './pages/participants/participants.component';
 
 
 import { CachingInterceptor } from './cachingInterceptor';
@@ -71,6 +72,7 @@ import { CachingInterceptor } from './cachingInterceptor';
     RegisteredTeamsComponent,
     DraftsComponent,
     EditeventComponent,
+    ParticipantsComponent,
   ],
   imports: [
     BrowserModule,

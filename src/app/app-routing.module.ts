@@ -9,6 +9,7 @@ import { DraftsComponent } from './pages/drafts/drafts.component';
 import { EditeventComponent } from './pages/editevent/editevent.component';
 import { EventsComponent } from './pages/events/events.component';
 import { HomeComponent } from './pages/home/home.component';
+import { ParticipantsComponent } from './pages/participants/participants.component';
 import { ParticipatedEventsComponent } from './pages/participated-events/participated-events.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PublishedComponent } from './pages/published/published.component';
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'announceWinner',
         component: AnnounceWinnerComponent,
+      },
+      {
+        path:'published/:id',
+        component:ParticipantsComponent       
       },
       {
         path: 'published',

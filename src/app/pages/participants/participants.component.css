@@ -1,0 +1,21 @@
+span{
+    font-size: 85%;
+}
+
+span:first-child{
+    font-weight: 700;
+    font-size: 100%;
+}
+
+.teamDetailsBox{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.borderonBox{
+    border: 0.1px solid rgb(207, 207, 207);
+}
+
+.borderonBox:first-child{
+    border-right: none;
+}
