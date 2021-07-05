@@ -1,104 +1,57 @@
 <div class="row mt-5">
-    <div class="col-md-6 border-middle col-sm-12">
-      <div class="col-md col-sm-12 px-5">
-        <h5 class="text-center p-3">Team Details</h5>
-        <form
-          class="row gx-4 gy-3"
-        >
-          <div class="col-md-6">
-            <label for="name" class="form-label">Team Name</label>
-            <input
-              type="text"
-              class="form-control"
-              id="name"
-              required
-              formControlName="name"
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="teamDescription" class="form-label"
-              >Team Description</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="teamDescription"
-              formControlName="description"
-            />
-          </div>
-          <div class="col-6">
-            <label for="email" class="form-label">Email</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-              formControlName="email"
-            />
-          </div>
-          <div class="col-6">
-            <label for="maxMembers" class="form-label">Maximum Members</label>
-            <input
-              type="number"
-              disabled="true"
-              class="form-control"
-              id="maxMembers"
-              formControlName="maxMembers"
-            />
-          </div>
-          <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input
-              type="text"
-              class="form-control"
-              id="inputCity"
-              formControlName="city"
-            />
-          </div>
-  
-          <div class="col-md-6">
-            <label for="contact" class="form-label">Contact</label>
-            <input
-              type="text"
-              class="form-control"
-              id="contact"
-              formControlName="contact"
-            />
-          </div>
-          <br />
-          <br />
-          <div class="d-grid gap-2 col-6 mx-auto">
-            <button type="submit" class="btn btn-success">Register</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  
-
-
-
 
     <div class="col-md-6 col-sm-12">
-      <div class="col-md col-sm-12 px-5">
-        <h5 class="p-3 text-center">Participants in Cricket</h5>
-
-        <div class="d-flex justify-content-center border border-success">
-           <div class="d-flex align-items-center border border-success">
-               <img src="../../../assets/userImg2.png" alt="not loaded" class="rounded-circle" height="100" width="100">
-           </div>
-           <div class="d-flex flex-column align-items-center border border-success">
-               <span>Atul Verma</span>
-               <span>81033654122</span>
-               <span>Jammu</span>
-               <span>AtulVerma123@gmail.com</span>
-           </div>
-        <div>
-
-      </div>
+        <div class="col-md col-sm-12 px-5">
+          <h5 class="p-3 text-center">Participants in Cricket</h5>
+    
+          <ng-container *ngFor = "let team of registeredTeams">
+            <div class="mb-3 d-flex justify-content-center teamDetailsBox">
+                <div class="d-flex align-items-center borderonBox p-2 px-4">
+                  <img
+                    src="../../../assets/userImg2.png"
+                    alt="not loaded"
+                    class="rounded-circle"
+                    height="100"
+                    width="100"
+                  />
+                </div>
+                <div class="d-flex flex-column borderonBox p-2 px-4 w-100">
+                  <span>Atul Verma</span>
+                  <span>{{team.name}}</span>
+                  <span>Total Members : {{team.members}}</span>
+                  <span>Jammu</span>
+                  <span>8103324511</span>
+                  <span>AtulVerma123@gmail.com</span>
+                </div>
+              </div>  
+          </ng-container>
+     
+    
+        </div>
     </div>
+
+
+  <div class="col-md-6 border-middle col-sm-12">
+    <div class="col-md col-sm-12 px-5">
+      <h5 class="text-center p-3">Generate Matchups</h5>
+      <form class="row gx-4 gy-3">
+        <div class="col-md-12">
+          <label for="name" class="form-label">Type of Schedule</label>
+          <select class="form-select" aria-label="Default select example">
+            <option selected value="leagueRoundRobin">League Round Robin</option>
+            <option value="tournamentSingleElimination">Tournament Single Elimination</option>
+            <option value="tournamentDoubleElimination">Tournament Double Elimination</option>
+          </select>
+        </div>
+        <div class="d-grid col-4 mx-auto">
+          <button type="submit" class="btn btn-success">Click To Generate</button>
+        </div>
+      </form>
+    </div>
+  </div>
 
 
 
 
 
 </div>
-  
