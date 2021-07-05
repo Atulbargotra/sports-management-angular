@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { EventRequestPayload } from '../Model/eventRequestPayload';
 import { EventResponsePayload } from '../Model/eventResponsePayload';
 import { TeamRequestPayload } from '../Model/teamRequestPayload';
+import { UserRegistered } from '../Model/userRegistered';
 import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
 
 @Injectable({
@@ -108,5 +109,11 @@ export class EventService {
     return this.http.get<EventResponsePayload[]>(this.url + `/winners`, {
       headers,
     });
+  }
+  getPublishedEvents(): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/published`);
+  }
+  getUsersRegisteredInEvent(id: number): Observable<Array<UserRegistered>> {
+    return this.http.get<UserRegistered[]>(this.url + `/{id}/registered`);
   }
 }
