@@ -27,7 +27,7 @@ const routes: Routes = [
         component: AnnounceWinnerComponent,
       },
       {
-        path:'published/participants/:id',
+        path:'published/:id',
         component:ParticipantsComponent       
       },
       {
