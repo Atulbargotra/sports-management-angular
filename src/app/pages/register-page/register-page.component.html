@@ -108,7 +108,10 @@
     <div class="col-md text-center col-sm-12 px-5">
       <h5 class="p-3">Registered Team for {{ event.eventName }}</h5>
       <div class="row mb-2" *ngFor="let team of registeredTeams">
-        <app-registered-teams [team]="team"></app-registered-teams>
+        <app-registered-teams
+          [team]="team"
+          (onClickAskToJoin)="join(team)"
+        ></app-registered-teams>
       </div>
     </div>
   </div>

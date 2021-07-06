@@ -125,4 +125,10 @@ export class RegisterPageComponent implements OnInit {
         }
       );
   }
+  join(team: TeamDetailsPayload) {
+    this.teamService.joinTeam(team.id, this.pid).subscribe(() => {
+      this.toast.success('Email Send to Team Admin');
+      this.router.navigateByUrl('/userhome');
+    });
+  }
 }

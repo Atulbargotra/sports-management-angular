@@ -7,11 +7,18 @@ import { SigninResponse } from '../signin/signin-response.payload';
 import { SignupRequestPayload } from '../signup/signup-request-payload';
 import { map, tap } from 'rxjs/operators';
 import { AdminSignupRequestPayload } from '../signup/admin-signup-request-payload';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthService {
+export class AuthService implements CanActivate {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
   url: string = 'http://localhost:8080/api/auth';
@@ -23,8 +30,22 @@ export class AuthService {
 
   constructor(
     private httpClient: HttpClient,
-    private localStorage: LocalStorageService
+    private localStorage: LocalStorageService,
+    private router: Router
   ) {}
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ):
+    | boolean
+    | UrlTree
+    | Observable<boolean | UrlTree>
+    | Promise<boolean | UrlTree> {
+    if (!this.isLoggedIn()) {
+      this.router.navigateByUrl('');
+    }
+    return true;
+  }
   userSignup(signupRequestPayload: SignupRequestPayload) {
     return this.httpClient.post(this.url + '/signup', signupRequestPayload, {
       responseType: 'text',

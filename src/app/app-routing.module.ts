@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthService } from './auth/shared/auth.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
@@ -21,14 +22,15 @@ const routes: Routes = [
   {
     path: 'adminhome',
     component: AdminhomeComponent,
-    children: [      
+    canActivate: [AuthService],
+    children: [
       {
         path: 'announceWinner',
         component: AnnounceWinnerComponent,
       },
       {
-        path:'published/:id',
-        component:ParticipantsComponent       
+        path: 'published/:id',
+        component: ParticipantsComponent,
       },
       {
         path: 'published',
@@ -39,22 +41,23 @@ const routes: Routes = [
         component: AddeventComponent,
       },
       {
-        path:'editevent/:id',
-        component:EditeventComponent
+        path: 'editevent/:id',
+        component: EditeventComponent,
       },
       {
-        path:'events',
-        component:DraftsComponent
+        path: 'events',
+        component: DraftsComponent,
       },
       {
         path: '',
         component: DraftsComponent,
-      }
+      },
     ],
   },
   {
     path: 'userhome',
     component: UserhomeComponent,
+    canActivate: [AuthService],
     children: [
       {
         path: 'participatedEvents',

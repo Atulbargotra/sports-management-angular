@@ -22,8 +22,11 @@ export class TeamService {
     }
     return this.http.get(this.url + `/${id}`, { headers });
   }
-  joinTeam(id: number): Observable<any> {
-    return this.http.put(this.url + `/{id}`, {});
+  joinTeam(teamId: number, eventId: number): Observable<any> {
+    return this.http.put(
+      this.url + `/${teamId}/request?eventId=${eventId}`,
+      {}
+    );
   }
   geTeamsByEventId(
     id: number,
