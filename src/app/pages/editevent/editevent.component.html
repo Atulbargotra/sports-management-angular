@@ -2,7 +2,7 @@
   <!-- card - Add Event -->
   <div>
     <div class="imgDim text-center">
-      <img [src]="event.picture" alt="Unable to load Image" />
+      <img [src]="event.picture" alt="Unable to load Image" height=210 width=330/>
     </div>
     <div>
       <h5 class="text-center mt-2 mb-4">Edit Event Details</h5>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="col-md-4">
-          <label for="selectedEvent" class="form-label">Select Event</label>
+          <label for="selectedEvent" class="form-label">Category</label>
           <select
             class="form-select"
             aria-label="Default select example"
@@ -66,6 +66,7 @@
               <option value="TABLETENNIS">TableTennis</option>
               <option value="CARROM">Carrom</option>
               <option value="8BALLPOOL">8 Ball Pool</option>
+              <option value="OTHERS">Others</option>
             </optgroup>
           </select>
         </div>
@@ -79,8 +80,8 @@
             [(ngModel)]="event.venue"
             required
           >
-            <option value="indoor">Outdoor</option>
-            <option value="outdoor">Indoor</option>
+            <option value="OUTDOOR">Outdoor</option>
+            <option value="INDOOR">Indoor</option>
           </select>
         </div>
         <div class="col-md-6">
@@ -111,7 +112,7 @@
         <div class="col-md-6">
           <label for="lastDate" class="form-label">End Date</label>
           <input
-            type="datetime-local"
+            type="date"
             name="lastDate"
             id="lastDate"
             class="form-control"

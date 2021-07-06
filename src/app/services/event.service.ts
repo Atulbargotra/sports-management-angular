@@ -114,6 +114,6 @@ export class EventService {
     return this.http.get<EventResponsePayload[]>(this.url + `/published`);
   }
   getUsersRegisteredInEvent(id: number): Observable<Array<UserRegistered>> {
-    return this.http.get<UserRegistered[]>(this.url + `/{id}/registered`);
+    return this.http.get<UserRegistered[]>(this.url + `/${id}/registered`);
   }
 }
