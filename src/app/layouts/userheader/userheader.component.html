@@ -1,4 +1,4 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-light bg-success">
+<nav class="navbar navbar-expand-lg navbar-light bg-success py-3">
   <div class="container-fluid">
     <a class="navbar-brand mx-3 text-white" routerLink="/userhome"
       >SPORTS EVENT MANAGEMENT</a
@@ -19,23 +19,38 @@
       id="navbarNavAltMarkup"
     >
       <div class="navbar-nav">
-        <div class="dropdown">
+        <div class="p-1 mx-3">
           <fa-icon
-            type="button"
-            class="fa btn button dropdown-toggl dropdown-menu-right"
             size="lg"
-            (click)="loadNotifications()"
+            (click)="triggerNotificationBar()"
             [icon]="faBell"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
+            class="text-white"
           >
           </fa-icon>
-          <span class="badge bg-danger">{{ count }}</span>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <a class="dropdown-item" *ngFor="let notification of notifications"
-              >{{ notification.message }}
-            </a>
-          </ul>
+          <ng-container *ngIf="count">
+            <span class="badge bg-danger">{{ count }}</span>
+          </ng-container>
+          <div
+            class="notibox p-2"
+            [ngStyle]="{ display: showNoti ? 'inherit' : 'none' }"
+          >
+            <div class="d-flex bordernoti mb-2" *ngFor = "let noti of notifications" routerLink="/userhome/winners">
+              <div>
+                <img
+                  [src]="noti.picture"
+                  class="imgBorder"
+                  alt="no image"
+                  height="60"
+                  width="70"
+                />
+              </div>
+              <div class="d-flex flex-column justify-content-around px-2">
+                <p id="notiName">{{noti.eventName | titlecase}}</p>
+                <p id="notidetails">{{noti.message | titlecase}}</p>
+              </div>
+            </div>
+
+          </div>
         </div>
         <a
           class="nav-link mx-4 p-1 text-white link"
@@ -61,49 +76,16 @@
           routerLinkActive="active"
           >PROFILE</a
         >
-        <a class="nav-link text-white p-1 m-1 atxt" (click)="logout()"
-          >LOGOUT</a
-        >
-        <fa-icon class="icon text-white" [icon]="faSignOutAlt"></fa-icon>
-      </div>
-    </div>
-  </div>
-</nav> -->
-
-  
-<nav class="navbar navbar-expand-lg navbar-light bg-success py-3">
-  <div class="container-fluid">
-    <a class="navbar-brand mx-3 text-white" routerLink="/userhome">SPORTS EVENT MANAGEMENT</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <div class="dropdown p-1 mx-3">
-          <fa-icon
-            type="button"
-            class="fa btn button dropdown-toggl dropdown-menu-right"
+        <a
+          class="nav-link mx-4 p-1 text-white link"
+          routerLink="/userhome/profile"
+          (click)="logout()"
+          >LOGOUT<fa-icon
+            class="icon text-white px-1"
             size="lg"
-            (click)="loadNotifications()"
-            [icon]="faBell"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-          </fa-icon>
-          <ng-container *ngIf="count">
-            <span class="badge bg-danger">{{ count }}</span>
-          </ng-container>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-            <a class="dropdown-item" *ngFor="let notification of notifications"
-              >{{ notification.message }}
-            </a>
-          </ul>
-        </div>
-        <a class="nav-link mx-4 p-1 text-white link" routerLink="/userhome/events" routerLinkActive="active">EVENTS</a>
-        <a class="nav-link mx-4 p-1 text-white link" routerLink="/userhome/participatedEvents" routerLinkActive="active">PARTICIPATED EVENTS</a>
-        <a class="nav-link mx-4 p-1 text-white link" routerLink="/userhome/winners" routerLinkActive="active">WINNERS</a>
-        <a class="nav-link mx-4 p-1 text-white link" routerLink="/userhome/profile" routerLinkActive="active">PROFILE</a>
-        <a class="nav-link mx-4 p-1 text-white link" routerLink="/userhome/profile" routerLinkActive="active" (click)="logout()">LOGOUT<fa-icon class="icon text-white px-1" size="lg" [icon]="faSignOutAlt"></fa-icon></a>
+            [icon]="faSignOutAlt"
+          ></fa-icon
+        ></a>
       </div>
     </div>
   </div>

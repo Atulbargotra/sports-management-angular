@@ -6,6 +6,18 @@ import { throwError } from 'rxjs';
 import { EventRequestPayload } from 'src/app/Model/eventRequestPayload';
 import { EventService } from 'src/app/services/event.service';
 
+//AngularFireStorage
+import { AngularFireStorage } from '@angular/fire/storage';
+//Image resizer
+import { readAndCompressImage } from 'browser-image-resizer';
+//ImgConfig
+import { Imgconfig } from '../../utilities/ImgConfig';
+//unique uuid
+import { v4 as uuidv4 } from 'uuid';
+//finalize
+import { finalize } from 'rxjs/operators';
+
+
 @Component({
   selector: 'app-addevent',
   templateUrl: './addevent.component.html',
@@ -15,7 +27,9 @@ export class AddeventComponent implements OnInit {
   constructor(
     private eventService: EventService,
     private router: Router,
-    private toast: ToastrService
+    private toast: ToastrService,
+    private storage:AngularFireStorage,
+    
   ) {}
 
   //Add event form Data
@@ -163,4 +177,34 @@ export class AddeventComponent implements OnInit {
       }
     }
   }
+
+
+
+  async ImageUpload(event) {
+    const orignalFile = event.target.files[0]; //original image fetched from event when user upload
+    //image compressed
+    const compressedImg = await readAndCompressImage(orignalFile, Imgconfig);
+
+    const filePath = uuidv4(); //filename in firebase storage
+    const fileRef = this.storage.ref(filePath); //a pointer that refer to the file
+
+    const task = this.storage.upload(filePath, compressedImg);
+    //1st arg = name of file
+    //2nd arg = resized image
+
+    //snapshotChanges() checks what are the changes that are are happening and emiting the inforamtion(metadata) through pipe
+    //task is basically uploading the file on firebase storage
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          fileRef.getDownloadURL().subscribe((ImgUrl) => {
+            this.picture = ImgUrl;
+            this.toast.success('Image uploaded successfully');
+          });
+        })
+      )
+      .subscribe();
+  }
+
 }

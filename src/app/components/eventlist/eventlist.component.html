@@ -3,6 +3,7 @@
     src="{{ event.picture }}"
     class="card-img-top borderImg"
     alt="Image not loaded"
+    height=160
   />
   <div class="row">
     <div class="col-12">
@@ -12,6 +13,7 @@
             <div class="row">
             <h5 class="card-title col-10 p-2">{{ event.eventName }}</h5>
             <fa-icon
+            *ngIf="showPublish"
             class="icon col-2 p-1"
             size="lg"
             [icon]="faEdit"
@@ -48,17 +50,23 @@
           </ng-container>
           <button
             *ngIf="showDelete"
-            class="btn btn-secondary px-3 py-1"
+            class="btn btn-secondary px-2 py-1"
             (click)="onDelete(event)"
           >
-            Delete
+            Delete &nbsp;<fa-icon
+            class="icon"
+            [icon]="faTrashAlt"
+          ></fa-icon>
           </button>
           <button
             *ngIf="showPublish"
-            class="btn btn-success px-3 py-1"
+            class="btn btn-success px-2 py-1"
             (click)="onPublish(event)"
           >
-            Publish
+            Publish &nbsp;<fa-icon
+            class="icon"
+            [icon]="faUpload"
+          ></fa-icon>
           </button>
         </div>
       </div>
