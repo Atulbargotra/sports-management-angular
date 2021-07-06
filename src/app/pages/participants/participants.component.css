@@ -15,7 +15,3 @@ span:first-child{
 .borderonBox{
     border: 0.1px solid rgb(207, 207, 207);
 }
-
-.borderonBox:first-child{
-    border-right: none;
-}

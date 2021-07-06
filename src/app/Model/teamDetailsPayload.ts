@@ -1,5 +1,7 @@
 export interface TeamDetailsPayload {
+  id:number
   name: string;
   description: string;
-  members: TeamDetailsPayload[];
+  city:string,
+  currentNumberOfMembers:number;
 }

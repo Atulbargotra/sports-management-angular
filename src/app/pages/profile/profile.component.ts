@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //reactive form
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 //toastr message
 import { ToastrService } from 'ngx-toastr';
 //userService
@@ -46,13 +46,13 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      gender: ['', Validators.required],
-      city: ['', Validators.required],
-      address: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      contact: ['', Validators.required],
+      firstName: [''],
+      lastName: [''],
+      gender: [''],
+      city: [''],
+      address: [''],
+      email: [''],
+      contact: [''],
     });
     this.userService.getUserProfile().subscribe(
       (data) => {

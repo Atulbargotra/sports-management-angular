@@ -1,4 +1,5 @@
 export interface NotificationResponsePayload {
-  id: number;
+  eventName: string;
   message: string;
+  picture:string;
 }

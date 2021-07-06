@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EventService } from 'src/app/services/event.service';
 import { TeamService } from 'src/app/services/team.service';
@@ -19,8 +19,11 @@ export class ParticipantsComponent implements OnInit {
     private teamService:TeamService,
     private eventService:EventService,
     private toast:ToastrService,
-    private activatedRoute:ActivatedRoute
-  ) { }
+    private activatedRoute:ActivatedRoute,
+    private route:Router 
+  ) {
+
+   }
 
   registeredTeams:TeamDetailsPayload[];
   registeredUsers:UserRegistered[];
@@ -30,49 +33,39 @@ export class ParticipantsComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(res=>{
       let pid = +res.get('id');
       console.log(pid);
-      this.handleGetEventById(pid)
       this.handleGetTeamsByEventID(pid)
-      this.handleGetUserByEventId(pid)
+      this.handleGetRegisteredUserByEventId(pid)
 
+      //got event details data through routes state transfer
+      // console.log(history.state)
+      this.event = history.state;
     })
   }
 
-  handleGetEventById(id: number) {
-    this.eventService.getEventById(id).subscribe(
-      (getRes) => {
-        this.event = getRes;
-        console.log("Event details by ID : "+this.event)
-      },
-      (error) => {
-        this.toast.error('Problem Occured to get Event details by ID');
-        console.log(error);
-      }
-    );
-  }
 
   handleGetTeamsByEventID(id:number){
     console.log("Teams")
     this.teamService.geTeamsByEventId(id).subscribe(res=>{
       this.registeredTeams = res;
-      console.log("Registered Teams by Id : "+this.registeredTeams)
+      console.log("registered Teams below");
+      console.log(this.registeredTeams)
     },
     (error)=>{
-      this.toast.error("Problem occured to get Registered Teams By ID");
+      this.toast.error("Problem occured to get Registered Teams By EventID");
       console.log(error);
     })
   }
 
-  handleGetUserByEventId(id:number){
+  handleGetRegisteredUserByEventId(id:number){
     this.eventService.getUsersRegisteredInEvent(id).subscribe(res=>{
-      this.registeredUsers = res;
-      console.log("Registered User By ID : "+this.registeredUsers);      
+      this.registeredUsers = res
+      console.log(this.registeredUsers)
     },
     (error)=>{
-      this.toast.error("Problem occured to get Registered Users By ID");
+      this.toast.error("Problem occured to get Registered User By EventID");
       console.log(error);
-    }
-
-    )
+    })
   }
+
 
 }
