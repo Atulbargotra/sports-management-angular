@@ -1,5 +1,4 @@
 <div class="width">
-  
   <h4 class="mt-4 mb-5 text-center">Published Events</h4>
   <div
     *ngIf="!eventAvailable"
@@ -13,7 +12,7 @@
   >
     <p>Events Not Published Yet!!!</p>
   </div>
-  
+
   <div class="row">
     <div class="col-7">
       <div class="d-flex flex-column" *ngFor="let event of eventList">
@@ -30,11 +29,11 @@
                 </div>
                 <div>
                   <fa-icon
-                  class="icon px-2"
-                  size="lg"
-                  [icon]="faTrashAlt"
-                  (click)="handleEventDelete(event.id)"
-                ></fa-icon>
+                    class="icon px-2"
+                    size="lg"
+                    [icon]="faTrashAlt"
+                    (click)="handleEventDelete(event.id)"
+                  ></fa-icon>
                 </div>
               </div>
               <div class="d-flex justify-content-between p-3">
@@ -43,10 +42,13 @@
                   <p class="pEdit">End Date : {{ event.lastDate | date }}</p>
                 </div>
                 <div class="d-flex align-items-end">
-                  <button 
-                  class="btn btn-success p-1"
-                  [routerLink]="['/adminhome/published/',event.id]"
-                  >Show Participants</button>
+                  <button
+                    class="btn btn-success p-1"
+                    [routerLink]="['/adminhome/published/', event.id]"
+                    [state]="{ type: event.type, name: event.eventName }"
+                  >
+                    Show Participants
+                  </button>
                 </div>
               </div>
             </div>

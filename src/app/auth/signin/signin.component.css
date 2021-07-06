@@ -7,7 +7,7 @@
 }
 
 .color {
-  background-color: rgb(95, 121, 179);
+  background-color: #5a48fd;
   color: white;
 }
 .linkcolor {
@@ -31,4 +31,7 @@ span {
 }
 .sideimg {
   height: 100vh;
+}
+* {
+  background-color: rgb(21, 21, 21);
 }

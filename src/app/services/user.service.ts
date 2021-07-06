@@ -7,8 +7,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class UserService {
-  // url: string = 'http://localhost:8080/api/auth/user';
-  url: string = 'https://tiaasports.herokuapp.com/api/auth/user';
+  url: string = 'http://localhost:8080/api/auth/user';
+  // url: string = 'https://tiaasports.herokuapp.com/api/auth/user';
 
   constructor(private http: HttpClient) {}
   updateUserProfile(userData: UserProfile): Observable<any> {

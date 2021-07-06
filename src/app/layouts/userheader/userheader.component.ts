@@ -22,7 +22,15 @@ export class UserheaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router
   ) {
-    this.loadNotifications();
+    this.notificationService.getUserNotificationsCount().subscribe(
+      (count) => {
+        this.count = count;
+        this.notificationsAvailable = true;
+      },
+      (error) => {
+        this.notificationsAvailable = true;
+      }
+    );
   }
 
   ngOnInit(): void {}
@@ -37,7 +45,7 @@ export class UserheaderComponent implements OnInit {
         this.notificationsAvailable = true;
         this.notifications = data;
         this.count = this.notifications.length;
-        console.log(this.count)
+        console.log(this.count);
       },
       () => {
         this.notificationsAvailable = false;

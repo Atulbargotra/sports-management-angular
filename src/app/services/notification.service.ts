@@ -19,4 +19,7 @@ export class NotificationService {
     }
     return this.http.get<NotificationResponsePayload[]>(this.url, { headers });
   }
+  getUserNotificationsCount(): Observable<number> {
+    return this.http.get<number>(this.url + `/count`);
+  }
 }

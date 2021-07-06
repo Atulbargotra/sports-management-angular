@@ -1,175 +1,216 @@
-<div class="margintop">
-  <div class="brand-wrapper">
-    <div class="btn-group" role="group" aria-label="Basic example">
-      <button
-        type="button"
-        (click)="clickUserButton()"
-        class="btn px-5 border btn-secondary"
-      >
-        User
-      </button>
-
-      <button
-        type="button"
-        (click)="clickAdminButton()"
-        class="btn btn-white px-5 border btn-secondary"
-      >
-        Admin
-      </button>
+<div class="container">
+  <div class="row">
+    <div class="col-8">
+      <img
+        src="../../../assets/pablita-490.png"
+        class="sideimg"
+        style="min-height: 100%"
+      />
     </div>
-  </div>
+    <div class="col-4">
+      <div class="margintop">
+        <div class="brand-wrapper">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button
+              type="button"
+              (click)="clickUserButton()"
+              class="btn px-5 border btn-secondary"
+            >
+              User
+            </button>
 
-  <p class="display-6 login-card-description mt-4">{{ userType }} SignUp</p>
+            <button
+              type="button"
+              (click)="clickAdminButton()"
+              class="btn btn-white px-5 border btn-secondary"
+            >
+              Admin
+            </button>
+          </div>
+        </div>
 
-  <ng-container *ngIf="formLoad">
-    <form #f="ngForm" [formGroup]="userSignupForm" (ngSubmit)="usersignup()">
-      <div class="form-group mb-2">
-        <label for="email" class="sr-only py-1 bold">Email</label>
-        <input
-          type="text"
-          [formControlName]="'useremail'"
-          id="email_address"
-          class="form-control"
-          name="email"
-          placeholder="Email"
-          required
-          autofocus
-        />
-        <div
-          *ngIf="!userSignupForm.get('useremail').valid"
-          class="invalid-feedback"
-        >
-          Please provide a valid email
-        </div>
-        <label for="username" class="sr-only py-1 bold">Username</label>
-        <input
-          type="text"
-          [formControlName]="'username'"
-          id="username"
-          class="form-control"
-          name="username"
-          placeholder="Username"
-          required
-          autofocus
-        />
-        <div
-          *ngIf="!userSignupForm.get('username').valid"
-          class="invalid-feedback"
-        >
-          Please provide a valid username
-        </div>
-      </div>
-      <div class="form-group mb-2">
-        <label for="password" class="sr-only py-1 bold">Password</label>
-        <input
-          type="password"
-          [formControlName]="'userpassword'"
-          id="password"
-          class="form-control"
-          placeholder="********"
-          name="password"
-          required
-        />
-        <div
-          *ngIf="!userSignupForm.get('userpassword').errors?.required"
-          class="invalid-feedback"
-        >
-          Please provide a valid Password
-        </div>
-      </div>
-      <button
-        type="submit"
-        class="btn btn-block login-btn px-5 color my-2 btncolor text-white"
-      >
-        Sign Up
-      </button>
-    </form>
-  </ng-container>
+        <p class="display-6 login-card-description mt-4">
+          {{ userType }} SignUp
+        </p>
 
-  <div *ngIf="!formLoad">
-    <form #f="ngForm" [formGroup]="adminSignupForm" (ngSubmit)="adminsignup()">
-      <div class="form-group mb-2">
-        <label for="email" class="sr-only py-1 bold">Email</label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          placeholder="Email"
-          class="form-control"
-          placeholder="Email"
-          [formControlName]="'adminemail'"
-          required
-          autofocus
-        />
-        <div
-          *ngIf="!adminSignupForm.get('adminemail').errors?.required"
-          class="invalid-feedback"
-        >
-          Please provide a valid email
-        </div>
-        <label for="username" class="sr-only py-1 bold">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          placeholder="Username"
-          class="form-control"
-          placeholder="Username"
-          [formControlName]="'adminname'"
-          required
-          autofocus
-        />
-        <div
-          *ngIf="!adminSignupForm.get('adminemail').errors?.required"
-          class="invalid-feedback"
-        >
-          Please provide a valid email
+        <ng-container *ngIf="formLoad">
+          <form
+            #f="ngForm"
+            [formGroup]="userSignupForm"
+            (ngSubmit)="usersignup()"
+          >
+            <div class="form-group mb-2">
+              <label for="email" class="sr-only py-1 bold">Email</label>
+              <input
+                type="text"
+                [formControlName]="'useremail'"
+                id="email_address"
+                class="form-control"
+                name="email"
+                placeholder="Email"
+                required
+                autofocus
+              />
+              <div
+                *ngIf="!userSignupForm.get('useremail').valid"
+                class="invalid-feedback"
+              >
+                Please provide a valid email
+              </div>
+              <label for="username" class="sr-only py-1 bold">Username</label>
+              <input
+                type="text"
+                [formControlName]="'username'"
+                id="username"
+                class="form-control"
+                name="username"
+                placeholder="Username"
+                required
+                autofocus
+              />
+              <div
+                *ngIf="!userSignupForm.get('username').valid"
+                class="invalid-feedback"
+              >
+                Please provide a valid username
+              </div>
+            </div>
+            <div class="form-group mb-2">
+              <label for="password" class="sr-only py-1 bold">Password</label>
+              <input
+                type="password"
+                [formControlName]="'userpassword'"
+                id="password"
+                class="form-control"
+                placeholder="********"
+                name="password"
+                required
+              />
+              <div
+                *ngIf="!userSignupForm.get('userpassword').errors?.required"
+                class="invalid-feedback"
+              >
+                Please provide a valid Password
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="
+                btn btn-block
+                login-btn
+                px-5
+                color
+                my-2
+                btncolor
+                text-white
+              "
+            >
+              Sign Up
+            </button>
+          </form>
+        </ng-container>
+
+        <div *ngIf="!formLoad">
+          <form
+            #f="ngForm"
+            [formGroup]="adminSignupForm"
+            (ngSubmit)="adminsignup()"
+          >
+            <div class="form-group mb-2">
+              <label for="email" class="sr-only py-1 bold">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                class="form-control"
+                placeholder="Email"
+                [formControlName]="'adminemail'"
+                required
+                autofocus
+              />
+              <div
+                *ngIf="!adminSignupForm.get('adminemail').errors?.required"
+                class="invalid-feedback"
+              >
+                Please provide a valid email
+              </div>
+              <label for="username" class="sr-only py-1 bold">Username</label>
+              <input
+                type="text"
+                name="username"
+                id="username"
+                placeholder="Username"
+                class="form-control"
+                placeholder="Username"
+                [formControlName]="'adminname'"
+                required
+                autofocus
+              />
+              <div
+                *ngIf="!adminSignupForm.get('adminemail').errors?.required"
+                class="invalid-feedback"
+              >
+                Please provide a valid email
+              </div>
+            </div>
+            <div class="form-group mb-2">
+              <label for="password" class="sr-only py-1 bold">Password</label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                class="form-control"
+                placeholder="********"
+                [formControlName]="'adminpassword'"
+                required
+              />
+              <div
+                *ngIf="!adminSignupForm.get('adminpassword').errors?.required"
+                class="invalid-feedback"
+              >
+                Please provide a valid Password
+              </div>
+            </div>
+            <div class="form-group mb-2">
+              <label for="adminAccessPassword" class="sr-only py-1 bold"
+                >Admin Access Key</label
+              >
+              <input
+                type="password"
+                name="adminAccessPassword"
+                id="adminAccessPassword"
+                class="form-control"
+                placeholder="********"
+                [formControlName]="'adminAccessPassword'"
+                required
+              />
+              <div
+                *ngIf="
+                  !adminSignupForm.get('adminAccessPassword').errors?.required
+                "
+                class="invalid-feedback"
+              >
+                Please provide a valid Access Password
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="
+                btn btn-block
+                login-btn
+                px-5
+                color
+                my-2
+                btncolor
+                text-white
+              "
+            >
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
-      <div class="form-group mb-2">
-        <label for="password" class="sr-only py-1 bold">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          class="form-control"
-          placeholder="********"
-          [formControlName]="'adminpassword'"
-          required
-        />
-        <div
-          *ngIf="!adminSignupForm.get('adminpassword').errors?.required"
-          class="invalid-feedback"
-        >
-          Please provide a valid Password
-        </div>
-      </div>
-      <div class="form-group mb-2">
-        <label for="adminAccessPassword" class="sr-only py-1 bold"
-          >Admin Access Key</label
-        >
-        <input
-          type="password"
-          name="adminAccessPassword"
-          id="adminAccessPassword"
-          class="form-control"
-          placeholder="********"
-          [formControlName]="'adminAccessPassword'"
-          required
-        />
-        <div
-          *ngIf="!adminSignupForm.get('adminAccessPassword').errors?.required"
-          class="invalid-feedback"
-        >
-          Please provide a valid Access Password
-        </div>
-      </div>
-      <button
-        type="submit"
-        class="btn btn-block login-btn px-5 color my-2 btncolor text-white"
-      >
-        Sign Up
-      </button>
-    </form>
+    </div>
   </div>
 </div>
