@@ -22,7 +22,7 @@
         <div class="p-1 mx-3">
           <fa-icon
             size="lg"
-            (click)="triggerNotificationBar()"
+            (click)="loadNotifications()"
             [icon]="faBell"
             class="text-white"
           >
@@ -34,7 +34,11 @@
             class="notibox p-2"
             [ngStyle]="{ display: showNoti ? 'inherit' : 'none' }"
           >
-            <div class="d-flex bordernoti mb-2" *ngFor = "let noti of notifications" routerLink="/userhome/winners">
+            <div
+              class="d-flex bordernoti mb-2"
+              *ngFor="let noti of notifications"
+              routerLink="/userhome/winners"
+            >
               <div>
                 <img
                   [src]="noti.picture"
@@ -45,11 +49,10 @@
                 />
               </div>
               <div class="d-flex flex-column justify-content-around px-2">
-                <p id="notiName">{{noti.eventName | titlecase}}</p>
-                <p id="notidetails">{{noti.message | titlecase}}</p>
+                <p id="notiName">{{ noti.eventName | titlecase }}</p>
+                <p id="notidetails">{{ noti.message | titlecase }}</p>
               </div>
             </div>
-
           </div>
         </div>
         <a
