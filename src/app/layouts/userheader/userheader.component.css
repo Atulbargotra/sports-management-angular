@@ -22,9 +22,9 @@
   left: 33%;
   z-index: 1;
   background-color: rgb(255, 255, 255);
-  border-radius: 10px;
-  opacity: 0.8;
   width: 22%;
+  border-radius: 1rem;
+  box-shadow: 0.5;
 }
 
 .badge {
@@ -32,12 +32,11 @@
 }
 
 .bordernoti {
-  border: 1px solid rgb(184, 184, 184);
-  border-radius: 10px;
+  border-bottom: 1px dotted rgb(184, 184, 184);
 }
 
 .bordernoti:hover {
-  background-color: rgb(221, 221, 221);
+  background-color: #fffdef;
   cursor: pointer;
 }
 
@@ -51,7 +50,6 @@
 }
 
 .imgBorder {
-  border: 1px solid rgb(204, 204, 204);
   padding: 2px;
-  border-radius: 10px;
+  border-radius: 50%;
 }

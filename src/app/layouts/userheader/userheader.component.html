@@ -31,6 +31,7 @@
             <span class="badge bg-danger">{{ count }}</span>
           </ng-container>
           <div
+            *ngIf="count !== 0"
             class="notibox p-2"
             [ngStyle]="{ display: showNoti ? 'inherit' : 'none' }"
           >
@@ -45,8 +46,8 @@
                   [src]="noti.picture"
                   class="imgBorder"
                   alt="no image"
-                  height="60"
-                  width="70"
+                  height="40"
+                  width="40"
                 />
               </div>
               <div class="d-flex flex-column justify-content-around px-2">
