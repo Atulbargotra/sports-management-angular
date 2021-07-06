@@ -23,4 +23,7 @@ export class NotificationService {
   getUserNotificationsCount(): Observable<number> {
     return this.http.get<number>(this.url + `/count`);
   }
+  deleteNotification(id: number): Observable<boolean> {
+    return this.http.delete<boolean>(this.url + `/${id}`);
+  }
 }

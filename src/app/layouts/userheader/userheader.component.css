@@ -1,60 +1,56 @@
- 
-*{
+* {
   padding: 0;
   margin: 0;
-} 
+}
 
-.active{
+.active {
   border-bottom: 2px solid white;
 }
 
-.link:hover{
-background-color: rgb(255, 255, 255);
-border-radius: 10px;
-color: green !important;
+.link:hover {
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  color: green !important;
 }
 
 .fa {
   color: rgb(255, 255, 255) !important;
 }
 
-
-.notibox{
-  position:absolute;
-  left:33%;
+.notibox {
+  position: absolute;
+  left: 33%;
   z-index: 1;
-  background-color: rgb(255, 255, 255); 
+  background-color: rgb(255, 255, 255);
   border-radius: 10px;
   opacity: 0.8;
   width: 22%;
 }
 
-
-
-.badge{
+.badge {
   font-size: 15px;
 }
 
-.bordernoti{
+.bordernoti {
   border: 1px solid rgb(184, 184, 184);
   border-radius: 10px;
 }
 
-.bordernoti:hover{
+.bordernoti:hover {
   background-color: rgb(221, 221, 221);
   cursor: pointer;
 }
 
-#notiName{
+#notiName {
   font-size: 90%;
   font-weight: 800;
 }
 
-#notidetails{
+#notidetails {
   font-size: 80%;
 }
 
-.imgBorder{
+.imgBorder {
   border: 1px solid rgb(204, 204, 204);
   padding: 2px;
   border-radius: 10px;

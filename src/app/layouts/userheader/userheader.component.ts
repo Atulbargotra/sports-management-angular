@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/shared/auth.service';
@@ -22,16 +22,15 @@ export class UserheaderComponent implements OnInit {
   constructor(
     private notificationService: NotificationService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private elementRef: ElementRef
   ) {
-    this.notificationService.getUserNotificationsCount().subscribe(
-      (count) => {
-        this.count = count;
-        this.notificationsAvailable = true;
+    this.notificationService.getUserNotifications().subscribe(
+      (data) => {
+        this.notifications = data;
+        this.count = data.length;
       },
-      (error) => {
-        this.notificationsAvailable = true;
-      }
+      () => {}
     );
   }
 
@@ -44,30 +43,22 @@ export class UserheaderComponent implements OnInit {
     this.router.navigateByUrl('');
   }
   loadNotifications() {
+    console.log(this.showNoti);
     this.showNoti = !this.showNoti;
-    this.notificationService.getUserNotifications().subscribe(
-      (data) => {
-        console.log(data);
-        this.notifications = data;
-      },
-      () => {
-        this.showNoti = false;
-      }
-    );
   }
-
-  //fetching notification
-  // loadNotifications() {
-  //   this.notificationService.getUserNotifications().subscribe(
-  //     (data) => {
-  //       this.notificationsAvailable = true;
-  //       this.notifications = data;
-  //       this.count = this.notifications.length;
-  //       console.log(this.count)
-  //     },
-  //     () => {
-  //       this.notificationsAvailable = false;
-  //     }
-  //   );
-  // }
+  @HostListener('document:mousedown', ['$event'])
+  clickedOut(event): void {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      // clicked outside => close dropdown list
+      this.showNoti = false;
+    }
+  }
+  deleteNotification(id: number) {
+    this.notificationService.deleteNotification(id).subscribe((data) => {
+      this.notifications = this.notifications.filter(
+        (notification) => notification.id !== id
+      );
+      this.count = this.count - 1;
+    });
+  }
 }
