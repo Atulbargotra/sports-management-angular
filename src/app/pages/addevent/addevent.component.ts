@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { throwError } from 'rxjs';
 import { EventRequestPayload } from 'src/app/Model/eventRequestPayload';
 import { EventService } from 'src/app/services/event.service';
 
+//reactive form
+import {FormGroup,FormBuilder,Validators} from '@angular/forms'
 //AngularFireStorage
 import { AngularFireStorage } from '@angular/fire/storage';
 //Image resizer
@@ -29,87 +30,86 @@ export class AddeventComponent implements OnInit {
     private router: Router,
     private toast: ToastrService,
     private storage:AngularFireStorage,
-    
+    private fb:FormBuilder
   ) {}
 
-  //Add event form Data
-  eventName: string;
-  description: string;
-  location: string;
-  category: string;
-  type: string;
-  startDate: string;
-  endDate: string;
-  maxParticipant: number;
-  venue: string;
-  picture: string =
-    'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
-  totalMembers: number;
+  picture: string = 'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
+  addEventForm:FormGroup;
+  submitted:boolean=false;
 
-  //set Picture based on select element - > Variable
-  selectedEvent: string;
+  ngOnInit(): void {
+    this.addEventForm = this.fb.group({
+      eventName: ['',Validators.required],
+      description: ['',Validators.required],
+      location: ['',Validators.required],
+      category: ['',Validators.required],
+      type: ['',Validators.required],
+      eventDate: ['',Validators.required],
+      lastDate: ['',Validators.required],
+      maxParticipant: ['',Validators.required],
+      maxMembersInTeam: [''],
+      venue: ['',Validators.required]
+    })
+  }
 
-  ngOnInit(): void {}
+  
+  get f(){
+    return this.addEventForm.controls;
+  }
+  
+  
 
-  handleAddEvents(f: NgForm) {
+  handleAddEvents() {
     const event: EventRequestPayload = {
-      eventName: this.eventName,
-      description: this.description,
-      location: this.location,
-      category: this.category.toUpperCase(),
-      type: this.type.toUpperCase(),
-      eventDate: this.startDate,
-      lastDate: this.endDate,
-      maxParticipant: this.maxParticipant,
+      eventName: this.f.eventName.value,
+      description: this.f.description.value,
+      location: this.f.location.value,
+      category: this.f.category.value.toUpperCase(),
+      type: this.f.type.value.toUpperCase(),
+      venue: this.f.venue.value.toUpperCase(),
+      eventDate: this.f.eventDate.value,
+      lastDate: this.f.lastDate.value,
+      maxParticipant: this.f.maxParticipant.value,
+      maxMembersInTeam: this.f.maxMembersInTeam.value,
       picture: this.picture,
-      maxMembersInTeam: this.totalMembers,
-      venue: this.venue.toUpperCase(),
     };
     
     this.eventService.addEvent(event).subscribe(
       (postResponse) => {
         this.toast.success('Event added successfully');
         this.router.navigateByUrl('/adminhome');
-        f.reset(); //reset form data after submiting
+        this.onReset(); //reset form data after submiting
       },
       (error) => {
         this.toast.error('Unable to add event');
       }
     );
   }
-  handleSaveDraft(f: NgForm) {
-    // this.eventRequestPayload.eventName = this.eventForm.get('eventName').value;
-    // this.eventRequestPayload.description =
-    //   this.eventForm.get('description').value;
-    // this.eventRequestPayload.location = this.eventForm.get('location').value;
-    // this.eventRequestPayload.category = this.eventForm
-    //   .get('category')
-    //   .value.toUpperCase();
-    // this.eventRequestPayload.type = this.eventForm.get('type').value;
-    // this.eventRequestPayload.eventDate = this.eventForm.get('eventDate').value;
-    // this.eventRequestPayload.lastDate = this.eventForm.get('lastDate').value;
-    // this.eventRequestPayload.maxParticipant =
-    //   this.eventForm.get('maxParticipant').value;
-    // console.log(this.eventRequestPayload);
+
+
+  handleSaveDraft() {
+
     const event: EventRequestPayload = {
-      eventName: this.eventName,
-      description: this.description,
-      location: this.location,
-      category: this.category.toUpperCase(),
-      type: this.type.toUpperCase(),
-      venue: this.venue.toUpperCase(),
-      eventDate: this.startDate,
-      lastDate: this.endDate,
-      maxParticipant: this.maxParticipant,
+      eventName: this.f.eventName.value,
+      description: this.f.description.value,
+      location: this.f.location.value,
+      category: this.f.category.value.toUpperCase(),
+      type: this.f.type.value.toUpperCase(),
+      venue: this.f.venue.value.toUpperCase(),
+      eventDate: this.f.eventDate.value,
+      lastDate: this.f.lastDate.value,
+      maxParticipant: this.f.maxParticipant.value,
+      maxMembersInTeam: this.f.maxMembersInTeam.value,
       picture: this.picture,
-      maxMembersInTeam: this.totalMembers,
     };
+    console.log("inside handleSaveDraft");
     
     this.eventService.saveDraft(event).subscribe(
       (data) => {
+        console.log("inside handleSaveDraft service");
         this.toast.success('Draft Saved');
         this.router.navigateByUrl('/adminhome');
-        f.reset();
+        this.onReset();  //reset form data after submiting
       },
       (error) => {
         throwError(error);
@@ -118,13 +118,21 @@ export class AddeventComponent implements OnInit {
     );
   }
 
+
   //To add a field Total members in a team
   isTeam() {
-    return this.type == 'team' ? true : false;
+    return this.f.type.value === 'team' ? true : false;
   }
 
+  //reset data after form submit
+  onReset(){
+    this.submitted = false;
+    this.addEventForm.reset;
+   }
+
+
   setPicture() {
-    switch (this.category) {
+    switch (this.f.category.value) {
       case 'cricket': {
         this.picture =
           'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/cricket.jpeg?alt=media&token=142af2aa-52c5-49ef-93e0-964bb3651e8d';
@@ -205,6 +213,24 @@ export class AddeventComponent implements OnInit {
         })
       )
       .subscribe();
+  }
+
+
+//When add Event button is clicked  
+  onAddEvent(){
+    this.submitted = true;
+    if(this.addEventForm.invalid) return;
+
+    this.handleAddEvents();
+  }
+
+
+//When save draft button is clicked
+  onSaveDraft(){
+    this.submitted = true;
+    if(this.addEventForm.invalid)  return; 
+    console.log("inside onSaveDraft");
+    this.handleSaveDraft();
   }
 
 }

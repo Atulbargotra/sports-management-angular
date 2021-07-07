@@ -1,58 +1,71 @@
 <div class="container addeventform">
-  <!-- card - Add Event -->
   <div>
     <div class="imgDim text-center">
-      <img [src]="event.picture" alt="Unable to load Image" height=210 width=330/>
+      <img
+        [src]="picture"
+        alt="Unable to load Image"
+        height="210"
+        width="330"
+      />
     </div>
     <div>
       <h5 class="text-center mt-2 mb-4">Edit Event Details</h5>
-
       <!-- Add event details form -->
-
-      <form class="row g-3" #f="ngForm">
+      <form class="row g-3" [formGroup]="UpdateEventForm">
         <div class="col-md-6">
           <label for="eventName" class="form-label">Event Name</label>
           <input
             type="text"
-            name="eventName"
+            formControlName="eventName"
             id="eventName"
             class="form-control"
-            [(ngModel)]="event.eventName"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.eventName.errors }"
           />
+          <div *ngIf="updated && f.eventName.errors" class="text-danger">
+            <div class="small" *ngIf="f.eventName.errors.required">
+              Event Name is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="location" class="form-label">Location</label>
           <input
             type="text"
-            name="location"
+            formControlName="location"
             id="location"
             class="form-control"
-            [(ngModel)]="event.location"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.location.errors }"
           />
+          <div *ngIf="updated && f.location.errors" class="text-danger">
+            <div class="small" *ngIf="f.location.errors.required">
+              Location is required
+            </div>
+          </div>
         </div>
         <div class="col-md-8">
           <label for="description" class="form-label">Description</label>
           <input
             type="text"
-            name="description"
+            formControlName="description"
             class="form-control"
             id="description"
-            [(ngModel)]="event.description"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.description.errors }"
           />
+          <div *ngIf="updated && f.description.errors" class="text-danger">
+            <div class="small" *ngIf="f.description.errors.required">
+              description is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-4">
-          <label for="selectedEvent" class="form-label">Category</label>
+          <label for="category" class="form-label">Category</label>
           <select
             class="form-select"
             aria-label="Default select example"
-            name="selectedEvent"
-            [(ngModel)]="event.category"
+            formControlName="category"
+            [ngClass]="{ 'is-invalid': updated && f.category.errors }"
             (ngModelChange)="setPicture()"
-            required
           >
             <optgroup label="Outdoor">
               <option value="CRICKET">Cricket</option>
@@ -65,7 +78,7 @@
               <option value="CHESS">Chess</option>
               <option value="TABLETENNIS">TableTennis</option>
               <option value="CARROM">Carrom</option>
-              <option value="8BALLPOOL">8 Ball Pool</option>
+              <option value="8BALLPOOL">8ballpool</option>
               <option value="OTHERS">Others</option>
             </optgroup>
           </select>
@@ -76,48 +89,50 @@
           <select
             class="form-select"
             aria-label="Default select example"
-            name="venue"
-            [(ngModel)]="event.venue"
-            required
+            formControlName="venue"
+            [ngClass]="{ 'is-invalid': updated && f.venue.errors }"
           >
             <option value="OUTDOOR">Outdoor</option>
             <option value="INDOOR">Indoor</option>
           </select>
         </div>
+
         <div class="col-md-6">
           <label for="maxParticipant" class="form-label"
             >Total Participants</label
           >
           <input
             type="number"
-            name="maxParticipant"
+            formControlName="maxParticipant"
             id="maxParticipant"
             class="form-control"
-            [(ngModel)]="event.maxParticipant"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.maxParticipant.errors }"
           />
+          <div *ngIf="updated && f.maxParticipant.errors" class="text-danger">
+            <div class="small" *ngIf="f.maxParticipant.errors.required">
+              Total Participants is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
           <label for="eventDate" class="form-label">Event Date</label>
           <input
             type="datetime-local"
-            name="eventDate"
+            formControlName="eventDate"
             id="eventDate"
             class="form-control"
-            [(ngModel)]="event.eventDate"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.eventDate.errors }"
           />
         </div>
         <div class="col-md-6">
           <label for="lastDate" class="form-label">End Date</label>
           <input
             type="date"
-            name="lastDate"
+            formControlName="lastDate"
             id="lastDate"
             class="form-control"
-            [(ngModel)]="event.lastDate"
-            required
+            [ngClass]="{ 'is-invalid': updated && f.lastDate.errors }"
           />
         </div>
 
@@ -127,11 +142,10 @@
             <input
               class="form-check-input"
               type="radio"
-              name="type"
+              formControlName="type"
               id="individual"
               value="INDIVIDUAL"
               checked
-              [(ngModel)]="event.type"
               (ngModelChange)="isTeam()"
               required
             />
@@ -143,10 +157,9 @@
             <input
               class="form-check-input"
               type="radio"
-              name="type"
+              formControlName="type"
               id="team"
               value="TEAM"
-              [(ngModel)]="event.type"
               (ngModelChange)="isTeam()"
               required
             />
@@ -156,15 +169,13 @@
 
         <div class="col-md-6" *ngIf="isTeam()">
           <label for="totalMembers" class="form-label"
-            >Total Members In Each Team</label
+            >Maximum Members In Each Team</label
           >
           <input
             type="number"
-            name="totalMembers"
-            id="totalMembers"
+            formControlName="maxMembersInTeam"
+            id="maxMembersInTeam"
             class="form-control"
-            [(ngModel)]="event.maxMembersInTeam"
-            required
           />
         </div>
 
@@ -179,14 +190,16 @@
 
           <button
             type="button"
-            [disabled]="!f.form.valid"
             class="btn btn-success px-4"
-            routerLink="/adminhome/events"
+            (click)="onUpdateEvent(eventId)"
           >
             Update Event
           </button>
         </div>
       </form>
+      <!-- </div>
+  </div>
+</div> -->
     </div>
   </div>
 </div>
