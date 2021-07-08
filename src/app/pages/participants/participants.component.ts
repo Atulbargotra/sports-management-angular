@@ -6,6 +6,7 @@ import { TeamService } from 'src/app/services/team.service';
 import { TeamDetailsPayload } from '../../Model/teamDetailsPayload';
 import { EventResponsePayload } from '../../Model/eventResponsePayload';
 import { UserRegistered } from '../../Model/userRegistered';
+import { MatchResponse } from 'src/app/Model/matchResponse';
 
 @Component({
   selector: 'app-participants',
@@ -15,29 +16,29 @@ import { UserRegistered } from '../../Model/userRegistered';
 export class ParticipantsComponent implements OnInit {
   type: string;
   name: string;
+  selectedMethod: string;
+  matchesAvailable: boolean = false;
+  matches: MatchResponse[];
   constructor(
     private teamService: TeamService,
     private eventService: EventService,
     private toast: ToastrService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-  ) {
-    this.type = this.router.getCurrentNavigation().extras.state.type;
-    this.name = this.router.getCurrentNavigation().extras.state.name;
-    console.log(this.router.getCurrentNavigation().extras.state);
-  }
+  ) {}
 
   registeredTeams: TeamDetailsPayload[];
   registeredUsers: UserRegistered[];
   event: EventResponsePayload;
-
+  pid: number;
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((res) => {
-      let pid = +res.get('id');
+      this.pid = +res.get('id');
+      this.event = history.state;
       if (this.type === 'TEAM') {
-        this.handleGetTeamsByEventID(pid);
+        this.handleGetTeamsByEventID(this.pid);
       } else {
-        this.handleGetUserByEventId(pid);
+        this.handleGetUserByEventId(this.pid);
       }
     });
   }
@@ -76,5 +77,13 @@ export class ParticipantsComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+  schedule() {
+    this.eventService
+      .schedule(this.pid, this.selectedMethod)
+      .subscribe((data) => {
+        this.matches = data.matches;
+        this.matchesAvailable = true;
+      });
   }
 }

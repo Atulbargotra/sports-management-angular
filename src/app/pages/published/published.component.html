@@ -45,7 +45,7 @@
                   <button
                     class="btn btn-success p-1"
                     [routerLink]="['/adminhome/published/', event.id]"
-                    [state]="{ type: event.type, name: event.eventName }"
+                    [state]="event"
                   >
                     Show Participants
                   </button>

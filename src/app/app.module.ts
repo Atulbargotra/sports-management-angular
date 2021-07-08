@@ -48,6 +48,7 @@ import { ParticipantsComponent } from './pages/participants/participants.compone
 
 
 import { CachingInterceptor } from './cachingInterceptor';
+import { MatchCardComponent } from './components/match-card/match-card.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { CachingInterceptor } from './cachingInterceptor';
     DraftsComponent,
     EditeventComponent,
     ParticipantsComponent,
+    MatchCardComponent,
   ],
   imports: [
     BrowserModule,

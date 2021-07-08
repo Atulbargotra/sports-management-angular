@@ -1,7 +1,7 @@
 <div class="row mt-5">
   <div class="col-md-6 col-sm-12">
     <div class="col-md col-sm-12 px-5">
-      <h5 class="p-3 text-center">Participants in {{ name }}</h5>
+      <h5 class="p-3 text-center">Participants in {{ event.eventName }}</h5>
 
       <ng-container *ngFor="let team of registeredTeams">
         <div class="mb-3 d-flex justify-content-center teamDetailsBox">
@@ -59,27 +59,28 @@
   <div class="col-md-6 border-middle col-sm-12">
     <div class="col-md col-sm-12 px-5">
       <h5 class="text-center p-3">Generate Matchups</h5>
-      <form class="row gx-4 gy-3">
-        <div class="col-md-12">
-          <label for="name" class="form-label">Type of Schedule</label>
-          <select class="form-select" aria-label="Default select example">
-            <option selected value="leagueRoundRobin">
-              League Round Robin
-            </option>
-            <option value="tournamentSingleElimination">
-              Tournament Single Elimination
-            </option>
-            <option value="tournamentDoubleElimination">
-              Tournament Double Elimination
-            </option>
-          </select>
+      <div class="col-md-12">
+        <label for="name" class="form-label">Type of Schedule</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          [(ngModel)]="selectedMethod"
+        >
+          <option selected value="rr">League Round Robin</option>
+          <option value="se">Tournament Single Elimination</option>
+          <option value="de">Tournament Double Elimination</option>
+        </select>
+      </div>
+      <div class="d-grid col-4 mx-auto mt-3">
+        <button (click)="schedule()" class="btn btn-success">
+          Click To Generate
+        </button>
+      </div>
+      <ng-template [ngIf]="matchesAvailable">
+        <div *ngFor="let match of matches">
+          <app-match-card [match]="match"></app-match-card>
         </div>
-        <div class="d-grid col-4 mx-auto">
-          <button type="submit" class="btn btn-success">
-            Click To Generate
-          </button>
-        </div>
-      </form>
+      </ng-template>
     </div>
   </div>
 </div>
