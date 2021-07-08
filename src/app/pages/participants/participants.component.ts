@@ -19,6 +19,7 @@ export class ParticipantsComponent implements OnInit {
   selectedMethod: string;
   matchesAvailable: boolean = false;
   matches: MatchResponse[];
+  notScheduled: boolean = true;
   constructor(
     private teamService: TeamService,
     private eventService: EventService,
@@ -34,13 +35,14 @@ export class ParticipantsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.paramMap.subscribe((res) => {
       this.pid = +res.get('id');
-      this.event = history.state;
-      if (this.type === 'TEAM') {
-        this.handleGetTeamsByEventID(this.pid);
-      } else {
-        this.handleGetUserByEventId(this.pid);
-      }
     });
+    this.event = history.state;
+    console.log(this.event);
+    if (this.event.type === 'TEAM') {
+      this.handleGetTeamsByEventID(this.pid);
+    } else {
+      this.handleGetUserByEventId(this.pid);
+    }
   }
 
   handleGetEventById(id: number) {
@@ -56,6 +58,7 @@ export class ParticipantsComponent implements OnInit {
   }
 
   handleGetTeamsByEventID(id: number) {
+    console.log('ininin');
     this.teamService.geTeamsByEventId(id).subscribe(
       (res) => {
         this.registeredTeams = res;
@@ -71,6 +74,12 @@ export class ParticipantsComponent implements OnInit {
     this.eventService.getUsersRegisteredInEvent(id).subscribe(
       (res) => {
         this.registeredUsers = res;
+        this.registeredUsers.map((user) =>
+          user.picture === null
+            ? (user.picture =
+                'https://img.icons8.com/color/48/000000/user-male-circle--v1.png')
+            : user.picture
+        );
       },
       (error) => {
         this.toast.error('Problem occured to get Registered Users By ID');
@@ -85,5 +94,16 @@ export class ParticipantsComponent implements OnInit {
         this.matches = data.matches;
         this.matchesAvailable = true;
       });
+  }
+  publish() {
+    this.eventService.publishSchedule(this.pid, this.selectedMethod).subscribe(
+      (data) => {
+        this.notScheduled = false;
+        this.toast.success('Schedule Published');
+      },
+      (error) => {
+        this.toast.error('Failed');
+      }
+    );
   }
 }

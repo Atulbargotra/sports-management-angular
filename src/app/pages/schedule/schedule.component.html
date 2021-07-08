@@ -1,0 +1,4 @@
+<h2 class="mt-3 ">Schedule for {{ schedule.eventName }}</h2>
+<div *ngFor="let match of schedule.matches">
+  <app-match-card [match]="match"></app-match-card>
+</div>

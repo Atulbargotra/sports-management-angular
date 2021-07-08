@@ -38,8 +38,7 @@
             <div
               class="d-flex bordernoti mb-2"
               *ngFor="let noti of notifications"
-              routerLink="/userhome/winners"
-              (click)="deleteNotification(noti.id)"
+              (click)="deleteNotification(noti.id, noti.eventId, noti.message)"
             >
               <div>
                 <img

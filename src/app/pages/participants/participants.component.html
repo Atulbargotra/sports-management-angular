@@ -76,6 +76,19 @@
           Click To Generate
         </button>
       </div>
+      <ng-template [ngIf]="notScheduled && matchesAvailable">
+        <div class="card mt-3">
+          <div class="card-horizontal">
+            <div class="card-body">
+              <p>
+                Only you can view this schedule.
+                <a class="a" (click)="publish()">Publish</a>
+                it now.
+              </p>
+            </div>
+          </div>
+        </div>
+      </ng-template>
       <ng-template [ngIf]="matchesAvailable">
         <div *ngFor="let match of matches">
           <app-match-card [match]="match"></app-match-card>

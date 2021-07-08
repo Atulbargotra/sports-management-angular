@@ -15,6 +15,7 @@ import { ParticipatedEventsComponent } from './pages/participated-events/partici
 import { ProfileComponent } from './pages/profile/profile.component';
 import { PublishedComponent } from './pages/published/published.component';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
+import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { UserhomeComponent } from './pages/userhome/userhome.component';
 import { WinnersComponent } from './pages/winners/winners.component';
 
@@ -71,6 +72,10 @@ const routes: Routes = [
         path: 'profile',
         component: ProfileComponent,
       },
+      {
+        path: 'schedule/:id',
+        component: ScheduleComponent,
+      },  
       {
         path: 'events',
         component: EventsComponent,

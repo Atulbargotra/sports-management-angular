@@ -24,17 +24,18 @@ export class UserheaderComponent implements OnInit {
     private authService: AuthService,
     private router: Router,
     private elementRef: ElementRef
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     this.notificationService.getUserNotifications().subscribe(
       (data) => {
         this.notifications = data;
+        console.log(data);
         this.count = data.length;
       },
       () => {}
     );
   }
-
-  ngOnInit(): void {}
 
   //Signout feature
   logout() {
@@ -53,12 +54,19 @@ export class UserheaderComponent implements OnInit {
       this.showNoti = false;
     }
   }
-  deleteNotification(id: number) {
-    this.notificationService.deleteNotification(id).subscribe((data) => {
-      this.notifications = this.notifications.filter(
-        (notification) => notification.id !== id
-      );
-      this.count = this.count - 1;
-    });
+  deleteNotification(id: number, eventId: number, message: string) {
+    console.log(message);
+    if (message.startsWith('Schedule')) {
+      console.log('ininni');
+      this.router.navigateByUrl(`/userhome/schedule/${eventId}`);
+    } else {
+      this.notificationService.deleteNotification(id).subscribe((data) => {
+        this.notifications = this.notifications.filter(
+          (notification) => notification.id !== id
+        );
+        this.count = this.count - 1;
+      });
+      this.router.navigateByUrl('/userhome/winners');
+    }
   }
 }
