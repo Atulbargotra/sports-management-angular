@@ -1,9 +1,9 @@
 <div class="container addeventform">
   
-  <div>
-    <div class="imgDim">
+  <div class="row">
+    <div class="text-center">
       <label for="imagePicker">
-        <img [src]="picture" alt="Unable to load Image" height=210 width=330/>
+        <img [src]="picture" alt="Unable to load Image" class="img-fluid" width="350"/>
       </label>
       <input
           type="file"
@@ -16,7 +16,7 @@
         />
     </div>
     <div>
-      <h5 class="text-center my-4">Add Event Details</h5>
+      <h5 class="text-center mt-2 mb-4">Add Event Details</h5>
       <form class="row g-3" [formGroup]="addEventForm">
         <div class="col-md-6">
           <label for="eventName" class="form-label">Event Name</label>
