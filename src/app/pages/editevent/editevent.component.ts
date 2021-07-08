@@ -4,46 +4,75 @@ import { ToastrService } from 'ngx-toastr';
 import { EventService } from '../../services/event.service';
 import { EventRequestPayload } from '../../Model/eventRequestPayload';
 
+
+//reactive form
+import {FormGroup,FormBuilder,Validators} from '@angular/forms'
+
 @Component({
   selector: 'app-editevent',
   templateUrl: './editevent.component.html',
   styleUrls: ['./editevent.component.css'],
 })
 export class EditeventComponent implements OnInit {
-  event: EventRequestPayload;
-  pid: number;
 
-  //Edit Event form
-  eventName: string;
-  description: string;
-  location: string;
-  category: string;
-  type: string;
-  eventDate: string;
-  lastDate: string;
-  maxParticipant: number;
-  picture: string;
-  maxMembersInTeam: number;
-  venue: string;
+  picture:string;
+  pid: number;
+  UpdateEventForm:FormGroup;
+  updated:boolean=false;
+  eventId: number;
 
   constructor(
     private eventService: EventService,
     private toast: ToastrService,
     private route: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private fb:FormBuilder
   ) {}
 
   ngOnInit(): void {
+
+    this.UpdateEventForm = this.fb.group({
+      eventName: ['',Validators.required],
+      description: ['',Validators.required],
+      location: ['',Validators.required],
+      category: [''],
+      type: [''],
+      eventDate: [''],
+      lastDate: [''],
+      maxParticipant: ['',Validators.required],
+      maxMembersInTeam: [''],
+      venue: ['']
+    })
+
+
     this.activatedRoute.paramMap.subscribe((res) => {
       this.pid = +res.get('id'); // + is added to convert pid from string type to number
       this.handleGetEventById(this.pid);
     });
   }
 
+
+  get f(){
+    return this.UpdateEventForm.controls;
+  }
+
   handleGetEventById(id: number) {
     this.eventService.getEventById(id).subscribe(
-      (getRes) => {
-        this.event = getRes;
+      (data) => {
+        this.UpdateEventForm.patchValue({
+          eventName: data.eventName,
+          description: data.description,
+          category: data.category,
+          type: data.type,
+          maxParticipant: data.maxParticipant,
+          lastDate: data.lastDate,
+          eventDate: data.eventDate,
+          location: data.location,
+          maxMembersInTeam: data.maxMembersInTeam,
+          venue: data.venue          
+        })
+        this.picture = data.picture;
+        this.eventId = data.id
       },
       (error) => {
         this.toast.error('Problem Occured');
@@ -54,14 +83,11 @@ export class EditeventComponent implements OnInit {
 
   //To add a field Total members in a team
   isTeam() {
-    return this.event.type == 'TEAM' ? true : false;
-  }
-  editDraft() {
-    console.log(this.eventName);
+    return this.f.type.value === 'TEAM' ? true : false;
   }
 
   setPicture() {
-    switch (this.category) {
+    switch (this.f.category.value) {
       case 'cricket': {
         this.picture =
           'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/cricket.jpeg?alt=media&token=142af2aa-52c5-49ef-93e0-964bb3651e8d';
@@ -114,4 +140,37 @@ export class EditeventComponent implements OnInit {
       }
     }
   }
+
+  onUpdateEvent(id:number){
+
+   this.updated = true;
+   if(this.UpdateEventForm.invalid) return; 
+
+    const event: EventRequestPayload = {
+        eventName: this.f.eventName.value,
+        description: this.f.description.value,
+        location: this.f.location.value,
+        category: this.f.category.value.toUpperCase(),
+        type: this.f.type.value.toUpperCase(),
+        venue: this.f.venue.value.toUpperCase(),
+        eventDate: this.f.eventDate.value,
+        lastDate: this.f.lastDate.value,
+        maxParticipant: this.f.maxParticipant.value,
+        maxMembersInTeam: this.f.maxMembersInTeam.value,
+        picture: this.picture,
+  };
+
+  console.log(event);
+    this.eventService.editDraft(id,event).subscribe(res=>{
+      this.toast.success('Event updated successfully');
+      this.route.navigateByUrl('/adminhome');
+    },
+    (error)=>{
+      this.toast.error('Unable to update event');
+    }
+    )
+  }
+  
+  
 }
+

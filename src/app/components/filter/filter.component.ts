@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-filter',
@@ -8,13 +8,20 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class FilterComponent implements OnInit {
   constructor() {}
 
-  selectedLocation:string;
+  categoryValue:string="None";
+
+  //getting categories of all events from parent component
+  @Input() categories:string[];
+
   @Output() filterValue = new EventEmitter<string>();
 
   ngOnInit(): void {}
 
   sendFilterValue(value: string) {
     console.log('In Child component : ' + value);
-    this.filterValue.emit(value);
+    this.filterValue.emit(value);    
   }
+
+  
 }
+

@@ -22,6 +22,7 @@ export class EventsComponent implements OnInit {
   eventAvailable: boolean = false;
   eventList: EventResponsePayload[];
   filterEventList: EventResponsePayload[];
+  categories:string[];
 
   getFilterValue(value: string) {
     this.eventService.getAllEvents(value).subscribe((data) => {
@@ -81,6 +82,10 @@ export class EventsComponent implements OnInit {
         this.eventAvailable = true;
         this.eventList = data;
         this.filterEventList = data;
+        
+        //getting categories of all the event in an array
+        const categoryDuplicates = data.map((ev)=>ev.category)
+        this.categories = categoryDuplicates.filter((item, i, ar) => ar.indexOf(item) === i);
       },
       (error) => {
         this.toast.error('Unable to fetch events');

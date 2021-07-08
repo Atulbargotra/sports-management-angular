@@ -1,5 +1,5 @@
 <div class="container addeventform">
-  <!-- card - Add Event -->
+  
   <div>
     <div class="imgDim">
       <label for="imagePicker">
@@ -17,42 +17,54 @@
     </div>
     <div>
       <h5 class="text-center my-4">Add Event Details</h5>
-
-      <!-- Add event details form -->
-
-      <form class="row g-3" #f="ngForm">
+      <form class="row g-3" [formGroup]="addEventForm">
         <div class="col-md-6">
           <label for="eventName" class="form-label">Event Name</label>
           <input
             type="text"
             name="eventName"
+            formControlName="eventName"
             id="eventName"
             class="form-control"
-            [(ngModel)]="eventName"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.eventName.errors}"
           />
+          <div *ngIf="submitted && f.eventName.errors" class="text-danger">
+            <div class="small" *ngIf="f.eventName.errors.required">
+              Event Name is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="location" class="form-label">Location</label>
           <input
             type="text"
             name="location"
+            formControlName="location"
             id="location"
             class="form-control"
-            [(ngModel)]="location"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.location.errors}"
           />
+          <div *ngIf="submitted && f.location.errors" class="text-danger">
+            <div class="small" *ngIf="f.location.errors.required">
+              Location is required
+            </div>
+          </div>
         </div>
         <div class="col-md-8">
           <label for="description" class="form-label">Description</label>
           <input
             type="text"
             name="description"
+            formControlName="description"
             class="form-control"
             id="description"
-            [(ngModel)]="description"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors}"
           />
+          <div *ngIf="submitted && f.description.errors" class="text-danger">
+            <div class="small" *ngIf="f.description.errors.required">
+              description is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-4">
@@ -61,9 +73,9 @@
             class="form-select"
             aria-label="Default select example"
             name="category"
-            [(ngModel)]="category"
+            formControlName="category"
+            [ngClass]="{ 'is-invalid': submitted && f.category.errors}"
             (ngModelChange)="setPicture()"
-            required
           >
             <optgroup label="Outdoor">
               <option value="cricket">Cricket</option>
@@ -80,6 +92,11 @@
               <option value="others">Others</option>
             </optgroup>
           </select>
+          <div *ngIf="submitted && f.category.errors" class="text-danger">
+            <div class="small" *ngIf="f.category.errors.required">
+              Category is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
@@ -88,13 +105,19 @@
             class="form-select"
             aria-label="Default select example"
             name="venue"
-            [(ngModel)]="venue"
-            required
+            formControlName="venue"
+            [ngClass]="{ 'is-invalid': submitted && f.venue.errors}"
           >
             <option value="outdoor">Outdoor</option>
             <option value="indoor">Indoor</option>
           </select>
+          <div *ngIf="submitted && f.venue.errors" class="text-danger">
+            <div class="small" *ngIf="f.venue.errors.required">
+              Category is required
+            </div>
+          </div>
         </div>
+
         <div class="col-md-6">
           <label for="maxParticipant" class="form-label"
             >Total Participants</label
@@ -102,11 +125,16 @@
           <input
             type="number"
             name="maxParticipant"
+            formControlName="maxParticipant"
             id="maxParticipant"
             class="form-control"
-            [(ngModel)]="maxParticipant"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.maxParticipant.errors}"
           />
+          <div *ngIf="submitted && f.maxParticipant.errors" class="text-danger">
+            <div class="small" *ngIf="f.maxParticipant.errors.required">
+              Total Participants is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
@@ -114,22 +142,32 @@
           <input
             type="datetime-local"
             name="eventDate"
+            formControlName="eventDate"
             id="eventDate"
             class="form-control"
-            [(ngModel)]="startDate"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.eventDate.errors}"
           />
+          <div *ngIf="submitted && f.eventDate.errors" class="text-danger">
+            <div class="small" *ngIf="f.eventDate.errors.required">
+              Event Date is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="lastDate" class="form-label">End Date</label>
           <input
             type="date"
             name="lastDate"
+            formControlName="lastDate"
             id="lastDate"
             class="form-control"
-            [(ngModel)]="endDate"
-            required
+            [ngClass]="{ 'is-invalid': submitted && f.lastDate.errors}"
           />
+          <div *ngIf="submitted && f.lastDate.errors" class="text-danger">
+            <div class="small" *ngIf="f.lastDate.errors.required">
+              Last Date is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
@@ -139,10 +177,10 @@
               class="form-check-input"
               type="radio"
               name="type"
+              formControlName="type"
               id="individual"
               value="individual"
               checked
-              [(ngModel)]="type"
               (ngModelChange)="isTeam()"
               required
             />
@@ -155,13 +193,18 @@
               class="form-check-input"
               type="radio"
               name="type"
+              formControlName="type"
               id="team"
-              value="team"
-              [(ngModel)]="type"
+              value="team"              
               (ngModelChange)="isTeam()"
               required
             />
-            <label class="form-check-label" for="team"> Team </label>
+            <label class="form-check-label" for="team"> Team </label>            
+          </div>
+          <div *ngIf="submitted && f.type.errors" class="text-danger">
+            <div class="small" *ngIf="f.type.errors.required">
+              Event Type is required
+            </div>
           </div>
         </div>
 
@@ -171,30 +214,32 @@
           >
           <input
             type="number"
-            name="totalMembers"
-            id="totalMembers"
+            name="maxMembersInTeam"
+            formControlName="maxMembersInTeam"
+            id="maxMembersInTeam"
             class="form-control"
-            [(ngModel)]="totalMembers"
-            required
+            [ngClass]="{'is-invalid': submitted && f.maxMembersInTeam.errors}"
           />
+          <div *ngIf="submitted && f.maxMembersInTeam.errors" class="text-danger">
+            <div class="small" *ngIf="f.maxMembersInTeam.errors.required">
+              Total Members are required
+            </div>
+          </div>
         </div>
 
         <div class="col-12 mt-4 d-flex justify-content-around">
           <button
             type="button"
             class="btn btn-secondary px-4"
-            (click)="handleSaveDraft(f)"
-            routerLink="/adminhome/events"
+            (click)="onSaveDraft()"
           >
             Save Draft
           </button>
 
           <button
             type="button"
-            [disabled]="!f.form.valid"
             class="btn btn-success px-4"
-            (click)="handleAddEvents(f)"
-            routerLink="/adminhome/events"
+            (click)="onAddEvent()"
           >
             Add Event
           </button>
