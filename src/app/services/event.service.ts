@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventRequestPayload } from '../Model/eventRequestPayload';
 import { EventResponsePayload } from '../Model/eventResponsePayload';
+import { ScheduleResponse } from '../Model/scheduleResponse';
 import { TeamRequestPayload } from '../Model/teamRequestPayload';
 import { UserRegistered } from '../Model/userRegistered';
 import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
@@ -116,7 +117,19 @@ export class EventService {
   getUsersRegisteredInEvent(id: number): Observable<Array<UserRegistered>> {
     return this.http.get<UserRegistered[]>(this.url + `/${id}/registered`);
   }
-  schedule(id: number, method: string): Observable<any> {
-    return this.http.get(this.url + `/${id}/schedule?method=${method}`);
+  schedule(id: number, method: string): Observable<ScheduleResponse> {
+    console.log('ininni');
+    return this.http.get<ScheduleResponse>(
+      this.url + `/${id}/schedule/draft?method=${method}`
+    );
+  }
+  publishSchedule(id: number, method: string): Observable<boolean> {
+    return this.http.put<boolean>(
+      this.url + `/${id}/schedule/publish?method=${method}`,
+      {}
+    );
+  }
+  getSchedule(id: number): Observable<ScheduleResponse> {
+    return this.http.get<ScheduleResponse>(this.url + `/${id}/schedule`);
   }
 }
