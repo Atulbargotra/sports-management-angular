@@ -29,15 +29,6 @@
           />
         </div>
         <div class="col-6">
-          <label for="email" class="form-label">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            id="email"
-            formControlName="email"
-          />
-        </div>
-        <div class="col-6">
           <label for="maxMembers" class="form-label">Maximum Members</label>
           <input
             type="number"
@@ -67,41 +58,31 @@
             formControlName="contact"
           />
         </div>
-        <div
-          class="container"
-          *ngFor="let member of getMembersFormControls(); let i = index"
-        >
-          <label>Member {{ i + 1 }} </label>
-          <div class="row">
-            <div class="col-sm-12">
-              <input
-                class="form-control"
-                [formControl]="member"
-                type="text"
-                placeholder="Email"
-              />
-              <div class="col-sm-2"></div>
-              <button
-                class="col-sm-2 btn-close"
-                (click)="removeMember(i)"
-              ></button>
-            </div>
-          </div>
-        </div>
-        <br />
-        <button
-          (click)="addMember($event)"
-          class="btn btn-secondary col-12 my-4"
-        >
-          Add new Member
-        </button>
-        <br />
-        <br />
         <div class="d-grid gap-2 col-6 mx-auto">
           <button type="submit" class="btn btn-success">Register</button>
         </div>
       </form>
     </div>
+    <button
+      *ngIf="inviteLinkAvailable"
+      class="btn btn-secondary mt-5 ml-10"
+      (click)="copyMessage()"
+      value="click to copy"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        fill="currentColor"
+        class="bi bi-share"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
+        />
+      </svg>
+      Share Invite
+    </button>
   </div>
 
   <div class="col-md-6 col-sm-12">

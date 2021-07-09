@@ -46,4 +46,7 @@ export class TeamService {
   getMyTeams(): Observable<Array<TeamDetailsPayload>> {
     return this.http.get<TeamDetailsPayload[]>(this.url + `/me`);
   }
+  joinTeamFromInvite(token: string) {
+    return this.http.put(this.url + `/invite?token=${token}`, {});
+  }
 }
