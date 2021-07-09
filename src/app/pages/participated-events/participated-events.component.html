@@ -1,10 +1,10 @@
-<div class="ParticipatedBox">
-  <div class="">
-    <h5 class="my-4 text-center">List of Participated Events</h5>
+<div>
+  <div>
+    <h5 class="mt-4 mb-5 text-center">List of Participated Events</h5>
   </div>
-  <div class="row">
-    <div class="col m-3" *ngFor="let event of eventList">
-      <app-eventlist [event]="event" [text]="'Unregister'"></app-eventlist>
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-5 mx-2" *ngFor="let event of eventList">
+      <app-participationlist [event]="event" [text]="'Unregister'"></app-participationlist>
     </div>
   </div>
 </div>
