@@ -25,9 +25,9 @@ export class RegisterPageComponent implements OnInit {
   teamForm: FormGroup;
   pid: number;
   maxMembers: number;
-
+  teamInviteLink: string;
   teamRequestPayload: TeamRequestPayload;
-
+  inviteLinkAvailable: boolean = false;
   constructor(
     private activatedRoute: ActivatedRoute,
     private eventService: EventService,
@@ -39,11 +39,9 @@ export class RegisterPageComponent implements OnInit {
     this.teamRequestPayload = {
       name: '',
       description: '',
-      email: '',
       city: '',
       maxMembers: 0,
       contact: '',
-      members: [],
     };
   }
 
@@ -59,11 +57,9 @@ export class RegisterPageComponent implements OnInit {
     this.teamForm = this.fb.group({
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       maxMembers: new FormControl('', Validators.required),
       contact: new FormControl('', Validators.required),
-      members: this.fb.array([this.fb.control(null)]),
     });
   }
 
@@ -89,25 +85,11 @@ export class RegisterPageComponent implements OnInit {
       }
     );
   }
-  addMember(e): void {
-    e.preventDefault();
-    // if((this.teamForm.get('members') as FormArray).length > this.event.)
-    (this.teamForm.get('members') as FormArray).push(this.fb.control(null));
-  }
 
-  removeMember(index) {
-    (this.teamForm.get('members') as FormArray).removeAt(index);
-  }
-
-  getMembersFormControls(): AbstractControl[] {
-    return (<FormArray>this.teamForm.get('members')).controls;
-  }
   createTeam() {
     this.teamRequestPayload.name = this.teamForm.get('name').value;
     this.teamRequestPayload.description =
       this.teamForm.get('description').value;
-    this.teamRequestPayload.email = this.teamForm.get('email').value;
-    this.teamRequestPayload.members = this.teamForm.get('members').value;
     this.teamRequestPayload.city = this.teamForm.get('city').value;
     this.teamRequestPayload.contact = this.teamForm.get('contact').value;
     this.teamRequestPayload.maxMembers = Number(
@@ -116,12 +98,16 @@ export class RegisterPageComponent implements OnInit {
     this.eventService
       .registerAsTeam(this.pid, this.teamRequestPayload)
       .subscribe(
-        () => {
+        (data) => {
+          console.log(data);
           this.toast.success('Joined to Event');
-          this.router.navigateByUrl('/userhome');
+          //this.router.navigateByUrl('/userhome');
+          this.inviteLinkAvailable = true;
+          this.teamInviteLink = data.link;
         },
-        (error) => {
-          this.toast.error('Failed');
+        (errorObj) => {
+          console.log(errorObj);
+          this.toast.error(errorObj.error.message);
         }
       );
   }
@@ -130,5 +116,18 @@ export class RegisterPageComponent implements OnInit {
       this.toast.success('Email Send to Team Admin');
       this.router.navigateByUrl('/userhome');
     });
+  }
+  copyMessage(val: string) {
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = this.teamInviteLink;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 }

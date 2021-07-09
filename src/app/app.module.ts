@@ -50,6 +50,7 @@ import { ParticipantsComponent } from './pages/participants/participants.compone
 import { CachingInterceptor } from './cachingInterceptor';
 import { MatchCardComponent } from './components/match-card/match-card.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
+import { InviteComponent } from './pages/invite/invite.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { ScheduleComponent } from './pages/schedule/schedule.component';
     ParticipantsComponent,
     MatchCardComponent,
     ScheduleComponent,
+    InviteComponent,
   ],
   imports: [
     BrowserModule,

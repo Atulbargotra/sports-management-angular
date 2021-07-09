@@ -91,7 +91,7 @@ export class EventService {
     return this.http.put(this.url + `/${id}/register`, {});
   }
   registerAsTeam(id: number, team: TeamRequestPayload): Observable<any> {
-    return this.http.put(this.url + `/${id}/register/team`, team);
+    return this.http.put<any>(this.url + `/${id}/register/team`, team);
   }
   getEventById(id: number, cache = false): Observable<EventResponsePayload> {
     let headers: HttpHeaders;

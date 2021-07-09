@@ -91,8 +91,10 @@ export class ParticipantsComponent implements OnInit {
     this.eventService
       .schedule(this.pid, this.selectedMethod)
       .subscribe((data) => {
-        this.matches = data.matches;
-        this.matchesAvailable = true;
+        if (data.matches.length > 0) {
+          this.matches = data.matches;
+          this.matchesAvailable = true;
+        }
       });
   }
   publish() {
