@@ -1,0 +1,155 @@
+
+  <div class="text-center mt-3 mb-5">
+      <h4>List of Closed Event</h4>
+  </div>
+
+  <div class="row">
+
+    <div class="col-md-5 mx-5">
+        <ng-container *ngFor="let event of eventList">
+            <app-feedback-list [event]="event" (FeedbackEventName)="getFeedbackEventName($event)"></app-feedback-list>
+        </ng-container>
+    </div>
+
+
+    <div class="card col-md-5 mx-5" *ngIf="formAvailable">
+        <div class="card-header p-2 text-center bg-secondary">
+            <h5 class="text-white">Your Opinion Matters</h5>
+        </div>
+        <div class="card-body py-2 my-2 cBody">
+            <h5 class="card-title text-center">Give us your feedback on {{eventName}}</h5>
+            <form class="px-4">
+                    
+                    <div class="mt-4">
+                        <p>What Rating would you give to this Event</p>
+                        <div class="mt-2">
+                            <button class="bt px-1" (click)="getRating(worst.value)" value="worst" #worst><img src="https://img.icons8.com/emoji/35/000000/weary-face.png"/>Worst</button>
+                            <button class="bt px-1" (click)="getRating(poor.value)" value="poor" #poor><img src="https://img.icons8.com/emoji/35/000000/unamused-face.png"/>Poor</button>
+                            <button class="bt px-1" (click)="getRating(okay.value)" value="okay" #okay><img src="https://img.icons8.com/emoji/35/000000/neutral-face.png"/>Okay</button>
+                            <button class="bt px-1" (click)="getRating(good.value)" value="good" #good><img src="https://img.icons8.com/emoji/35/000000/grinning-face-emoji.png"/>Good</button>
+                            <button class="bt px-1" (click)="getRating(great.value)" value="great" #great><img src="https://img.icons8.com/emoji/35/000000/star-struck.png"/>Great</button>
+                        </div>
+
+                        <div class="text-center mt-3">
+                            {{message}}
+                        </div>
+                    </div>
+
+                    <div class="my-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">How could we improve?</label>
+                        <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-success p-1">Submit</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+    
+          
+  </div>
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- <div class="row px-4">
+    <div class="text-center mt-3 mb-4">
+        <h4>List of Closed Event</h4>
+    </div>
+    <div class="col-6">
+      <ng-container *ngFor="let event of eventList">
+          <app-feedback-list [event]="event"></app-feedback-list>
+      </ng-container>
+    </div>
+    <div class="col-5 mx-5">
+  
+          <div class="card">
+              <div class="card-header p-2 text-center bg-secondary">
+                  <h4 class="text-white">Your Opinion Matters</h4>
+              </div>
+              <div class="card-body p-3 my-2">
+                  <h5 class="card-title text-center">Give us your feedback on Cricket</h5>
+                  <form class="px-4">
+                      <h5 class="mt-3 mb-2">Rating</h5>
+                      <div class="d-flex justify-content-around">
+                          <div class="form-check p-2">
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                              <label class="form-check-label m-0" for="flexRadioDefault1">
+                               Very Good
+                              </label>
+                          </div>
+                          <div class="form-check p-2">
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                               Good
+                              </label>
+                          </div>
+                          <div class="form-check p-2">
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Medicore
+                              </label>
+                          </div>
+                          <div class="form-check p-2">
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Bad
+                              </label>
+                          </div>
+                          <div class="form-check p-2">
+                              <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                              <label class="form-check-label" for="flexRadioDefault2">
+                                Very Bad 
+                              </label>
+                          </div>
+                      </div>
+  
+                      <div class="my-3">
+                          <label for="exampleFormControlTextarea1" class="form-label">How could we improve?</label>
+                          <textarea class="form-control mt-3" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+  
+                      <div class="text-center">
+                          <button class="btn btn-success p-1">Submit</button>
+                      </div>
+                  </form>
+              </div>
+            </div>
+      
+            <div class="feedback">
+              <h3>What rate would you give this article?</h3>
+              <div class="feedback_ratings">
+                  <span class="feedback_rating" data-rate="1">😢 Worst</span>
+                  <span class="feedback_rating" data-rate="2">😒 Poor</span>
+                  <span class="feedback_rating" data-rate="3">😐 OK</span>
+                  <span class="feedback_rating" data-rate="4">😏 Good</span>
+                  <span class="feedback_rating" data-rate="5">😁 Great</span>
+              </div>
+              <div class="feedback-n">
+      
+              </div>
+      
+          </div>
+    </div>
+    
+  
+    </div>
+    
+    
+     -->

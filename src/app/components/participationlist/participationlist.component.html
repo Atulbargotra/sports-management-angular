@@ -16,7 +16,7 @@
     <div class="b p-1 px-2">
       <p class="m-0">
         <span>{{ event.eventDate | date: "shortTime" }}</span
-        >&nbsp;&nbsp;<span>TEAM</span>
+        >&nbsp;&nbsp;<span>{{event.type | titlecase}}</span>
       </p>
       <p class="m-0 py-1">{{ event.eventName }}, {{ event.location }}</p>
       <p class="m-0">{{ event.description }}</p>

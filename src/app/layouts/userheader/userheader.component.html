@@ -42,7 +42,7 @@
             >
               <div>
                 <img
-                  src="../../../assets/event_category/CRICKET.jpg"
+                  [src]="noti.picture"
                   class="imgBorder"
                   alt="no image"
                   height="40"
@@ -74,21 +74,27 @@
             <img src="../../../assets/userImg2.png" height="30" class="rounded-circle" width="30" alt="">
             Mukul
           </button>
-          <div class="dropdown-content">
+          <div class="dropdown-content text-center">
             <a
-              class="nav-link mx-4 p-1 link"
+              class="nav-link p-1"
               routerLink="/userhome/winners"
               routerLinkActive="active"
               >Winners</a
             >
             <a
-              class="nav-link mx-4 p-1 link"
+              class="nav-link p-1"
               routerLink="/userhome/profile"
               routerLinkActive="active"
               >Profile</a
             >
             <a
-              class="nav-link mx-4 p-1 link"
+            class="nav-link p-1"
+            routerLink="/userhome/feedback"
+            routerLinkActive="active"
+            >Feedback</a
+          >
+            <a
+              class="nav-link p-1"
               routerLink="/userhome/profile"
               (click)="logout()"
               >Logout</a

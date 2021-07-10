@@ -52,6 +52,8 @@ import { MatchCardComponent } from './components/match-card/match-card.component
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { ParticipationlistComponent } from './components/participationlist/participationlist.component';
 import { InviteComponent } from './pages/invite/invite.component';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
+import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
 
 @NgModule({
   declarations: [
@@ -81,6 +83,8 @@ import { InviteComponent } from './pages/invite/invite.component';
     ScheduleComponent,
     ParticipationlistComponent,
     InviteComponent,
+    FeedbackComponent,
+    FeedbackListComponent,
   ],
   imports: [
     BrowserModule,
