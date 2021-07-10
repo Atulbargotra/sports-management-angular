@@ -1,23 +1,12 @@
-<div class="container-fluid eventContainer">
-  <div class="row">
-    <div class="col-3 mt-5">
-      <!-- App Filter Component -->
-    </div>
-    <div class="col-9 mt-5">
-      <div class="row EventListHeading">
-        <h5 class="mt-3 text-center">List of Events</h5>
-      </div>
-      <div class="row border mt-1">
-        <div class="row d-flex">
-          <!-- Looping through Events fetching array of eventlist -->
-          <div class="mx-4 my-3 w-25" *ngFor="let event of eventList">
-            <app-eventlist
-              [event]="event"
-              [text]="'Unregister'"
-            ></app-eventlist>
-          </div>
-        </div>
-      </div>
+<div>
+  <div>
+    <h5 class="mt-4 mb-5 text-center">List of Participated Events</h5>
+  </div>
+  <div class="row d-flex justify-content-around">
+    <div class="col-md-5 mx-2" *ngFor="let event of eventList">
+      <app-participationlist [event]="event" [text]="'Unregister'"></app-participationlist>
     </div>
   </div>
 </div>
+
+

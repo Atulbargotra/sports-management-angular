@@ -9,6 +9,7 @@ import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner
 import { DraftsComponent } from './pages/drafts/drafts.component';
 import { EditeventComponent } from './pages/editevent/editevent.component';
 import { EventsComponent } from './pages/events/events.component';
+import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { HomeComponent } from './pages/home/home.component';
 import { InviteComponent } from './pages/invite/invite.component';
 import { ParticipantsComponent } from './pages/participants/participants.component';
@@ -89,6 +90,10 @@ const routes: Routes = [
       {
         path: 'register/:id',
         component: RegisterPageComponent,
+      },
+      {
+        path:'feedback',
+        component:FeedbackComponent
       },
       {
         path: '',

@@ -21,8 +21,8 @@ import {
 export class AuthService implements CanActivate {
   @Output() loggedIn: EventEmitter<boolean> = new EventEmitter();
   @Output() username: EventEmitter<string> = new EventEmitter();
-  url: string = 'http://localhost:8080/api/auth';
-  // url: string = 'https://tiaasports.herokuapp.com/api/auth'
+  // url: string = 'http://localhost:8080/api/auth';
+  url: string = 'https://tiaasports.herokuapp.com/api/auth'
   refreshTokenPayload = {
     refreshToken: this.getRefreshToken(),
     username: this.getUserName(),

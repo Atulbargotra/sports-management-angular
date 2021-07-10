@@ -1,4 +1,5 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
+import {faFilter} from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-filter',
@@ -8,6 +9,7 @@ import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
 export class FilterComponent implements OnInit {
   constructor() {}
 
+  faFilter = faFilter;
   categoryValue:string="None";
 
   //getting categories of all events from parent component
