@@ -18,8 +18,8 @@
       class="collapse navbar-collapse justify-content-end"
       id="navbarNavAltMarkup"
     >
-      <div class="navbar-nav">
-        <div class="p-1 mx-3">
+      <div class="navbar-nav itemBox">
+        <div class="p-1 mx-3 align-self-center">
           <fa-icon
             size="lg"
             (click)="loadNotifications()"
@@ -57,40 +57,53 @@
           </div>
         </div>
         <a
-          class="nav-link mx-4 p-1 text-white link"
+          class="nav-link mx-4 p-1 text-white link align-self-center"
           routerLink="/userhome/events"
           routerLinkActive="active"
           >EVENTS</a
         >
         <a
-          class="nav-link mx-4 p-1 text-white link"
+          class="nav-link mx-4 p-1 text-white link align-self-center"
           routerLink="/userhome/participatedEvents"
           routerLinkActive="active"
           >PARTICIPATED EVENTS</a
         >
-        <a
-          class="nav-link mx-4 p-1 text-white link"
-          routerLink="/userhome/winners"
-          routerLinkActive="active"
-          >WINNERS</a
-        >
-        <a
-          class="nav-link mx-4 p-1 text-white link"
-          routerLink="/userhome/profile"
-          routerLinkActive="active"
-          >PROFILE</a
-        >
-        <a
-          class="nav-link mx-4 p-1 text-white link"
-          routerLink="/userhome/profile"
-          (click)="logout()"
-          >LOGOUT<fa-icon
-            class="icon text-white px-1"
-            size="lg"
-            [icon]="faSignOutAlt"
-          ></fa-icon
-        ></a>
+
+        <div class="dropdown">
+          <button class="dropbtn">
+            <img src="../../../assets/userImg2.png" height="30" class="rounded-circle" width="30" alt="">
+            Mukul
+          </button>
+          <div class="dropdown-content text-center">
+            <a
+              class="nav-link p-1"
+              routerLink="/userhome/winners"
+              routerLinkActive="active"
+              >Winners</a
+            >
+            <a
+              class="nav-link p-1"
+              routerLink="/userhome/profile"
+              routerLinkActive="active"
+              >Profile</a
+            >
+            <a
+            class="nav-link p-1"
+            routerLink="/userhome/feedback"
+            routerLinkActive="active"
+            >Feedback</a
+          >
+            <a
+              class="nav-link p-1"
+              routerLink="/userhome/profile"
+              (click)="logout()"
+              >Logout</a
+            >
+          </div>
+        </div>
+
       </div>
+
     </div>
   </div>
 </nav>

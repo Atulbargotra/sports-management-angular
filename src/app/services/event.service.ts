@@ -12,8 +12,8 @@ import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
   providedIn: 'root',
 })
 export class EventService {
-  url: string = 'http://localhost:8080/api/events';
-  // url: string = 'https://tiaasports.herokuapp.com/api/events';
+  // url: string = 'http://localhost:8080/api/events';
+  url: string = 'https://tiaasports.herokuapp.com/api/events';
 
   constructor(private http: HttpClient) {}
 

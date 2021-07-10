@@ -1,31 +1,3 @@
-/* .width{
-
-    width: 95%;
-    margin: 0 auto;
-}
-
-.marginleft{
-    width: 95%;
-    margin: 0 auto;     
-}
-
-.borderCard{
-    border: 1px solid rgb(187, 187, 187);
-    border-radius: 8px;
-}
-.borderImg{
-    border-bottom: 1px solid rgb(204, 203, 203);
-}
-
-.eventAvailable{
-    min-height: 70vh;
-    font-size: 2.1rem;
-    font-weight: 300;
-}
-
-h4{
-    font-weight: 400;
-} */
 
 
 .width{
@@ -69,3 +41,40 @@ h4{
 p{
     font-size: 92%;
 }
+
+
+
+
+.ABox{
+    border: 1px solid rgb(218, 218, 218);
+    border-radius: 10px;
+}
+
+.a{
+    width: 17%;
+    background-color: rgb(40, 136, 40);
+    padding: 25px;
+    border-radius: 8px;
+}
+.a h2{
+    font-weight: 900;
+}
+
+
+
+.b{
+    flex-grow: 8;
+}
+
+.b p:nth-child(2){
+    font-weight: 800;
+}
+
+.c{
+    flex-grow: 1;
+}
+
+.c button{
+    border-radius: 8px;
+}
+

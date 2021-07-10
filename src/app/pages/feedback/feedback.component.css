@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.bt{
+    border: none;
+    padding: 5px;
+    margin: 0 4px;
+    background-color: inherit;
+    border-radius: 15px;
+}
+
+.cBody{
+    background-color: inherit;
+}
+
+.bt:hover{
+    background-color: rgb(218, 218, 218);
+    border-radius: 15px;
+}
