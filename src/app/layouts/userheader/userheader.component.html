@@ -71,8 +71,14 @@
 
         <div class="dropdown">
           <button class="dropbtn">
-            <img src="../../../assets/userImg2.png" height="30" class="rounded-circle" width="30" alt="">
-            Mukul
+            <img
+              src="../../../assets/userImg2.png"
+              height="30"
+              class="rounded-circle"
+              width="30"
+              alt=""
+            />
+            {{ username | titlecase }}
           </button>
           <div class="dropdown-content text-center">
             <a
@@ -88,11 +94,11 @@
               >Profile</a
             >
             <a
-            class="nav-link p-1"
-            routerLink="/userhome/feedback"
-            routerLinkActive="active"
-            >Feedback</a
-          >
+              class="nav-link p-1"
+              routerLink="/userhome/feedback"
+              routerLinkActive="active"
+              >Feedback</a
+            >
             <a
               class="nav-link p-1"
               routerLink="/userhome/profile"
@@ -101,9 +107,7 @@
             >
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
 </nav>

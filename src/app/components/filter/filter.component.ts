@@ -1,6 +1,4 @@
-import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import {faFilter} from '@fortawesome/free-solid-svg-icons'
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-filter',
   templateUrl: './filter.component.html',
@@ -8,22 +6,16 @@ import {faFilter} from '@fortawesome/free-solid-svg-icons'
 })
 export class FilterComponent implements OnInit {
   constructor() {}
-
-  faFilter = faFilter;
-  categoryValue:string="None";
+  categoryValue: string = 'None';
 
   //getting categories of all events from parent component
-  @Input() categories:string[];
+  @Input() categories: string[];
 
   @Output() filterValue = new EventEmitter<string>();
 
   ngOnInit(): void {}
 
   sendFilterValue(value: string) {
-    console.log('In Child component : ' + value);
-    this.filterValue.emit(value);    
-  }
-
-  
+    this.filterValue.emit(value);
+  } 
 }
-
