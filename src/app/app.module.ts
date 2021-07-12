@@ -54,6 +54,8 @@ import { ParticipationlistComponent } from './components/participationlist/parti
 import { InviteComponent } from './pages/invite/invite.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
+import { AdminFeedbackComponent } from './pages/admin-feedback/admin-feedback.component';
+
 
 @NgModule({
   declarations: [
@@ -85,6 +87,7 @@ import { FeedbackListComponent } from './components/feedback-list/feedback-list.
     InviteComponent,
     FeedbackComponent,
     FeedbackListComponent,
+    AdminFeedbackComponent,
   ],
   imports: [
     BrowserModule,

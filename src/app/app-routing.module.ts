@@ -4,6 +4,7 @@ import { AuthService } from './auth/shared/auth.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
+import { AdminFeedbackComponent } from './pages/admin-feedback/admin-feedback.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
@@ -32,6 +33,10 @@ const routes: Routes = [
         component: AnnounceWinnerComponent,
       },
       {
+        path:'feedback/:id',
+        component:AdminFeedbackComponent  //pie chart component to be added here 
+      },
+      {
         path: 'published/:id',
         component: ParticipantsComponent,
       },
@@ -46,6 +51,14 @@ const routes: Routes = [
       {
         path: 'editevent/:id',
         component: EditeventComponent,
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
+        path:'feedback',
+        component:AdminFeedbackComponent
       },
       {
         path: 'events',

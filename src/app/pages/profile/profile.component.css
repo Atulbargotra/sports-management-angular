@@ -8,7 +8,7 @@
 .uploadBadge{
   width: 8%;
   margin: 0 auto;
-  position: fixed;
+  position: absolute;
   left: 46%;
   top: 48%;
   font-size: 80%;

@@ -14,7 +14,7 @@
   </div>
 
   <div class="row">
-    <div class="col-7">
+    <div class="col-md-7">
       <div class="d-flex flex-column" *ngFor="let event of eventList">
         <div class="col-12 mb-4 borderPublished">
           <div class="row rowWidth">
@@ -34,6 +34,7 @@
                     [icon]="faTrashAlt"
                     (click)="handleEventDelete(event.id)"
                   ></fa-icon>
+                  <button class="btn btn-secondary px-1" (click)="editPublishedEvent(event.id)">Edit</button>
                 </div>
               </div>
               <div class="d-flex justify-content-between p-3">

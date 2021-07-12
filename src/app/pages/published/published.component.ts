@@ -12,6 +12,7 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 //date formating
 import { throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-published',
@@ -21,7 +22,8 @@ import { throwError } from 'rxjs';
 export class PublishedComponent implements OnInit {
   constructor(
     private eventService: EventService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private route:Router
   ) {}
 
   eventAvailable: boolean = false;
@@ -36,6 +38,7 @@ export class PublishedComponent implements OnInit {
         } else {
           this.eventList = data;
           this.eventAvailable = true;
+          console.log(data);
         }
       },
       (error) => {
@@ -56,4 +59,9 @@ export class PublishedComponent implements OnInit {
       }
     );
   }
+
+  editPublishedEvent(id:number){
+    this.route.navigateByUrl('/adminhome/editevent/'+id);
+}
+
 }
