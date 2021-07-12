@@ -112,10 +112,15 @@ export class RegisterPageComponent implements OnInit {
       );
   }
   join(team: TeamDetailsPayload) {
-    this.teamService.joinTeam(team.id, this.pid).subscribe(() => {
-      this.toast.success('Email Send to Team Admin');
-      this.router.navigateByUrl('/userhome');
-    });
+    this.teamService.joinTeam(team.id, this.pid).subscribe(
+      () => {
+        this.toast.success('Email Send to Team Admin');
+        this.router.navigateByUrl('/userhome');
+      },
+      (errorObj) => {
+        this.toast.error(errorObj.error.message);
+      }
+    );
   }
   copyMessage(val: string) {
     const selBox = document.createElement('textarea');

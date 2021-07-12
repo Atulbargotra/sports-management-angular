@@ -18,6 +18,7 @@ export class UserheaderComponent implements OnInit {
   isLoggedIn: boolean;
   showNoti: boolean = false;
   notifications: NotificationResponsePayload[];
+  username: string;
 
   constructor(
     private notificationService: NotificationService,
@@ -30,11 +31,11 @@ export class UserheaderComponent implements OnInit {
     this.notificationService.getUserNotifications().subscribe(
       (data) => {
         this.notifications = data;
-        console.log(data);
         this.count = data.length;
       },
       () => {}
     );
+    this.username = this.authService.getUserName();
   }
 
   //Signout feature

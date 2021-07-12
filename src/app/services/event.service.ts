@@ -12,8 +12,8 @@ import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
   providedIn: 'root',
 })
 export class EventService {
-  // url: string = 'http://localhost:8080/api/events';
-  url: string = 'https://tiaasports.herokuapp.com/api/events';
+  url: string = 'http://localhost:8080/api/events';
+  // url: string = 'https://tiaasports.herokuapp.com/api/events';
 
   constructor(private http: HttpClient) {}
 
@@ -80,15 +80,25 @@ export class EventService {
       headers,
     });
   }
-  getRegisteredEvents(cache = false): Observable<Array<EventResponsePayload>> {
+  getRegisteredEvents(
+    isClosed: string
+  ): Observable<Array<EventResponsePayload>> {
     let headers: HttpHeaders;
-    if (cache) {
-      headers = new HttpHeaders({ 'cache-response': 'true' });
+    console.log(isClosed);
+    let eventClosed = false;
+    if (isClosed === 'closed') {
+      eventClosed = true;
     }
-    return this.http.get<EventResponsePayload[]>(this.url + `/me`, { headers });
+    return this.http.get<EventResponsePayload[]>(
+      this.url + `/me?closed=${eventClosed}`,
+      { headers }
+    );
   }
   register(id: number): Observable<any> {
     return this.http.put(this.url + `/${id}/register`, {});
+  }
+  unregister(id: number) {
+    return this.http.delete(this.url + `/${id}/leave`);
   }
   registerAsTeam(id: number, team: TeamRequestPayload): Observable<any> {
     return this.http.put<any>(this.url + `/${id}/register/team`, team);

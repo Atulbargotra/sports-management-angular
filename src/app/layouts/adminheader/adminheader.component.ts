@@ -26,6 +26,7 @@ export class AdminheaderComponent implements OnInit {
     this.username = this.authService.getUserName();
   }
   logout() {
+    console.log('inini');
     this.authService.logout();
     this.isLoggedIn = false;
     this.router.navigateByUrl('');

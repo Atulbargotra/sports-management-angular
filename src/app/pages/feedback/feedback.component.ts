@@ -13,19 +13,18 @@ export class FeedbackComponent implements OnInit {
 
   message: string;
   eventList: EventResponsePayload[];
-  eventName:string;
+  eventName: string;
   expiredEventAvailable: boolean = false;
-  formAvailable:boolean=false;
+  formAvailable: boolean = false;
 
   ngOnInit(): void {
     this.getClosedEvents();
   }
 
   getClosedEvents() {
-    this.eventService.getRegisteredEvents().subscribe(
+    this.eventService.getRegisteredEvents("closed").subscribe(
       (data) => {
-        let today = Moment().format('YYYY-MM-DD');
-        this.eventList = data.filter((ev) => ev.lastDate < today);
+        this.eventList = data;
         if (this.eventList.length > 0) {
           this.expiredEventAvailable = true;
         } else {
@@ -58,16 +57,15 @@ export class FeedbackComponent implements OnInit {
         this.message = 'Great! Thank you 😁';
         break;
       }
-      default:{
-        this.message = "ThankYou!!"
+      default: {
+        this.message = 'ThankYou!!';
         break;
       }
     }
   }
 
-  getFeedbackEventName(name:string)
-  {
+  getFeedbackEventName(name: string) {
     this.eventName = name;
-    this.formAvailable = name?true:false;
+    this.formAvailable = name ? true : false;
   }
 }

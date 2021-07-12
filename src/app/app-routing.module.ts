@@ -76,6 +76,11 @@ const routes: Routes = [
     canActivate: [AuthService],
     children: [
       {
+        path: 'invite/:token',
+        component: InviteComponent,
+        canActivate: [AuthService],
+      },
+      {
         path: 'participatedEvents',
         component: ParticipatedEventsComponent,
       },
@@ -120,11 +125,6 @@ const routes: Routes = [
       {
         path: 'register',
         component: SignupComponent,
-      },
-      {
-        path: 'invite/:token',
-        component: InviteComponent,
-        canActivate: [AuthService],
       },
     ],
   },
