@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //reactive form
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 //toastr message
 import { ToastrService } from 'ngx-toastr';
 //userService
@@ -17,6 +17,7 @@ import { Imgconfig } from '../../utilities/ImgConfig';
 import { v4 as uuidv4 } from 'uuid';
 //finalize
 import { finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -41,7 +42,8 @@ export class ProfileComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toast: ToastrService,
     private userService: UserService,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -101,7 +103,10 @@ export class ProfileComponent implements OnInit {
     };
 
     this.userService.updateUserProfile(userdata).subscribe(
-      (res) => this.toast.success('Profile Updated Successfully'),
+      (res) => {
+        this.toast.success('Profile Updated Successfully');
+        this.router.navigateByUrl('/userhome');
+      },
       (error) => this.toast.error('Problem occured to update profile')
     );
   }

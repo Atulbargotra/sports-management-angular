@@ -8,6 +8,7 @@ import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
 import { EditeventComponent } from './pages/editevent/editevent.component';
+import { EventFeedbackComponent } from './pages/event-feedback/event-feedback.component';
 import { EventsComponent } from './pages/events/events.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -46,6 +47,10 @@ const routes: Routes = [
       {
         path: 'editevent/:id',
         component: EditeventComponent,
+      },
+      {
+        path: 'feedback/:id',
+        component: EventFeedbackComponent,
       },
       {
         path: 'events',
@@ -92,8 +97,8 @@ const routes: Routes = [
         component: RegisterPageComponent,
       },
       {
-        path:'feedback',
-        component:FeedbackComponent
+        path: 'feedback',
+        component: FeedbackComponent,
       },
       {
         path: '',

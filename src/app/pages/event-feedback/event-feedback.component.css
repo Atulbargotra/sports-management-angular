@@ -1,0 +1,9 @@
+.feedbacks {
+  position: fixed;
+  top: 60%;
+  left: 35%;
+  width: 30em;
+  height: 18em;
+  background-color: #f3f3f3;
+  overflow-y: scroll;
+}

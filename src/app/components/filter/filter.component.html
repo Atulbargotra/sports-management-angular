@@ -1,15 +1,14 @@
 <div class="Container-fluid filterbox p-3">
-  <h5 class="mb-3 text-center">Filter Events<fa-icon
-    class="icon text-success px-2"
-  ></fa-icon
-></h5>
+  <h5 class="mb-3 text-center">
+    Filter Events<fa-icon class="icon text-success px-2"></fa-icon>
+  </h5>
 
   <div class="d-flex flex-column justify-content-around">
     <hr />
     <h6 class="mb-3">DATE</h6>
     <div class="d-flex flex-row justify-content-between">
       <button
-        (click)="sendFilterValue(week.value)"
+        (click)="sendFilterValue('/time=thisWeek')"
         class="btn border border-success dateBtn"
         value="thisWeek"
         #week
@@ -17,7 +16,7 @@
         This Week
       </button>
       <button
-        (click)="sendFilterValue(month.value)"
+        (click)="sendFilterValue('/time=thisMonth')"
         class="btn border border-success dateBtn"
         value="thisMonth"
         #month
@@ -25,7 +24,7 @@
         This Month
       </button>
       <button
-        (click)="sendFilterValue(nextMonth.value)"
+        (click)="sendFilterValue('/time=nextMonth')"
         class="btn border border-success dateBtn"
         value="nextMonth"
         #nextMonth
@@ -40,7 +39,7 @@
     <h6 class="mb-3">VENUE</h6>
     <div class="d-flex flex-row justify-content-between">
       <button
-        (click)="sendFilterValue(outdoor.value)"
+        (click)="sendFilterValue('/venue=OUTDOOR')"
         class="btn border border-success venueBtn"
         value="OUTDOOR"
         #outdoor
@@ -48,7 +47,7 @@
         Outdoor
       </button>
       <button
-        (click)="sendFilterValue(indoor.value)"
+        (click)="sendFilterValue('/venue=INDOOR')"
         class="btn border border-success venueBtn"
         value="INDOOR"
         #indoor
@@ -69,7 +68,7 @@
     <h6 class="mb-3">TYPE</h6>
     <div class="d-flex flex-row justify-content-between">
       <button
-        (click)="sendFilterValue(individual.value)"
+        (click)="sendFilterValue('/type=INDIVIDUAL')"
         class="btn border border-success typeBtn mx-1"
         value="INDIVIDUAL"
         #individual
@@ -77,7 +76,7 @@
         Individual
       </button>
       <button
-        (click)="sendFilterValue(team.value)"
+        (click)="sendFilterValue('/type=TEAM')"
         class="btn border border-success typeBtn mx-1"
         value="TEAM"
         #team
@@ -104,7 +103,6 @@
         class="form-select form-select-sm border border-success"
         aria-label=".form-select-sm example"
       >
-        <option selected value="NONE">None</option>
         <ng-container *ngFor="let category of categories">
           <option [value]="category">{{ category | titlecase }}</option>
         </ng-container>
@@ -116,10 +114,8 @@
 
   <div class="text-center">
     <button
-      (click)="sendFilterValue(none.value)"
+      (click)="sendFilterValue('NONE')"
       class="btn border border-success noneBtn mx-1"
-      value="NONE"
-      #none
     >
       Remove All Filters
     </button>

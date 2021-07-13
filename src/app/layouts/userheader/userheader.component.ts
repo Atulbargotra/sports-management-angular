@@ -3,7 +3,9 @@ import { Router } from '@angular/router';
 import { faBell, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/shared/auth.service';
 import { NotificationResponsePayload } from 'src/app/Model/notificationResponsePayload';
+import { UserProfile } from 'src/app/Model/userProfile';
 import { NotificationService } from 'src/app/services/notification.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-userheader',
@@ -19,12 +21,14 @@ export class UserheaderComponent implements OnInit {
   showNoti: boolean = false;
   notifications: NotificationResponsePayload[];
   username: string;
+  user: UserProfile;
 
   constructor(
     private notificationService: NotificationService,
     private authService: AuthService,
     private router: Router,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -35,6 +39,9 @@ export class UserheaderComponent implements OnInit {
       },
       () => {}
     );
+    this.userService.getUserProfile().subscribe((data) => {
+      this.user = data;
+    });
     this.username = this.authService.getUserName();
   }
 

@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { EventRequestPayload } from '../Model/eventRequestPayload';
 import { EventResponsePayload } from '../Model/eventResponsePayload';
+import { FeedbackRequest } from '../Model/feedbackRequest';
+import { FeedbackResponse } from '../Model/feedbackResponse';
 import { ScheduleResponse } from '../Model/scheduleResponse';
 import { TeamRequestPayload } from '../Model/teamRequestPayload';
 import { UserRegistered } from '../Model/userRegistered';
@@ -35,18 +37,24 @@ export class EventService {
       headers,
     });
   }
-  getAllEvents(
-    filter: string,
-    cache = false
+  getAllEvents(): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url);
+  }
+  getEventsByTime(time: string): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/time/${time}`);
+  }
+  getEventsByCategory(
+    category: string
   ): Observable<Array<EventResponsePayload>> {
-    let headers: HttpHeaders;
-    if (cache) {
-      headers = new HttpHeaders({ 'cache-response': 'true' });
-    }
     return this.http.get<EventResponsePayload[]>(
-      this.url + `?filter=${filter}`,
-      { headers }
+      this.url + `/category/${category}`
     );
+  }
+  getEventsByVenue(venue: string): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/venue/${venue}`);
+  }
+  getEventByType(type: string): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/type/${type}`);
   }
 
   deleteEvent(id: number): Observable<any> {
@@ -141,5 +149,11 @@ export class EventService {
   }
   getSchedule(id: number): Observable<ScheduleResponse> {
     return this.http.get<ScheduleResponse>(this.url + `/${id}/schedule`);
+  }
+  postFeedback(id: number, feedback: FeedbackRequest) {
+    return this.http.post(this.url + `/${id}/feedback`, feedback);
+  }
+  getAllFeedbacks(id: number): Observable<FeedbackResponse> {
+    return this.http.get<FeedbackResponse>(this.url + `/${id}/feedback`);
   }
 }

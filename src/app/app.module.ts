@@ -46,7 +46,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { EditeventComponent } from './pages/editevent/editevent.component';
 import { ParticipantsComponent } from './pages/participants/participants.component';
 
-
 import { CachingInterceptor } from './cachingInterceptor';
 import { MatchCardComponent } from './components/match-card/match-card.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
@@ -54,7 +53,8 @@ import { ParticipationlistComponent } from './components/participationlist/parti
 import { InviteComponent } from './pages/invite/invite.component';
 import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
-
+import { EventFeedbackComponent } from './pages/event-feedback/event-feedback.component';
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +85,7 @@ import { FeedbackListComponent } from './components/feedback-list/feedback-list.
     InviteComponent,
     FeedbackComponent,
     FeedbackListComponent,
+    EventFeedbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -98,6 +99,7 @@ import { FeedbackListComponent } from './components/feedback-list/feedback-list.
     NgxWebstorageModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireStorageModule,
+    ChartsModule,
   ],
   providers: [
     {

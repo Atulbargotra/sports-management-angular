@@ -22,70 +22,48 @@ export class EventsComponent implements OnInit {
   eventAvailable: boolean = false;
   eventList: EventResponsePayload[];
   filterEventList: EventResponsePayload[];
-  categories:string[];
+  categories: string[];
 
   getFilterValue(value: string) {
-    this.eventService.getAllEvents(value).subscribe((data) => {
-      this.eventList = data;
-    });
-    // console.log(this.eventList);
-    // switch (value) {
-    //   case 'nextMonth': {
-    //     this.eventList = this.filterEventList.filter((event) =>
-    //       nextMonth(new Date(event.eventDate))
-    //     );
-    //     break;
-    //   }
-    //   case 'thisMonth': {
-    //     this.eventList = this.filterEventList.filter((event) =>
-    //       thisMonth(new Date(event.eventDate))
-    //     );
-    //     break;
-    //   }
-    //   case 'thisWeek': {
-    //     this.eventList = this.filterEventList.filter((event) =>
-    //       thisWeek(new Date(event.eventDate))
-    //     );
-    //     break;
-    //   }
-    //   case 'individual': {
-    //     this.eventList = this.filterEventList.filter(
-    //       (event) => event.type === 'INDIVIDUAL'
-    //     );
-    //     break;
-    //   }
-    //   case 'team': {
-    //     this.eventList = this.filterEventList.filter(
-    //       (event) => event.type === 'TEAM'
-    //     );
-    //     break;
-    //   }
-    //   case 'outdoor': {
-    //     this.eventList = this.filterEventList.filter(
-    //       (event) => event.venue === 'outdoor'
-    //     );
-    //     break;
-    //   }
-    //   case 'indoor': {
-    //     this.eventList = this.filterEventList.filter(
-    //       (event) => event.venue === 'indoor'
-    //     );
-    //     break;
-    //   }
-    // }
+    if (value.startsWith('/venue')) {
+      let venue = value.split('=')[1];
+      this.eventService.getEventsByVenue(venue).subscribe((data) => {
+        this.eventList = data;
+      });
+    } else if (value.startsWith('/time')) {
+      let time = value.split('=')[1];
+      this.eventService.getEventsByTime(time).subscribe((data) => {
+        this.eventList = data;
+      });
+    } else if (value.startsWith('/type')) {
+      let type = value.split('=')[1];
+      this.eventService.getEventByType(type).subscribe((data) => {
+        this.eventList = data;
+      });
+    } else if (value === 'NONE') {
+      this.eventService.getAllEvents().subscribe((data) => {
+        this.eventList = data;
+      });
+    } else {
+      this.eventService.getEventsByCategory(value).subscribe((data) => {
+        this.eventList = data;
+      });
+    }
   }
 
   //Get all Published Events here
   getEventList() {
-    this.eventService.getAllEvents('all').subscribe(
+    this.eventService.getAllEvents().subscribe(
       (data) => {
         this.eventAvailable = true;
         this.eventList = data;
         this.filterEventList = data;
-        
+
         //getting categories of all the event in an array
-        const categoryDuplicates = data.map((ev)=>ev.category)
-        this.categories = categoryDuplicates.filter((item, i, ar) => ar.indexOf(item) === i);
+        const categoryDuplicates = data.map((ev) => ev.category);
+        this.categories = categoryDuplicates.filter(
+          (item, i, ar) => ar.indexOf(item) === i
+        );
       },
       (error) => {
         this.toast.error('Unable to fetch events');

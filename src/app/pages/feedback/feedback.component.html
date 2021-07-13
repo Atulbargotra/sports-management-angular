@@ -7,7 +7,7 @@
     <ng-container *ngFor="let event of eventList">
       <app-feedback-list
         [event]="event"
-        (FeedbackEventName)="getFeedbackEventName($event)"
+        (onClickFeedback)="getEvent(event)"
       ></app-feedback-list>
     </ng-container>
   </div>
@@ -18,7 +18,7 @@
     </div>
     <div class="card-body py-2 my-2 cBody">
       <h5 class="card-title text-center">
-        Give us your feedback on {{ eventName }}
+        Give us your feedback on {{ event.eventName }}
       </h5>
       <form class="px-4">
         <div class="mt-4">
@@ -86,13 +86,17 @@
           >
           <textarea
             class="form-control mt-3"
+            [(ngModel)]="feedback"
+            [ngModelOptions]="{ standalone: true }"
             id="exampleFormControlTextarea1"
             rows="3"
           ></textarea>
         </div>
 
         <div class="text-center">
-          <button class="btn btn-success p-1">Submit</button>
+          <button class="btn btn-success p-1" (click)="postFeedback()">
+            Submit
+          </button>
         </div>
       </form>
     </div>

@@ -10,8 +10,8 @@
       bg-secondary
     "
   >
-    <h2 class="m-0">{{ event.lastDate | date: "dd" }}</h2>
-    <h5 class="m-0">{{ event.lastDate | date: "MMM" }}</h5>
+    <h2 class="m-0">{{ event.eventDate | date: "dd" }}</h2>
+    <h5 class="m-0">{{ event.eventDate | date: "MMM" }}</h5>
   </div>
 
   <div class="b p-1 px-2">
@@ -27,7 +27,7 @@
     <img
       src="https://img.icons8.com/material/24/000000/feedback--v2.png"
       title="feedback"
-      (click)="getEventById(event.id)"
+      (click)="feedback(event)"
     />
   </div>
 </div>
