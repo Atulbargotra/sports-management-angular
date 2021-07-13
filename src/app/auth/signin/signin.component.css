@@ -1,4 +1,4 @@
-/* .display-6 {
+.display-6 {
   font-size: 2.1rem;
 }
 
@@ -7,22 +7,15 @@
 }
 
 .color {
-  background-color: #5a48fd;
-  color: white;
-}
-.linkcolor {
-  color: rgb(255, 255, 255);
+  background-color: #8ec162;
 }
 .margintop {
   margin-top: 22%;
 }
 h1 {
   font-weight: 350;
-  color: rgb(255, 255, 255);
 }
-.bold {
-  color: rgb(255, 255, 255);
-}
+
 .login-failed-text {
   color: crimson;
 }
@@ -31,4 +24,8 @@ span {
 }
 .sideimg {
   height: 100vh;
-} */
+}
+
+.linkcolor {
+  color: black;
+}

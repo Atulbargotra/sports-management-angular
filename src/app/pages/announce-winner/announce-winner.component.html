@@ -1,135 +1,3 @@
-<!-- <div class="width px-2 mx-5">
-  <h4 class="mt-5">Closed Events</h4>
-
-  <div
-    *ngIf="!eventAvailable"
-    class="
-      text-center
-      d-flex
-      justify-content-center
-      align-items-center
-      eventAvailable
-    "
-  >
-    <p>Wait For Events To Get Closed First!!!</p>
-  </div>
-
-  <div class="row row-cols-1 row-cols-md-1 g-4 marginleft">
-   
-    
-
-
-    <div class="mx-5 my-5 w-25 text-center" *ngFor="let event of eventList">
-      <div class="card borderCard">
-        <img
-          src="{{ event.picture }}"
-          class="card-img-top borderImg"
-          alt="..."
-        />
-        <div class="row">
-          <div class="col-sm-12">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title mb-3">{{ event.eventName }}</h5>
-                <span>{{ event.description }}</span
-                ><br />
-                <span>{{ event.type | titlecase }}</span
-                ><br />
-                <span>End Date: {{ event.lastDate | date }}</span
-                ><br />
-              </div>
-              
-
-
-              <div class="d-flex justify-content-center mb-3 px-3">
-                <a
-                  data-bs-toggle="modal"
-                  data-bs-target="#announce"
-                  class="btn btn-success px-4"
-                  >Announce&nbsp;</a
-                >
-              </div>
-             
-
-
-              <div
-                class="modal fade"
-                id="announce"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div class="modal-dialog modal-dialog-centered">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">
-                        Enter Winners Name
-                      </h5>
-                      <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <form #f="ngForm">
-                      <div class="modal-body">
-                        <input
-                          type="text"
-                          name="w1"
-                          class="form-control mb-3"
-                          placeholder="Enter 1st RunnerUp"
-                          [(ngModel)]="w1"
-                          required
-                        />
-                        <input
-                          type="text"
-                          name="w2"
-                          class="form-control mb-3"
-                          placeholder="Enter 2nd RunnerUp"
-                          [(ngModel)]="w2"
-                          required
-                        />
-                        <input
-                          type="text"
-                          name="w3"
-                          class="form-control mb-3"
-                          placeholder="Enter 3rd RunnerUp"
-                          [(ngModel)]="w3"
-                          required
-                        />
-                      </div>
-                      <div class="modal-footer">
-                        <button
-                          type="button"
-                          class="btn btn-secondary"
-                          data-bs-dismiss="modal"
-                          (click)="clearDataOnDiscard(f)"
-                        >
-                          Discard
-                        </button>
-                        <button
-                          type="button"
-                          class="btn btn-success"
-                          data-bs-dismiss="modal"
-                          (click)="handlePostWinnerDetails(event.id, f)"
-                          [disabled]="!f.form.valid"
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <h4 class="text-center mt-4 mb-3">Announce Winners</h4>
 <div class="width">
   <div
@@ -146,7 +14,7 @@
   </div>
 
   <!-- List of Events -->
-  
+
   <div class="row">
     <div *ngFor="let event of eventList" class="col-md-7">
       <div class="d-flex ABox mb-4">
@@ -244,7 +112,6 @@
                     type="button"
                     class="btn btn-success"
                     data-bs-dismiss="modal"
-                    [disabled]="!f.form.valid"
                     (click)="handlePostWinnerDetails(event.id, f)"
                   >
                     Submit
@@ -359,5 +226,4 @@
       </div>
     </div>
   </div> -->
-
 </div>

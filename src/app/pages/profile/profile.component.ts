@@ -105,7 +105,6 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUserProfile(userdata).subscribe(
       (res) => {
         this.toast.success('Profile Updated Successfully');
-        this.router.navigateByUrl('/userhome');
       },
       (error) => this.toast.error('Problem occured to update profile')
     );

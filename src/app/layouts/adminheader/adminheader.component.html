@@ -31,20 +31,30 @@
           routerLinkActive="active"
           >PUBLISHED</a
         >
-        <a
-          class="nav-link mx-4 p-1 text-white link"
-          routerLink="/adminhome/announceWinner"
-          routerLinkActive="active"
-          >ANNOUNCE WINNER</a
-        >
-        <a class="nav-link mx-4 p-1 text-white link"
-          >LOGOUT<fa-icon
-            class="icon link text-white px-1"
-            size="lg"
-            [icon]="faSignOutAlt"
-            (click)="logout()"
-          ></fa-icon
-        ></a>
+        <div class="dropdown">
+          <button class="dropbtn">
+            <img
+              src="{{ user.picture }}"
+              height="30"
+              class="rounded-circle"
+              width="30"
+              alt=""
+            />
+            {{ username }}
+          </button>
+          <div class="dropdown-content text-center">
+            <a class="nav-link p-1" routerLink="/adminhome/profile">Profile</a>
+            <a class="nav-link p-1" routerLink="/adminhome/announceWinner"
+              >Announce Winners</a
+            >
+            <a class="nav-link p-1" routerLink="/adminhome/feedbacks"
+              >Feedback</a
+            >
+            <a class="nav-link p-1" (click)="logout()">Logout</a>
+          </div>
+        </div>
+        <!-- <a class="nav-link mx-4 p-1 text-white link" routerLink="/adminhome/announceWinner" routerLinkActive="active">ANNOUNCE WINNER</a>
+        <a class="nav-link mx-4 p-1 text-white link" routerLink="/">LOGOUT<fa-icon class="icon link text-white px-1" size="lg" [icon]="faSignOutAlt"></fa-icon></a> -->
       </div>
     </div>
   </div>

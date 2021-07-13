@@ -64,6 +64,7 @@
             class="form-select"
             aria-label="Default select example"
             formControlName="category"
+            disabled=true
             [ngClass]="{ 'is-invalid': updated && f.category.errors }"
             (ngModelChange)="setPicture()"
           >

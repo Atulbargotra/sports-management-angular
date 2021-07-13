@@ -19,7 +19,7 @@
     </div>
   </div>
 
-  <p class="display-6 login-card-description mt-4">{{ userType }} SignUp</p>
+  <h1 class="display-6 login-card-description mt-4">{{ userType }} SignUp</h1>
 
   <ng-container *ngIf="formLoad">
     <form #f="ngForm" [formGroup]="userSignupForm" (ngSubmit)="usersignup()">

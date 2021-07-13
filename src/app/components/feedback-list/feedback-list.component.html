@@ -7,7 +7,6 @@
       justify-content-center
       align-items-center
       text-white
-      bg-secondary
     "
   >
     <h2 class="m-0">{{ event.eventDate | date: "dd" }}</h2>
@@ -24,10 +23,20 @@
   </div>
 
   <div class="c d-flex justify-content-center align-items-center">
-    <img
-      src="https://img.icons8.com/material/24/000000/feedback--v2.png"
-      title="feedback"
-      (click)="feedback(event)"
-    />
+    <ng-container *ngIf="analyse" else; #survey>
+      <img
+        src="https://img.icons8.com/material-rounded/24/000000/graph-report.png"
+        title="Analyse"
+        [routerLink]="['/adminhome/feedback/', event.id]"
+      />
+    </ng-container>
+
+    <ng-container *ngIf="!analyse">
+      <img
+        src="https://img.icons8.com/material/24/000000/feedback--v2.png"
+        title="feedback"
+        (click)="feedback(event)"
+      />
+    </ng-container>
   </div>
 </div>

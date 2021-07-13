@@ -1,0 +1,14 @@
+<div class="text-center mt-3 mb-5">
+  <h4>Analyse Feedback of Events</h4>
+</div>
+
+<div class="row d-flex flex-column justify-content-center align-items-center">
+  <div class="col-md-6">
+    <ng-container *ngFor="let event of eventList">
+      <app-feedback-list
+        [event]="event"
+        [analyse]="'analyse'"
+      ></app-feedback-list>
+    </ng-container>
+  </div>
+</div>

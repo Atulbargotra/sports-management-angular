@@ -79,14 +79,8 @@ export class EventService {
   publishDraftEvent(id: number): Observable<any> {
     return this.http.get(this.url + `/draft/publish/${id}`);
   }
-  getExpiredEvents(cache = false): Observable<Array<EventResponsePayload>> {
-    let headers: HttpHeaders;
-    if (cache) {
-      headers = new HttpHeaders({ 'cache-response': 'true' });
-    }
-    return this.http.get<EventResponsePayload[]>(this.url + `/expired`, {
-      headers,
-    });
+  getExpiredEvents(): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/expired`);
   }
   getRegisteredEvents(
     isClosed: string
@@ -155,5 +149,8 @@ export class EventService {
   }
   getAllFeedbacks(id: number): Observable<FeedbackResponse> {
     return this.http.get<FeedbackResponse>(this.url + `/${id}/feedback`);
+  }
+  getAllEventsExpired(): Observable<Array<EventResponsePayload>> {
+    return this.http.get<EventResponsePayload[]>(this.url + `/eventsexpired`);
   }
 }

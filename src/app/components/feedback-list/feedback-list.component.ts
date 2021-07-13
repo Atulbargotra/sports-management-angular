@@ -13,7 +13,7 @@ export class FeedbackListComponent implements OnInit {
   constructor(private eventService: EventService) {}
 
   @Input() event: EventResponsePayload;
-
+  @Input() analyse: string;
   @Output() onClickFeedback = new EventEmitter<EventResponsePayload>();
   ngOnInit(): void {}
   feedback(event: EventResponsePayload) {

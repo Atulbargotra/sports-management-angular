@@ -4,6 +4,7 @@ import { AuthService } from './auth/shared/auth.service';
 import { SigninComponent } from './auth/signin/signin.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { AddeventComponent } from './pages/addevent/addevent.component';
+import { AdminFeedbackComponent } from './pages/admin-feedback/admin-feedback.component';
 import { AdminhomeComponent } from './pages/adminhome/adminhome.component';
 import { AnnounceWinnerComponent } from './pages/announce-winner/announce-winner.component';
 import { DraftsComponent } from './pages/drafts/drafts.component';
@@ -37,6 +38,10 @@ const routes: Routes = [
         component: ParticipantsComponent,
       },
       {
+        path: 'profile',
+        component: ProfileComponent,
+      },
+      {
         path: 'published',
         component: PublishedComponent,
       },
@@ -47,6 +52,10 @@ const routes: Routes = [
       {
         path: 'editevent/:id',
         component: EditeventComponent,
+      },
+      {
+        path: 'feedbacks',
+        component: AdminFeedbackComponent,
       },
       {
         path: 'feedback/:id',

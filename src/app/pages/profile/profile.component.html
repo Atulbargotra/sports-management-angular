@@ -6,9 +6,9 @@
         <label for="imagePicker">
           <img
             [src]="picture"
-            class="rounded-circle"
-            height="150"
-            width="150"
+            class="rounded-circle img-fluid"
+            height="120"
+            width="120"
             alt="Cannot load"
           />
         </label>
@@ -21,7 +21,9 @@
           hidden
           (change)="ImageUpload($event)"
         />
-        <h5 class="bg-secondary text-white uploadBadge text-center">Upload Image</h5>
+        <h5 class="bg-secondary text-white uploadBadge text-center">
+          Upload Image
+        </h5>
       </div>
       <form
         class="row g-3 mt-3"
@@ -102,6 +104,7 @@
         </div>
         <div class="col-md-6">
           <input
+            disabled
             type="email"
             formControlName="email"
             class="form-control"

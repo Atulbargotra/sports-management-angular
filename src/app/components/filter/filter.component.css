@@ -28,3 +28,21 @@
 .green{
   background-color: green;
 }
+
+
+@media only screen and (max-width: 990px) {
+
+
+  button{
+    margin: 3px !important;
+  }
+
+  .reduceFont{
+    font-size: 93% !important;
+  }
+
+  *{
+    font-size: 96% !important;
+  }
+ 
+}

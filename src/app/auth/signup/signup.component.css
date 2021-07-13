@@ -1,16 +1,15 @@
 .btncolor {
-  background-color: #5a48fd;
+  background-color: #8ec162;
 }
 .display-6 {
   font-size: 2.1rem;
-  color: white;
 }
 
 .margintop {
   margin-top: 20%;
 }
 .bold {
-  color: white;
+  font-weight: 600;
 }
 span {
   color: crimson;

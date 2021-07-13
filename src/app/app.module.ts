@@ -55,6 +55,7 @@ import { FeedbackComponent } from './pages/feedback/feedback.component';
 import { FeedbackListComponent } from './components/feedback-list/feedback-list.component';
 import { EventFeedbackComponent } from './pages/event-feedback/event-feedback.component';
 import { ChartsModule } from 'ng2-charts';
+import { AdminFeedbackComponent } from './pages/admin-feedback/admin-feedback.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +87,7 @@ import { ChartsModule } from 'ng2-charts';
     FeedbackComponent,
     FeedbackListComponent,
     EventFeedbackComponent,
+    AdminFeedbackComponent,
   ],
   imports: [
     BrowserModule,
