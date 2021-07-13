@@ -17,9 +17,11 @@ export class FeedbackListComponent implements OnInit {
   ) { }
 
   @Input() event:EventResponsePayload;
+  @Input() analyse:string;
 
   @Output() FeedbackEventName = new EventEmitter<string>();
   ngOnInit(): void {
+    console.log(this.analyse);
   }
 
 
@@ -31,4 +33,6 @@ export class FeedbackListComponent implements OnInit {
       this.FeedbackEventName.emit(this.eventName);
     })      
   }
+
+
 }

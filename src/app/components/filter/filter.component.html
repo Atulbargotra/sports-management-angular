@@ -1,13 +1,15 @@
-<div class="Container-fluid filterbox p-3">
-  <h5 class="mb-3 text-center">Filter Events<fa-icon
-    class="icon text-success px-2"
-  ></fa-icon
-></h5>
+<div class="Container-fluid filterbox px-2 py-3">
+  <h5 class="mb-3 text-center filterHeading">
+    Filter Events<fa-icon
+      class="icon text-success px-2"
+      icon="faFilter"
+    ></fa-icon>
+  </h5>
 
-  <div class="d-flex flex-column justify-content-around">
+  <div class="d-flex flex-column">
     <hr />
-    <h6 class="mb-3">DATE</h6>
-    <div class="d-flex flex-row justify-content-between">
+    <h6 class="mb-2">DATE</h6>
+    <div class="d-flex flex-row flex-wrap justify-content-start">
       <button
         (click)="sendFilterValue(week.value)"
         class="btn border border-success dateBtn"
@@ -18,7 +20,7 @@
       </button>
       <button
         (click)="sendFilterValue(month.value)"
-        class="btn border border-success dateBtn"
+        class="btn border border-success dateBtn mx-2 reduceFont"
         value="thisMonth"
         #month
       >
@@ -26,7 +28,7 @@
       </button>
       <button
         (click)="sendFilterValue(nextMonth.value)"
-        class="btn border border-success dateBtn"
+        class="btn border border-success dateBtn reduceFont"
         value="nextMonth"
         #nextMonth
       >
@@ -36,9 +38,9 @@
     <hr />
   </div>
 
-  <div class="d-flex flex-column justify-content-around">
-    <h6 class="mb-3">VENUE</h6>
-    <div class="d-flex flex-row justify-content-between">
+  <div class="d-flex flex-column">
+    <h6 class="mb-2">VENUE</h6>
+    <div class="d-flex flex-row justify-content-start flex-wrap">
       <button
         (click)="sendFilterValue(outdoor.value)"
         class="btn border border-success venueBtn"
@@ -55,9 +57,7 @@
       >
         Indoor
       </button>
-      <button class="btn border border-success typeBtn hide">
-        ****************
-      </button>
+    
       <!-- <button class="btn border border-success typeBtn hide">
         ****************
       </button> -->
@@ -65,9 +65,9 @@
     <hr />
   </div>
 
-  <div class="d-flex flex-column justify-content-around">
-    <h6 class="mb-3">TYPE</h6>
-    <div class="d-flex flex-row justify-content-between">
+  <div class="d-flex flex-column">
+    <h6 class="mb-2">TYPE</h6>
+    <div class="d-flex flex-row justify-content-start flex-wrap">
       <button
         (click)="sendFilterValue(individual.value)"
         class="btn border border-success typeBtn mx-1"
@@ -84,19 +84,13 @@
       >
         Team
       </button>
-      <button class="btn border border-success typeBtn hide">
-        ****************
-      </button>
-      <button class="btn border border-success typeBtn hide">
-        ****************
-      </button>
     </div>
     <hr />
   </div>
 
-  <div class="d-flex flex-column justify-content-around">
-    <h6 class="mb-3">CATEGORY</h6>
-    <div class="d-flex flex-row justify-content-between">
+  <div class="d-flex flex-column">
+    <h6 class="mb-2">CATEGORY</h6>
+    <div class="d-flex flex-row justify-content-start flex-wrap">
       <select
         name="categoryValue"
         [(ngModel)]="categoryValue"

@@ -1,19 +1,18 @@
-  <div class="row mt-4">
-    <h4 class="text-center">Saved Drafts</h4>
-    <div class="col-2 offset-10">
-      
+  <div class="mx-5">
+    <h4 class="text-center mt-3">Saved Drafts</h4>
+    
+    <div class="d-flex justify-content-end mb-4">      
       <button type="button" class="btn btn-success btnwidth" routerLink="/adminhome/addevent">
         <span class="spantxt">
           Add An Event <fa-icon class="icon px-1" [icon]="faPlusCircle"></fa-icon>
         </span>
-      </button>
-  
+      </button>  
     </div>
   
-    <div class="width row">
+    <div class="row mx-4">
   
       <!-- Looping through Events fetching array of eventlist -->
-      <div class="mx-4 my-3 col-md-3" *ngFor="let draft of drafts">
+      <div class="col mb-4" *ngFor="let draft of drafts">
           <app-eventlist
             [event]="draft"
             [showRegister]="false"

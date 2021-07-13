@@ -24,10 +24,19 @@
   </div>
 
   <div class="c d-flex justify-content-center align-items-center">
-    <img
+    
+    <ng-container *ngIf="analyse" else; #survey>
+      <img src="https://img.icons8.com/ios/35/000000/stop-pie-chart-report.png"
+      title="Analyse"
+      [routerLink]="['/adminhome/feedback/',event.id]"/>
+    </ng-container>
+    
+    <ng-container *ngIf="!analyse">
+      <img
       src="https://img.icons8.com/material/24/000000/feedback--v2.png"
       title="feedback"
       (click)="getEventById(event.id)"
     />
+    </ng-container>
   </div>
 </div>

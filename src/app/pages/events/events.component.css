@@ -1,7 +1,4 @@
-.eventContainer{
-    width: 99%;
-    margin: 0 auto;
-}
+
 .EventListHeading{
     height: 70px;
     border-top: 1px solid rgb(207, 207, 207);
@@ -10,7 +7,26 @@
     border-radius: 12px;
 }
 
-.marginLeft{
-    margin: 15px 33px !important;
+.hide{
+    visibility: hidden;
 }
 
+.filtericon{
+    visibility: hidden;
+}
+
+
+
+
+/* @media only screen and (max-width: 990px) {
+    .filterbox{
+        position: absolute;
+        top: 20%;
+        z-index: 1;
+    }
+    
+    .filtericon{
+        visibility:visible;
+        cursor: pointer;
+    }
+} */

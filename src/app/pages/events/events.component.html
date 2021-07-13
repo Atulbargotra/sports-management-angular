@@ -1,20 +1,27 @@
-<div class="container-fluid eventContainer">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-3 mt-5">
+    <div class="col-3 filterbox mt-5">
       <!-- App Filter Component -->
-      <app-filter 
-      (filterValue)="getFilterValue($event)"
-      [categories]="categories"
+      <app-filter
+        (filterValue)="getFilterValue($event)"
+        [categories]="categories"
       ></app-filter>
     </div>
-    <div class="col-9 mt-5">
-      <div class="row EventListHeading">
+    <div class="col mt-5">
+      <div
+        class="
+          EventListHeading
+          justify-content-center"
+      >
         <h5 class="mt-3 text-center">List of Events</h5>
       </div>
-      <div class="row border mt-1">
-        <div class="row d-flex">
+      <div class="border mt-1">
+        <div class="row">
           <!-- Looping through Events fetching array of eventlist -->
-          <div class="mx-4 my-3 w-25" *ngFor="let event of eventList">
+          <div
+            class="my-3 col d-flex justify-content-center"
+            *ngFor="let event of eventList"
+          >
             <app-eventlist
               (onRegisterEvent)="register(event)"
               [event]="event"
