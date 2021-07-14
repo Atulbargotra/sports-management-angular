@@ -6,7 +6,12 @@ import { EventRequestPayload } from 'src/app/Model/eventRequestPayload';
 import { EventService } from 'src/app/services/event.service';
 
 //reactive form
-import {FormGroup,FormBuilder,Validators} from '@angular/forms'
+import {
+  FormGroup,
+  FormBuilder,
+  Validators,
+  FormControl,
+} from '@angular/forms';
 //AngularFireStorage
 import { AngularFireStorage } from '@angular/fire/storage';
 //Image resizer
@@ -17,7 +22,7 @@ import { Imgconfig } from '../../utilities/ImgConfig';
 import { v4 as uuidv4 } from 'uuid';
 //finalize
 import { finalize } from 'rxjs/operators';
-
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-addevent',
@@ -29,35 +34,43 @@ export class AddeventComponent implements OnInit {
     private eventService: EventService,
     private router: Router,
     private toast: ToastrService,
-    private storage:AngularFireStorage,
-    private fb:FormBuilder
+    private storage: AngularFireStorage,
+    private fb: FormBuilder
   ) {}
 
-  picture: string = 'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
-  addEventForm:FormGroup;
-  submitted:boolean=false;
+  picture: string =
+    'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
+  addEventForm: FormGroup;
+  submitted: boolean = false;
+  dateValidator(control: FormControl): { [s: string]: boolean } {
+    if (control.value) {
+      const date = moment(control.value);
+      const today = moment();
+      if (date.isBefore(today)) {
+        return { invalidDate: true };
+      }
+    }
+    return null;
+  }
 
   ngOnInit(): void {
     this.addEventForm = this.fb.group({
-      eventName: ['',Validators.required],
-      description: ['',Validators.required],
-      location: ['',Validators.required],
-      category: ['',Validators.required],
-      type: ['',Validators.required],
-      eventDate: ['',Validators.required],
-      lastDate: ['',Validators.required],
-      maxParticipant: ['',Validators.required],
+      eventName: ['', Validators.required],
+      description: ['', Validators.required],
+      location: ['', Validators.required],
+      category: ['', Validators.required],
+      type: ['', Validators.required],
+      eventDate: ['', this.dateValidator],
+      lastDate: ['', Validators.required],
+      maxParticipant: ['', Validators.required],
       maxMembersInTeam: [''],
-      venue: ['',Validators.required]
-    })
+      venue: ['', Validators.required],
+    });
   }
 
-  
-  get f(){
+  get f() {
     return this.addEventForm.controls;
   }
-  
-  
 
   handleAddEvents() {
     const event: EventRequestPayload = {
@@ -73,7 +86,7 @@ export class AddeventComponent implements OnInit {
       maxMembersInTeam: this.f.maxMembersInTeam.value,
       picture: this.picture,
     };
-    
+
     this.eventService.addEvent(event).subscribe(
       (postResponse) => {
         this.toast.success('Event added successfully');
@@ -86,9 +99,7 @@ export class AddeventComponent implements OnInit {
     );
   }
 
-
   handleSaveDraft() {
-
     const event: EventRequestPayload = {
       eventName: this.f.eventName.value,
       description: this.f.description.value,
@@ -102,14 +113,14 @@ export class AddeventComponent implements OnInit {
       maxMembersInTeam: this.f.maxMembersInTeam.value,
       picture: this.picture,
     };
-    console.log("inside handleSaveDraft");
-    
+    console.log('inside handleSaveDraft');
+
     this.eventService.saveDraft(event).subscribe(
       (data) => {
-        console.log("inside handleSaveDraft service");
+        console.log('inside handleSaveDraft service');
         this.toast.success('Draft Saved');
         this.router.navigateByUrl('/adminhome');
-        this.onReset();  //reset form data after submiting
+        this.onReset(); //reset form data after submiting
       },
       (error) => {
         throwError(error);
@@ -118,18 +129,16 @@ export class AddeventComponent implements OnInit {
     );
   }
 
-
   //To add a field Total members in a team
   isTeam() {
     return this.f.type.value === 'team' ? true : false;
   }
 
   //reset data after form submit
-  onReset(){
+  onReset() {
     this.submitted = false;
     this.addEventForm.reset;
-   }
-
+  }
 
   setPicture() {
     switch (this.f.category.value) {
@@ -186,8 +195,6 @@ export class AddeventComponent implements OnInit {
     }
   }
 
-
-
   async ImageUpload(event) {
     const orignalFile = event.target.files[0]; //original image fetched from event when user upload
     //image compressed
@@ -215,22 +222,19 @@ export class AddeventComponent implements OnInit {
       .subscribe();
   }
 
-
-//When add Event button is clicked  
-  onAddEvent(){
+  //When add Event button is clicked
+  onAddEvent() {
     this.submitted = true;
-    if(this.addEventForm.invalid) return;
+    if (this.addEventForm.invalid) return;
 
     this.handleAddEvents();
   }
 
-
-//When save draft button is clicked
-  onSaveDraft(){
+  //When save draft button is clicked
+  onSaveDraft() {
     this.submitted = true;
-    if(this.addEventForm.invalid)  return; 
-    console.log("inside onSaveDraft");
+    if (this.addEventForm.invalid) return;
+    console.log('inside onSaveDraft');
     this.handleSaveDraft();
   }
-
 }

@@ -1,15 +1,17 @@
 <div style="display: block" *ngIf="isLoaded">
   <canvas
-    width="400"
-    height="100"
+    width="1000"
+    height="200"
     baseChart
-    [data]="pieChartData"
-    [labels]="pieChartLabels"
-    [chartType]="pieChartType"
+    [datasets]="barChartData"
+    [options]="barChartOptions"
+    [labels]="barChartLabels"
+    [options]="chartOptions"
+    [chartType]="barChartType"
   ></canvas>
 </div>
 
-<div class="feedbacks">
+<div class="feedbacks" *ngIf="isLoaded">
   <h3>Feedbacks</h3>
   <ul class="list-group" *ngFor="let comment of comments">
     <li class="list-group-item">{{ comment }}</li>

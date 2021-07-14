@@ -1,19 +1,23 @@
 <div class="container addeventform">
-  
   <div class="row">
     <div class="text-center">
       <label for="imagePicker">
-        <img [src]="picture" alt="Unable to load Image" class="img-fluid" width="350"/>
+        <img
+          [src]="picture"
+          alt="Unable to load Image"
+          class="img-fluid"
+          width="350"
+        />
       </label>
       <input
-          type="file"
-          name="image"
-          id="imagePicker"
-          accept="image/*"
-          multiple="{false}"
-          hidden
-          (change)="ImageUpload($event)"
-        />
+        type="file"
+        name="image"
+        id="imagePicker"
+        accept="image/*"
+        multiple="{false}"
+        hidden
+        (change)="ImageUpload($event)"
+      />
     </div>
     <div>
       <h5 class="text-center mt-2 mb-4">Add Event Details</h5>
@@ -26,7 +30,7 @@
             formControlName="eventName"
             id="eventName"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.eventName.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.eventName.errors }"
           />
           <div *ngIf="submitted && f.eventName.errors" class="text-danger">
             <div class="small" *ngIf="f.eventName.errors.required">
@@ -42,7 +46,7 @@
             formControlName="location"
             id="location"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.location.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.location.errors }"
           />
           <div *ngIf="submitted && f.location.errors" class="text-danger">
             <div class="small" *ngIf="f.location.errors.required">
@@ -58,7 +62,7 @@
             formControlName="description"
             class="form-control"
             id="description"
-            [ngClass]="{ 'is-invalid': submitted && f.description.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
           />
           <div *ngIf="submitted && f.description.errors" class="text-danger">
             <div class="small" *ngIf="f.description.errors.required">
@@ -74,7 +78,7 @@
             aria-label="Default select example"
             name="category"
             formControlName="category"
-            [ngClass]="{ 'is-invalid': submitted && f.category.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.category.errors }"
             (ngModelChange)="setPicture()"
           >
             <optgroup label="Outdoor">
@@ -106,7 +110,7 @@
             aria-label="Default select example"
             name="venue"
             formControlName="venue"
-            [ngClass]="{ 'is-invalid': submitted && f.venue.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.venue.errors }"
           >
             <option value="outdoor">Outdoor</option>
             <option value="indoor">Indoor</option>
@@ -128,7 +132,7 @@
             formControlName="maxParticipant"
             id="maxParticipant"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.maxParticipant.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.maxParticipant.errors }"
           />
           <div *ngIf="submitted && f.maxParticipant.errors" class="text-danger">
             <div class="small" *ngIf="f.maxParticipant.errors.required">
@@ -145,11 +149,13 @@
             formControlName="eventDate"
             id="eventDate"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.eventDate.errors}"
+            [ngClass]="{
+              'is-invalid': submitted && f.eventDate.errors
+            }"
           />
           <div *ngIf="submitted && f.eventDate.errors" class="text-danger">
-            <div class="small" *ngIf="f.eventDate.errors.required">
-              Event Date is required
+            <div class="small" *ngIf="f.eventDate.errors.invalidDate">
+              Date should'nt be in past
             </div>
           </div>
         </div>
@@ -161,7 +167,7 @@
             formControlName="lastDate"
             id="lastDate"
             class="form-control"
-            [ngClass]="{ 'is-invalid': submitted && f.lastDate.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.lastDate.errors }"
           />
           <div *ngIf="submitted && f.lastDate.errors" class="text-danger">
             <div class="small" *ngIf="f.lastDate.errors.required">
@@ -195,11 +201,11 @@
               name="type"
               formControlName="type"
               id="team"
-              value="team"              
+              value="team"
               (ngModelChange)="isTeam()"
               required
             />
-            <label class="form-check-label" for="team"> Team </label>            
+            <label class="form-check-label" for="team"> Team </label>
           </div>
           <div *ngIf="submitted && f.type.errors" class="text-danger">
             <div class="small" *ngIf="f.type.errors.required">
@@ -218,9 +224,12 @@
             formControlName="maxMembersInTeam"
             id="maxMembersInTeam"
             class="form-control"
-            [ngClass]="{'is-invalid': submitted && f.maxMembersInTeam.errors}"
+            [ngClass]="{ 'is-invalid': submitted && f.maxMembersInTeam.errors }"
           />
-          <div *ngIf="submitted && f.maxMembersInTeam.errors" class="text-danger">
+          <div
+            *ngIf="submitted && f.maxMembersInTeam.errors"
+            class="text-danger"
+          >
             <div class="small" *ngIf="f.maxMembersInTeam.errors.required">
               Total Members are required
             </div>

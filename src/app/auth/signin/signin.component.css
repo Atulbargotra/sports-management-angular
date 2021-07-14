@@ -29,3 +29,7 @@ span {
 .linkcolor {
   color: black;
 }
+button {
+  color: antiquewhite;
+  font-weight: bold;
+}
