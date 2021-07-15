@@ -1,62 +1,23 @@
-.container {
-  height: 91vh;
-  margin: 0 auto;
-}
-
-.mainbox {
-  margin-top: 80px;
-}
-
-.box1 {
-  width: 60%;
-  height: 180px;
-}
-
-.box2 {
-  width: 100%;
-  height: 180px;
-}
-
-img {
-  max-width: 100%;
-  max-height: 100%;
-}
-
-.win1,
-.win2,
-.win3 {
-  width: 130px;
-  height: 130px;
-  position: relative;
-  padding-top: 20px;
-  display: inline-block;
-}
-
 * {
   padding: 0;
   margin: 0;
-  background-color: white;
+  box-sizing: border-box;
 }
 
-.imgbox {
-  width: 50%;
+.winnersBox {
+  width: 90%;
+  margin: 0 auto;
 }
 
-.detailsbox {
-  width: 50%;
-}
-
-.dd {
-  width: 100vw;
-}
-
-.winnerBox {
+.winBox {
+  border: 1px solid rgb(207, 207, 207);
+  border-radius: 10px;
   border-top: 1px solid rgb(216, 216, 216);
   box-shadow: 2px 4px 14px -2px rgba(0, 0, 0, 0.28);
   -webkit-box-shadow: 2px 4px 14px -2px rgba(0, 0, 0, 0.28);
   -moz-box-shadow: 2px 4px 14px -2px rgba(0, 0, 0, 0.28);
 }
 
-.eventImg {
+.dateBox {
   border-radius: 10px;
 }
