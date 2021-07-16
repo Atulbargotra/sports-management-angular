@@ -38,7 +38,6 @@ export class PublishedComponent implements OnInit {
         } else {
           this.eventList = data;
           this.eventAvailable = true;
-          console.log(data);
         }
       },
       (error) => {

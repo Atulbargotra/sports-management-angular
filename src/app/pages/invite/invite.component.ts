@@ -21,7 +21,6 @@ export class InviteComponent implements OnInit {
       let re = /!/gi;
       this.token = res.get('token').replace(re, '=');
     });
-    console.log(this.token);
     this.teamService.joinTeamFromInvite(this.token).subscribe(
       () => {
         this.toast.success('Joined to team');

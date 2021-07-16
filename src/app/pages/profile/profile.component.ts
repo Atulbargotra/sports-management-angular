@@ -18,6 +18,7 @@ import { v4 as uuidv4 } from 'uuid';
 //finalize
 import { finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/auth/shared/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -43,7 +44,8 @@ export class ProfileComponent implements OnInit {
     private toast: ToastrService,
     private userService: UserService,
     private storage: AngularFireStorage,
-    private router: Router
+    private router: Router,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -105,6 +107,12 @@ export class ProfileComponent implements OnInit {
     this.userService.updateUserProfile(userdata).subscribe(
       (res) => {
         this.toast.success('Profile Updated Successfully');
+        console.log(this.authService.getUserType() === '[ROLE_USER]');
+        const profile =
+          this.authService.getUserType() === '[ROLE_USER]'
+            ? '/userhome'
+            : '/adminhome';
+        this.router.navigateByUrl(profile);
       },
       (error) => this.toast.error('Problem occured to update profile')
     );
