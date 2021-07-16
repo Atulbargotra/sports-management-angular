@@ -39,7 +39,7 @@ export class AddeventComponent implements OnInit {
   ) {}
 
   picture: string =
-    'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
+    'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/no-image.jpg?alt=media&token=c47e40a2-8d4a-45bb-bed6-5345e1fe2b81';
   addEventForm: FormGroup;
   submitted: boolean = false;
   dateValidator(control: FormControl): { [s: string]: boolean } {
@@ -144,52 +144,52 @@ export class AddeventComponent implements OnInit {
     switch (this.f.category.value) {
       case 'cricket': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/cricket.jpeg?alt=media&token=142af2aa-52c5-49ef-93e0-964bb3651e8d';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/CRICKET.jpg?alt=media&token=129ca445-3d2b-46a2-8369-ba643da50bf8';
         break;
       }
       case 'football': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/football.jpg?alt=media&token=41fd1240-1e99-48f4-bbaf-afaffcf057cf';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/FOOTBALL.jpg?alt=media&token=96fdaba0-5a54-4329-a0ed-7a8df945b96a';
         break;
       }
       case 'basketball': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/basketball.jpeg?alt=media&token=d1bad8a4-9246-4900-b00e-2fc1823b94d7';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/BASKETBALL.jpg?alt=media&token=6ec696d0-983f-4c74-bc4e-9fd9aa0798d4';
         break;
       }
       case 'badmintion': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/badmintion.jpeg?alt=media&token=4f1feac8-fb9a-4b8a-a879-e600374a1286';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/BADMINTON.jpg?alt=media&token=a892fa96-ebc6-4f7f-a59e-89b610c4d704';
         break;
       }
       case 'chess': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/chess.jpeg?alt=media&token=506d50ee-fb2e-48cc-aac4-433394248fd0';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/CHESS.jpg?alt=media&token=0d74054b-90b9-4235-8d66-e42dbdddd183';
         break;
       }
       case 'volleyball': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/vollyball.jpeg?alt=media&token=43409a2d-464a-4981-a36a-d755575ad104';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/VOLLEYBALL.jpg?alt=media&token=95f44d9a-c07d-45fc-981b-9f10fcbe8e0d';
         break;
       }
       case 'tableTennis': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/tableTennis.jpeg?alt=media&token=7dba7ea1-f52c-49e2-8693-8ce69633ad5e';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/tableTennis.jpeg?alt=media&token=df7af050-c5d5-4c68-a144-80da407a8437';
         break;
       }
       case 'carrom': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/carrom%20(2).jpg?alt=media&token=3c1c7fcf-073a-4d74-a8e3-ed18edcd52e4';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/carrom.jpg?alt=media&token=c7f8fbaf-b2c9-4449-92eb-201702244cc4';
         break;
       }
       case '8ballpool': {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/stephen-collins-cRhNdY9-2Sc-unsplash%20(1).jpg?alt=media&token=12532bb2-beb6-4b42-8428-8a088be3df8e';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/8ballpool%20(2).jpg?alt=media&token=6feac33f-37db-4e7d-bb91-1a05d2267510';
         break;
       }
       default: {
         this.picture =
-          'https://firebasestorage.googleapis.com/v0/b/login-authentication-45ce5.appspot.com/o/no-image.jpg?alt=media&token=94024470-52dd-4457-810d-e6b437dfddb0';
+          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/no-image.jpg?alt=media&token=c47e40a2-8d4a-45bb-bed6-5345e1fe2b81';
         break;
       }
     }
