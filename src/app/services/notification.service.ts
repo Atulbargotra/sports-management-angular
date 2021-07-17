@@ -7,8 +7,8 @@ import { NotificationResponsePayload } from '../Model/notificationResponsePayloa
   providedIn: 'root',
 })
 export class NotificationService {
-  // url: string = 'http://localhost:8080/api/notifications/user';
-  url: string = 'https://tiaasports.herokuapp.com/api/notifications/user';
+  url: string = 'http://localhost:8080/api/notifications/user';
+  // url: string = 'https://tiaasports.herokuapp.com/api/notifications/user';
   constructor(private http: HttpClient) {}
 
   getUserNotifications(

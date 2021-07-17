@@ -14,8 +14,8 @@ import { winnersDetailsPayload } from '../Model/winnersDetailsPayload';
   providedIn: 'root',
 })
 export class EventService {
-  // url: string = 'http://localhost:8080/api/events';
-  url: string = 'https://tiaasports.herokuapp.com/api/events';
+  url: string = 'http://localhost:8080/api/events';
+  // url: string = 'https://tiaasports.herokuapp.com/api/events';
 
   constructor(private http: HttpClient) {}
 
@@ -26,7 +26,7 @@ export class EventService {
     return this.http.post(this.url + `/draft`, event);
   }
   editDraft(id: number, event: EventRequestPayload): Observable<any> {
-    return this.http.put(this.url + `/draft/edit/${id}`, event);
+    return this.http.put(this.url + `/edit/${id}`, event);
   }
   getEventDrafts(cache = false): Observable<Array<EventResponsePayload>> {
     let headers: HttpHeaders;

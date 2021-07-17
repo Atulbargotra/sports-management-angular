@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  AbstractControl,
-  FormArray,
   FormBuilder,
   FormControl,
   FormGroup,
@@ -49,17 +47,17 @@ export class RegisterPageComponent implements OnInit {
   registeredTeams: TeamDetailsPayload[];
 
   ngOnInit(): void {
+    this.teamForm = new FormGroup({
+      name: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      maxMembers: new FormControl(''),
+      contact: new FormControl('', Validators.required),
+    });
     this.activatedRoute.paramMap.subscribe((res) => {
       this.pid = +res.get('id'); // + is added to convert pid from string type to number
       this.handleGetEventById(this.pid);
       this.handleGetRegisteredTeams(this.pid);
-    });
-    this.teamForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      maxMembers: new FormControl('', Validators.required),
-      contact: new FormControl('', Validators.required),
     });
   }
 
@@ -95,18 +93,17 @@ export class RegisterPageComponent implements OnInit {
     this.teamRequestPayload.maxMembers = Number(
       this.teamForm.get('maxMembers').value
     );
+    console.log(this.teamRequestPayload);
     this.eventService
       .registerAsTeam(this.pid, this.teamRequestPayload)
       .subscribe(
         (data) => {
-          console.log(data);
           this.toast.success('Joined to Event');
           //this.router.navigateByUrl('/userhome');
           this.inviteLinkAvailable = true;
           this.teamInviteLink = data.link;
         },
         (errorObj) => {
-          console.log(errorObj);
           this.toast.error(errorObj.error.message);
         }
       );
