@@ -3,7 +3,6 @@ import { UserProfile } from '../Model/userProfile';
 import { Observable, observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { basename } from 'path';
 
 @Injectable({
   providedIn: 'root',

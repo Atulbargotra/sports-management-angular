@@ -46,7 +46,6 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { EditeventComponent } from './pages/editevent/editevent.component';
 import { ParticipantsComponent } from './pages/participants/participants.component';
 
-import { CachingInterceptor } from './cachingInterceptor';
 import { MatchCardComponent } from './components/match-card/match-card.component';
 import { ScheduleComponent } from './pages/schedule/schedule.component';
 import { ParticipationlistComponent } from './components/participationlist/participationlist.component';
