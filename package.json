@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "heroku-postbuiild": "ng build --prod && npm install -g http-server-spa",
-    "start": "http-serever-spa dist/sports index.html $PORT",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
