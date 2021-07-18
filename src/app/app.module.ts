@@ -109,11 +109,6 @@ import { AdminFeedbackComponent } from './pages/admin-feedback/admin-feedback.co
       useClass: TokenInterceptor,
       multi: true,
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: CachingInterceptor,
-    //   multi: true,
-    // },
   ],
   bootstrap: [AppComponent],
 })
