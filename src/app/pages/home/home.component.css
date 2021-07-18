@@ -7,7 +7,11 @@
 }
 
 .bgContent {
-  background: #FFD98E;
+  background: #ffd98e;
   height: 100vh;
 }
-
+@media only screen and (max-width: 600px) {
+  .imgBox {
+    display: none;
+  }
+}

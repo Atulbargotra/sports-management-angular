@@ -52,7 +52,10 @@ export class RegisterPageComponent implements OnInit {
       description: new FormControl('', Validators.required),
       city: new FormControl('', Validators.required),
       maxMembers: new FormControl(''),
-      contact: new FormControl('', Validators.required),
+      contact: new FormControl(
+        '',
+        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
+      ),
     });
     this.activatedRoute.paramMap.subscribe((res) => {
       this.pid = +res.get('id'); // + is added to convert pid from string type to number

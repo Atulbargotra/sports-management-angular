@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 //reactive form
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 //toastr message
 import { ToastrService } from 'ngx-toastr';
 //userService
@@ -56,7 +56,7 @@ export class ProfileComponent implements OnInit {
       city: [''],
       address: [''],
       email: [''],
-      contact: [''],
+      contact: ['', Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
     });
     this.userService.getUserProfile().subscribe(
       (data) => {
@@ -71,7 +71,7 @@ export class ProfileComponent implements OnInit {
         });
         this.picture =
           data.picture ||
-          'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/userImg.PNG?alt=media&token=78465c4d-4389-40c5-827d-afbb7ecdd78b';
+          'https://img.icons8.com/ultraviolet/80/000000/test-account.png';
       },
       (error) => {}
     );

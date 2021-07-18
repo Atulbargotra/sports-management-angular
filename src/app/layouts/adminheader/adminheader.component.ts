@@ -29,7 +29,9 @@ export class AdminheaderComponent implements OnInit {
       (data: boolean) => (this.isLoggedIn = data)
     );
     this.userService.getUserProfile().subscribe((data) => {
-      this.profilePic = data.picture;
+      this.profilePic =
+        data.picture ||
+        'https://img.icons8.com/ultraviolet/40/000000/test-account.png';
     });
     this.username = this.authService.getUserName();
     this.isLoggedIn = this.authService.isLoggedIn();

@@ -41,6 +41,10 @@ export class UserheaderComponent implements OnInit {
     );
     this.userService.getUserProfile().subscribe((data) => {
       this.user = data;
+      if (!this.user.picture) {
+        this.user.picture =
+          'https://img.icons8.com/ultraviolet/40/000000/test-account.png';
+      }
     });
     this.username = this.authService.getUserName();
   }

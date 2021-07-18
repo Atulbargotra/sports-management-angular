@@ -9,6 +9,9 @@
           width="350"
         />
       </label>
+      <h5 class="bg-secondary text-white uploadBadge text-center">
+        Upload Image
+      </h5>
       <input
         type="file"
         name="image"
@@ -19,7 +22,7 @@
         (change)="ImageUpload($event)"
       />
     </div>
-    <div>
+    <div class="mt-7">
       <h5 class="text-center mt-2 mb-4">Add Event Details</h5>
       <form class="row g-3" [formGroup]="addEventForm">
         <div class="col-md-6">
