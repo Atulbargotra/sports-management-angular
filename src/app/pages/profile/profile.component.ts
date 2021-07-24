@@ -46,7 +46,9 @@ export class ProfileComponent implements OnInit {
     private storage: AngularFireStorage,
     private router: Router,
     private authService: AuthService
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
     this.profileForm = this.formBuilder.group({
@@ -56,8 +58,9 @@ export class ProfileComponent implements OnInit {
       city: [''],
       address: [''],
       email: [''],
-      contact: ['', Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')],
+      contact: ['', [Validators.minLength(10),Validators.maxLength(10)]],
     });
+
     this.userService.getUserProfile().subscribe(
       (data) => {
         this.profileForm.patchValue({

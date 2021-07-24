@@ -1,15 +1,23 @@
 <div class="container-fluid mt-3">
-  <div class="card">
+  <div class="card p-2 cardBox">
     <div class="card-horizontal">
       <div class="card-body">
-        <h6 class="card-title player">{{ match.playerOne }}</h6>
-        <h6 class="card-title player">{{ match.playerTwo }}</h6>
-        <h6 class="gray" style="float: left; width: 50%">
+        <h6 class="card-title text-success player px-2">{{ match.playerOne }}</h6>
+        <h6 class="card-title text-success player px-2">{{ match.playerTwo }}</h6>
+        <!-- <h6 class="gray" style="float: left; width: 50%">
           Match {{ match.matchNumber }}
         </h6>
         <h6 class="gray" style="float: right; width: 50%">
           Round {{ match.roundNumber }}
-        </h6>
+        </h6> -->
+        <div class="d-flex justify-content-between px-2">
+          <h6 class="gray">
+            Match {{ match.matchNumber }}
+          </h6>
+          <h6 class="gray">
+            Round {{ match.roundNumber }}
+          </h6>
+        </div>
       </div>
     </div>
   </div>

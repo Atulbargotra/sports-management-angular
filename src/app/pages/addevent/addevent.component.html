@@ -84,6 +84,7 @@
             [ngClass]="{ 'is-invalid': submitted && f.category.errors }"
             (ngModelChange)="setPicture()"
           >
+            <option value="" selected disabled>Select Event</option>
             <optgroup label="Outdoor">
               <option value="cricket">Cricket</option>
               <option value="football">Football</option>
@@ -120,7 +121,7 @@
           </select>
           <div *ngIf="submitted && f.venue.errors" class="text-danger">
             <div class="small" *ngIf="f.venue.errors.required">
-              Category is required
+              Venue is required
             </div>
           </div>
         </div>
@@ -160,6 +161,9 @@
             <div class="small" *ngIf="f.eventDate.errors.invalidDate">
               Date should'nt be in past
             </div>
+            <div class="small" *ngIf="f.eventDate.errors.required">
+              Event Date is required
+            </div>
           </div>
         </div>
         <div class="col-md-6">
@@ -189,7 +193,6 @@
               formControlName="type"
               id="individual"
               value="individual"
-              checked
               (ngModelChange)="isTeam()"
               required
             />

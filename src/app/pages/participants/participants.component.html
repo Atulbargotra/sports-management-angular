@@ -66,18 +66,18 @@
           aria-label="Default select example"
           [(ngModel)]="selectedMethod"
         >
-          <option selected value="rr">League Round Robin</option>
+          <option value="rr">League Round Robin</option>
           <option value="se">Tournament Single Elimination</option>
           <option value="de">Tournament Double Elimination</option>
         </select>
       </div>
       <div class="d-grid col-4 mx-auto mt-3">
-        <button (click)="schedule()" class="btn btn-success">
+        <button (click)="schedule()" class="btn btn-success" [disabled]="!dataAvailable">
           Click To Generate
         </button>
       </div>
       <ng-template [ngIf]="notScheduled && matchesAvailable">
-        <div class="card mt-3">
+        <div class="card mt-5">
           <div class="card-horizontal">
             <div class="card-body">
               <p>

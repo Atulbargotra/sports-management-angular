@@ -9,6 +9,19 @@
       </button>  
     </div>
   
+    <div
+    *ngIf="!eventAvailable"
+    class="
+      text-center
+      d-flex
+      justify-content-center
+      align-items-center
+      eventAvailable
+    "
+  >
+    <p>No Events Available!!!</p>
+  </div>
+
     <div class="row mx-4">
   
       <!-- Looping through Events fetching array of eventlist -->
