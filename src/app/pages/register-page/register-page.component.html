@@ -4,7 +4,7 @@
       <h5 class="text-center p-3">Team Details</h5>
       <form
         [formGroup]="teamForm"
-        (ngSubmit)="createTeam()"
+        (ngSubmit)="onRegister()"
         class="row gx-4 gy-3"
       >
         <div class="col-md-6">
@@ -15,7 +15,13 @@
             id="name"
             required
             formControlName="name"
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
           />
+          <div *ngIf="submitted && f.name.errors" class="text-danger">
+            <div class="small" *ngIf="f.name.errors.required">
+              Team Name is required
+            </div>
+          </div>
         </div>
         <div class="col-md-6">
           <label for="teamDescription" class="form-label"
@@ -26,14 +32,18 @@
             class="form-control"
             id="teamDescription"
             formControlName="description"
+            [ngClass]="{ 'is-invalid': submitted && f.description.errors }"
           />
+          <div *ngIf="submitted && f.description.errors" class="text-danger">
+            <div class="small" *ngIf="f.description.errors.required">
+              description is required
+            </div>
+          </div>
         </div>
         <div class="col-6">
           <label for="maxMembers" class="form-label">Maximum Members</label>
           <input
             type="number"
-            disabled="true"
-            placeholder="{{ maxMembers }}"
             class="form-control"
             id="maxMembers"
             formControlName="maxMembers"
@@ -46,7 +56,13 @@
             class="form-control"
             id="inputCity"
             formControlName="city"
+            [ngClass]="{ 'is-invalid': submitted && f.city.errors }"
           />
+          <div *ngIf="submitted && f.city.errors" class="text-danger">
+            <div class="small" *ngIf="f.city.errors.required">
+              City is required
+            </div>
+          </div>
         </div>
 
         <div class="col-md-6">
@@ -56,7 +72,13 @@
             class="form-control"
             id="contact"
             formControlName="contact"
+            [ngClass]="{ 'is-invalid': submitted && f.contact.errors }"
           />
+          <div *ngIf="submitted && f.contact.errors" class="text-danger">
+            <div class="small" *ngIf="f.contact.errors.required">
+              contact is required
+            </div>
+          </div>
         </div>
         <div class="d-grid">
           <button type="submit" class="btn btn-success">Register</button>
@@ -87,7 +109,7 @@
 
   <div class="col-md-6 col-sm-12">
     <div class="col-md text-center col-sm-12 px-5">
-      <h5 class="p-3">Registered Team for {{ event.eventName }}</h5>
+      <h5 class="p-3">Registered Teams for {{ event.eventName }}</h5>
       <div class="row mb-2" *ngFor="let team of registeredTeams">
         <app-registered-teams
           [team]="team"

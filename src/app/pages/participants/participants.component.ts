@@ -16,7 +16,7 @@ import { MatchResponse } from 'src/app/Model/matchResponse';
 export class ParticipantsComponent implements OnInit {
   type: string;
   name: string;
-  selectedMethod: string;
+  selectedMethod: string='se';
   matchesAvailable: boolean = false;
   matches: MatchResponse[];
   notScheduled: boolean = true;
@@ -25,10 +25,11 @@ export class ParticipantsComponent implements OnInit {
     private eventService: EventService,
     private toast: ToastrService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
   ) {}
 
   registeredTeams: TeamDetailsPayload[];
+  dataAvailable:boolean = false;
+
   registeredUsers: UserRegistered[];
   event: EventResponsePayload;
   pid: number;
@@ -45,23 +46,12 @@ export class ParticipantsComponent implements OnInit {
     }
   }
 
-  handleGetEventById(id: number) {
-    this.eventService.getEventById(id).subscribe(
-      (getRes) => {
-        this.event = getRes;
-      },
-      (error) => {
-        this.toast.error('Problem Occured to get Event details by ID');
-        console.log(error);
-      }
-    );
-  }
-
   handleGetTeamsByEventID(id: number) {
     console.log('ininin');
     this.teamService.geTeamsByEventId(id).subscribe(
       (res) => {
         this.registeredTeams = res;
+        this.dataAvailable = res.length>1?true:false;
       },
       (error) => {
         this.toast.error('Problem occured to get Registered Teams By ID');
@@ -74,6 +64,7 @@ export class ParticipantsComponent implements OnInit {
     this.eventService.getUsersRegisteredInEvent(id).subscribe(
       (res) => {
         this.registeredUsers = res;
+        this.dataAvailable = (res.length>1)?true:false; 
         this.registeredUsers.map((user) =>
           user.picture === null
             ? (user.picture =

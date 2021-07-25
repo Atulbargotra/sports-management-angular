@@ -2,8 +2,18 @@
   margin-bottom: 10px;
 }
 h6 {
-  color: #00bcd4;
+  color: #000000;
 }
 .gray {
-  color: #a4aebc;
+  color: #878f9b;
+}
+
+.cardBox{
+  border: 1px solid rgba(156, 156, 156, 0.568);
+  border-radius: 10px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
 }

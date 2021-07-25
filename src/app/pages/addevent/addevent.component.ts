@@ -36,12 +36,15 @@ export class AddeventComponent implements OnInit {
     private toast: ToastrService,
     private storage: AngularFireStorage,
     private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   picture: string =
     'https://firebasestorage.googleapis.com/v0/b/sportseventmanagement-a3d28.appspot.com/o/no-image.jpg?alt=media&token=c47e40a2-8d4a-45bb-bed6-5345e1fe2b81';
   addEventForm: FormGroup;
   submitted: boolean = false;
+
+  //custom Validator for date
   dateValidator(control: FormControl): { [s: string]: boolean } {
     if (control.value) {
       const date = moment(control.value);
@@ -60,13 +63,19 @@ export class AddeventComponent implements OnInit {
       location: ['', Validators.required],
       category: ['', Validators.required],
       type: ['', Validators.required],
-      eventDate: ['', this.dateValidator],
+      eventDate: ['', [Validators.required,this.dateValidator]],
       lastDate: ['', Validators.required],
-      maxParticipant: ['', Validators.required],
+      maxParticipant: ['0', Validators.required],
       maxMembersInTeam: [''],
       venue: ['', Validators.required],
     });
-  }
+      
+    //setting default value for venue option and type radioButton
+    this.addEventForm.patchValue({
+      venue : 'outdoor',
+      type : 'individual'
+    })
+ }    
 
   get f() {
     return this.addEventForm.controls;

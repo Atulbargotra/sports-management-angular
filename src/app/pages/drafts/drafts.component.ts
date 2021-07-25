@@ -12,6 +12,8 @@ import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 export class DraftsComponent implements OnInit {
   faPlusCircle = faPlusCircle;
   drafts: EventResponsePayload[];
+  eventAvailable:boolean = false;
+
   constructor(
     private eventService: EventService,
     private toastr: ToastrService
@@ -20,7 +22,10 @@ export class DraftsComponent implements OnInit {
   ngOnInit() {
     this.eventService.getEventDrafts().subscribe(
       (data) => {
+        if(data.length>0){
+        this.eventAvailable = true;
         this.drafts = data;
+        }
       },
       (error) => {
         this.toastr.error('Unable to fetch drafts');

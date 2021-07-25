@@ -12,7 +12,7 @@ export const environment = {
     messagingSenderId: '',
     appId: '',
   },
-  baseUrl: 'http://localhost:8080/',
+  baseUrl: 'https://tiaasports.herokuapp.com/'
 };
 
 /*
