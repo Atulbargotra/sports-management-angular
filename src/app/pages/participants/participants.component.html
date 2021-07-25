@@ -5,7 +5,7 @@
 
       <ng-container *ngFor="let team of registeredTeams">
         <div class="mb-3 d-flex justify-content-center teamDetailsBox">
-          <div class="d-flex align-items-center borderonBox p-2 px-4">
+          <div class="d-flex align-items-center p-2 px-4">
             <img
               src="../../../assets/userImg2.png"
               alt="not loaded"
@@ -14,7 +14,7 @@
               width="100"
             />
           </div>
-          <div class="d-flex flex-column borderonBox p-2 px-4 w-100">
+          <div class="d-flex flex-column p-2 px-4 w-100">
             <span>{{ team.name }}</span>
             <span>{{ team.description }}</span>
             <span>Total Members : {{ team.currentNumberOfMembers }}</span>
@@ -23,12 +23,14 @@
           </div>
         </div>
       </ng-container>
-      <ng-container *ngIf="registeredUsers">
+
+
+      <ng-container *ngIf="registeredUsers" class="box">
         <div
           class="mb-3 d-flex justify-content-center teamDetailsBox"
           *ngFor="let user of registeredUsers"
         >
-          <div class="d-flex align-items-center borderonBox p-2 px-4">
+          <div class="d-flex align-items-center p-2 px-4">
             <img
               [src]="user.picture"
               alt="not loaded"
@@ -42,7 +44,6 @@
               d-flex
               flex-column
               justify-content-center
-              borderonBox
               p-2
               px-4
               w-100

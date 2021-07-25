@@ -12,14 +12,9 @@ span:first-child {
   margin: 0 auto;
 }
 
-.borderonBox {
-  border: 0.1px solid rgb(207, 207, 207);
-}
 body {
   background-color: #f7fafc;
 }
-
-
 .card {
   height: 4rem;
   color: #000000;

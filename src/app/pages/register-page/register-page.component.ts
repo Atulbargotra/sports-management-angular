@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
@@ -26,6 +25,9 @@ export class RegisterPageComponent implements OnInit {
   teamInviteLink: string;
   teamRequestPayload: TeamRequestPayload;
   inviteLinkAvailable: boolean = false;
+
+  submitted:boolean=false;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private eventService: EventService,
@@ -34,34 +36,27 @@ export class RegisterPageComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router
   ) {
-    this.teamRequestPayload = {
-      name: '',
-      description: '',
-      city: '',
-      maxMembers: 0,
-      contact: '',
-    };
+    
   }
 
   //Registered Team Details
   registeredTeams: TeamDetailsPayload[];
 
   ngOnInit(): void {
-    this.teamForm = new FormGroup({
-      name: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required),
-      city: new FormControl('', Validators.required),
-      maxMembers: new FormControl(''),
-      contact: new FormControl(
-        '',
-        Validators.pattern('^((\\+91-?)|0)?[0-9]{10}$')
-      ),
-    });
+    this.teamForm = this.fb.group({
+      name: ['',Validators.required],
+      description : ['',Validators.required],
+      city : ['',Validators.required],
+      maxMembers : ['',Validators.required],
+      contact : ['',[Validators.required,Validators.minLength(10)]]
+    })
+
+
     this.activatedRoute.paramMap.subscribe((res) => {
       this.pid = +res.get('id'); // + is added to convert pid from string type to number
       this.handleGetEventById(this.pid);
       this.handleGetRegisteredTeams(this.pid);
-    });
+    });  
   }
 
   handleGetEventById(id: number) {
@@ -69,6 +64,9 @@ export class RegisterPageComponent implements OnInit {
       (getRes) => {
         this.event = getRes;
         this.maxMembers = this.event.maxMembersInTeam;
+        this.teamForm.patchValue({
+          maxMembers: this.maxMembers
+        })
       },
       (error) => {
         this.toast.error('Problem Occured');
@@ -87,18 +85,31 @@ export class RegisterPageComponent implements OnInit {
     );
   }
 
+  get f(){
+    return this.teamForm.controls;
+  }
+
   createTeam() {
-    this.teamRequestPayload.name = this.teamForm.get('name').value;
-    this.teamRequestPayload.description =
-      this.teamForm.get('description').value;
-    this.teamRequestPayload.city = this.teamForm.get('city').value;
-    this.teamRequestPayload.contact = this.teamForm.get('contact').value;
-    this.teamRequestPayload.maxMembers = Number(
-      this.teamForm.get('maxMembers').value
-    );
-    console.log(this.teamRequestPayload);
+    // this.teamRequestPayload.name = this.teamForm.get('name').value;
+    // this.teamRequestPayload.description =
+    //   this.teamForm.get('description').value;
+    // this.teamRequestPayload.city = this.teamForm.get('city').value;
+    // this.teamRequestPayload.contact = this.teamForm.get('contact').value;
+    // this.teamRequestPayload.maxMembers = Number(
+    //   this.teamForm.get('maxMembers').value
+    // );
+
+    const teamRequest = {
+      name : this.f.name.value,
+      description : this.f.description.value,
+      city : this.f.city.value,
+      contact : this.f.contact.value,
+      maxMembers : Number(this.f.maxMembers.value)
+    }
+
+    console.log(teamRequest);
     this.eventService
-      .registerAsTeam(this.pid, this.teamRequestPayload)
+      .registerAsTeam(this.pid, teamRequest)
       .subscribe(
         (data) => {
           this.toast.success('Joined to Event');
@@ -134,5 +145,15 @@ export class RegisterPageComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+
+  onRegister(){
+    this.submitted = true;
+    console.log("zz")
+    if (this.teamForm.invalid) return;
+
+    this.createTeam();
+    console.log("zz")
   }
 }
